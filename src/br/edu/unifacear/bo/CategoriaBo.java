@@ -28,7 +28,7 @@ public class CategoriaBo {
 
 	private void validarCategoria(Categoria validar) throws Exception{
 		
-		List<Categoria> lista = new CategoriaDao().listar("categoria", validar.getDescricao());
+		List<Categoria> lista = new CategoriaDao().listar("todos", validar.getDescricao());
 		
 		for (Categoria categoria : lista) {
 			if(categoria.getDescricao().toUpperCase().equals(validar.getDescricao().toUpperCase())) {

@@ -19,10 +19,10 @@ public class CategoriaDao {
 		
 		em.getTransaction().begin();
 		
-		if(pesquisa.equals("categoria")) {
-			 consulta = em.createQuery("SELECT c FROM Categoria c");
-			 
+		if(pesquisa.equals("todos")) {
+			consulta = em.createQuery("SELECT c FROM Categoria c");
 		}
+	
 		
 		categoria = consulta.getResultList();
 		em.getTransaction().commit();

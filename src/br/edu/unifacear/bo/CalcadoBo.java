@@ -9,9 +9,9 @@ import br.edu.unifacear.dao.GenericDao;
 public class CalcadoBo {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void salvarValidar(String pesquisa, Calcado calcado) throws Exception {
+	public void salvarValidar(String pesquisa, Calcado calcado, String parametro2) throws Exception {
 		
-		List<Calcado> lista = new CalcadoDao().listar(pesquisa, calcado);
+		List<Calcado> lista = new CalcadoDao().listar(pesquisa, calcado, parametro2);
 		
 		for (Calcado calcado2 : lista) {
 			
@@ -30,9 +30,9 @@ public class CalcadoBo {
 		
 	}
 	
-	public List<Calcado> listar(String pesquisa, Calcado parametro) throws Exception{
+	public List<Calcado> listar(String pesquisa, Calcado parametro, String parametro2) throws Exception{
 		try {
-			return new CalcadoDao().listar(pesquisa, parametro);
+			return new CalcadoDao().listar(pesquisa, parametro, parametro2);
 		}catch(Exception e) {
 			throw new Exception("Erro ao listar o calcado");
 		}
