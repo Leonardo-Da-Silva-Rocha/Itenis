@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Cliente;
+import br.edu.unifacear.classes.Marca;
+import util.copy.Conexao;
 
 public class ClienteDao {
 	
@@ -36,4 +38,24 @@ public class ClienteDao {
 		
 	}
 	
+	public void salvar(Cliente cliente) throws Exception {
+		
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			
+			em.getTransaction().begin();
+			
+			
+			em.persist(cliente);
+			
+			em.getTransaction().commit();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar cliente");
+		}
+		
+	}
 }

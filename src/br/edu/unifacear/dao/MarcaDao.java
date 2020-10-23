@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Marca;
+import util.copy.Conexao;
 
 public class MarcaDao {
 	
@@ -33,7 +34,28 @@ public class MarcaDao {
 		return lista;
 		
 	}
-	
+	public void salvar(Marca marca) throws Exception {
+		
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			
+			em.getTransaction().begin();
+			
+			if(marca.getId() == 0) {
+				em.persist(marca);
+			}else {
+				em.merge(marca);
+			}
+			em.getTransaction().commit();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar produto");
+		}
+		
+	}
 
 	
 	

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html" 
+	   xmlns:f="http://java.sun.com/jsf/core" 
+	   xmlns:b="http://bootsfaces.net/ui"
+	   xmlns:p="http://primefaces.org/ui">
+
+ <h:head>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Cadastrar novo cliente</title>
+        <link rel="StyleSheet" type="text/css" href="css/style.css" />
+       
+    </h:head>
+    <h:body>
+        <b:navBar fluid="true" styleClass="cor-navBar" position="inline">
+        	<b:navbarLinks >
+        		<b:navLink styleClass="logo" style="color: #00FF7F" >Itênis</b:navLink>
+      		</b:navbarLinks>	
+        </b:navBar>
+        
+        <b:container>
+       		<h2>Cadastro de novos produtos</h2>
+       		<b:row>
+       			<b:inputText span="6" placeholder="Nome do produto" label="Nome do produto" required="true"></b:inputText>
+                <b:inputText span="6" placeholder="Marca" label="Marca" required="true"></b:inputText>
+       		</b:row>
+       		<b:row>
+				    <b:selectOneMenu value="categoria" span="6" label="Categoria" required="true">
+				           <f:selectItem itemValue="casual" itemLabel = "Casual"></f:selectItem>
+			               <f:selectItem itemValue="corrida" itemLabel = "Corrida"></f:selectItem>
+			               <f:selectItem itemValue="chuteiras" itemLabel = "Chuteiras"></f:selectItem>
+			               <f:selectItem itemValue="basquete" itemLabel = "Basquete"></f:selectItem>
+				    </b:selectOneMenu>
+				    <b:selectOneMenu value="genero" span="6" label="Gênero" required="true">
+				           <f:selectItem itemValue="masculino" itemLabel = "Masculino"></f:selectItem>
+			               <f:selectItem itemValue="Feminino" itemLabel = "Feminino"></f:selectItem>
+			               <f:selectItem itemValue="Infantil" itemLabel = "Infantil"></f:selectItem>		              
+				    </b:selectOneMenu>
+       		</b:row>
+       		<b:row>
+       			<b:inputText value="" span="4" placeholder="Empresa fornecedora" label="Empresa fornecedora" required="true"></b:inputText>
+       			<b:inputText value="" span="4" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
+       			<b:inputText value="" span="4" placeholder="Part number" label="Part number" required="true"></b:inputText>
+       		</b:row>
+       		<b:row>
+       			<b:formGroup>
+       				<b:button span="4" value="Importar imagens" icon="download"/>
+       				<b:button value="Cancelar" span="4"></b:button>
+        		    <b:button value="Salvar" span="4" look="success"></b:button>
+       			</b:formGroup>
+       		</b:row>
+        </b:container>
+    </h:body>
+</html>

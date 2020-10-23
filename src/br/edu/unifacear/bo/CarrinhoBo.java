@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.edu.unifacear.classes.Carrinho;
 import br.edu.unifacear.dao.CarrinhoDao;
+import br.edu.unifacear.dao.GenericDao;
 
 public class CarrinhoBo {
 
@@ -16,6 +17,10 @@ public class CarrinhoBo {
 		}
 		
 	
+	}
+	
+	public void Salvar(Carrinho carrinho) throws Exception {
+		new GenericDao().saveOrUpdate(carrinho);
 	}
 
 }

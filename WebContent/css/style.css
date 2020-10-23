@@ -1,0 +1,28 @@
+.logo{
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40px;
+  color: #00FF7F;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-size: cover;
+  background-color: #B5B5B5;
+}
+
+.cor-navBar{
+    background-color: #4F4F4F;
+}
+
+.btn-cor{
+    background-color: #00FF7F;
+    width: 30px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.cor-links{
+	color: white;
+}

@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.dao.ClienteDao;
-import br.edu.unifacear.dao.GenericDao;
 
 
 public class ClienteBo {
@@ -12,17 +11,9 @@ public class ClienteBo {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void salvarValidar(Cliente cliente) throws Exception {
 		
-		List<Cliente> lista = new ClienteDao().listar("todos", cliente);
 		
-		for (Cliente cliente2 : lista) {
-			
-			if(cliente2.getEmail().toUpperCase().equals(cliente.getEmail().toUpperCase())) {
-				throw new Exception("Erro ao salvar, email ja cadastrado");
-			}
-			
-		}
 		
-		new GenericDao().saveOrUpdate(cliente);
+		new ClienteDao().salvar(cliente);
 	}
 	
 	
@@ -32,6 +23,29 @@ public class ClienteBo {
 			return new ClienteDao().listar(pesquisa, cli);
 		}catch(Exception e) {
 			throw new Exception("Erro ao listar");
+		}
+		
+	}
+	
+
+	
+	public void validar(Cliente cliente) throws Exception {
+		
+		List<Cliente> lista = new ClienteDao().listar("todos", cliente);
+		
+		for (Cliente cliente2 : lista) { //valida email
+			
+			if(cliente.getEmail().toUpperCase().equals(cliente2.getEmail().toUpperCase())) {
+				cliente = new Cliente();
+				cliente.getEndereco().setNumero(-0);
+				
+				throw new Exception("E-mail ja cadastrado, informe outro e-mail");
+			}
+		}
+		
+		if(cliente.getSenha().toLowerCase().equals(cliente.getConfirmarSenha().toUpperCase()) == false) {
+			cliente = new Cliente();
+			throw new Exception("As senhas não são iguais");
 		}
 		
 	}

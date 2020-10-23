@@ -6,7 +6,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.unifacear.classes.Cliente;
-import br.edu.unifacear.facade.ClienteFacade;
+import br.edu.unifacear.facade.CadastrarClienteFacade;
 
 
 @ManagedBean(name="clienteBean")
@@ -15,9 +15,10 @@ public class ClienteController {
 	
 	
 	private Cliente cliente;
-
+	
 	public Cliente getCliente() {
 		return cliente;
+		
 	}
 
 	public void setCliente(Cliente cliente) {
@@ -26,28 +27,35 @@ public class ClienteController {
 	
 	public ClienteController() {
 		this.cliente = new Cliente();
+	
 	}
 	
 	
-	public void salvar() {
-		
+	public void salvar() throws Exception {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		
+		
+		
 		try {
 			
-			ClienteFacade facade = new ClienteFacade();
-			facade.inserirCliente(this.cliente);
+			CadastrarClienteFacade facade = new CadastrarClienteFacade();
+			facade.salvar(this.cliente.getEndereco(), this.cliente);
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Cadastrado com sucesso no site",""));
+			
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					e.getMessage(),""));
+					"Erro ao salvar ","verifique se o email ja esta em uso em nosso site e se as senhas são iguais"));
 		}
 		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"Cliente Salvo com sucesso",""));
+		
 		
 	}
+	
+	
 	
 	
 }

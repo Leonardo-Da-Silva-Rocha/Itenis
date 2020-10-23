@@ -21,10 +21,10 @@ public class Cliente implements EntityBase{
 	
 	private String nome;
 	private String cpf;
-	private Date DataNacimento ;
+	
 	private String email;
 	private String senha;
-	private String telefone;
+	private String confirmarSenha;
 	
 	@ManyToOne
 	private Endereco endereco;
@@ -55,12 +55,7 @@ public class Cliente implements EntityBase{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public Date getDataNacimento() {
-		return DataNacimento;
-	}
-	public void setDataNacimento(Date dataNacimento) {
-		DataNacimento = dataNacimento;
-	}
+
 	
 	public Endereco getEndereco() {
 		return endereco;
@@ -78,12 +73,20 @@ public class Cliente implements EntityBase{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getTelefone() {
-		return telefone;
+	
+	
+	public String getConfirmarSenha() {
+		return confirmarSenha;
 	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
 	}
+
+	public int getIdCliente() {
+		return idCliente;
+	}
+
 	public Carrinho getCarrinho() {
 		return carrinho;
 	}
@@ -99,34 +102,34 @@ public class Cliente implements EntityBase{
 	
 	
 	public Cliente() {
-		
+		this.endereco = new Endereco();
 	}
 	
 	
 	
+
 	
 	
-	public Cliente(int idCliente, String nome, String cpf, Date dataNacimento, String email, String senha,
-			String telefone, Endereco endereco, Carrinho carrinho, List<Pedido> pedido) {
+
+	public Cliente(int idCliente, String nome, String cpf, String email, String senha, String confirmarSenha,
+			Endereco endereco, Carrinho carrinho, List<Pedido> pedido) {
 		
 		this.idCliente = idCliente;
 		this.nome = nome;
 		this.cpf = cpf;
-		DataNacimento = dataNacimento;
 		this.email = email;
 		this.senha = senha;
-		this.telefone = telefone;
+		this.confirmarSenha = confirmarSenha;
 		this.endereco = endereco;
 		this.carrinho = carrinho;
 		this.pedido = pedido;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", cpf=" + cpf + ", DataNacimento="
-				+ DataNacimento + ", email=" + email + ", senha=" + senha + ", telefone=" + telefone + ", endereco="
-				+ endereco + ", carrinho=" + carrinho + ", pedido=" + pedido + "]";
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha="
+				+ senha + ", confirmarSenha=" + confirmarSenha + ", endereco=" + endereco + ", carrinho=" + carrinho
+				+ ", pedido=" + pedido + "]";
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class MarcaFacade {
 	}
 	
 	public void inserirMarca(Marca marca) throws Exception {
+		this.marcaBo = new MarcaBo();
 		this.marcaBo.validarMarcaSalvar(marca);
 	}
 	
