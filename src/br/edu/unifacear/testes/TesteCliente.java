@@ -12,13 +12,17 @@ public class TesteCliente {
 		cliente.setEmail("antonio@gmail.com");
 		cliente.setNome("Ant");
 		cliente.setSenha("123");
-		cliente.setTelefone("41 3442-4455");
 		cliente.setCpf("333.999.333-88");
 		
 		
 		ClienteController c = new ClienteController();
 		c.setCliente(cliente);
-		c.salvar();
+		try {
+			c.salvar();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 	}

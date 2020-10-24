@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html" 
+	   xmlns:f="http://java.sun.com/jsf/core" 
+	   xmlns:b="http://bootsfaces.net/ui"
+	   xmlns:p="http://primefaces.org/ui"
+	   xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title></title>
+</h:head>
+<h:body>
+	<ui:composition>
+		<b:navBar fluid="true" styleClass="cor-navBar" position="inline">
+		<b:navbarLinks>
+			<b:navLink styleClass="logo" style="color: #00FF7F">Itênis</b:navLink>
+			<b:navLink style="color: white" value="Conta" href="#"></b:navLink>
+			<b:navLink style="color: white" value="Ofertas" href="#"></b:navLink>
+			<b:dropMenu style="color: white" value="Categorias">
+				<b:navLink value="Maculimo"></b:navLink>
+				<b:navLink value="Feminino"></b:navLink>
+				<b:navLink value="Infantil"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
+
+		<b:navbarLinks pull="right" styleClass="hidden-xs">
+			<b:navLink>
+				<form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs">
+					<b:button value="" icon="shopping-cart" look="success" />
+					<div class="form-group">
+						<input type="text" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-success"
+						style="text-align: right">Pesquisar</button>
+				</form>
+			</b:navLink>
+		</b:navbarLinks>
+
+	</b:navBar>
+	</ui:composition>
+</h:body>
+</html>

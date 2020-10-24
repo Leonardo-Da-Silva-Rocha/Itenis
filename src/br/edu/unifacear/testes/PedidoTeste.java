@@ -32,7 +32,7 @@ public class PedidoTeste {
 		
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cli);
-		pedido.setEnderecoDeEntrega("r. andorinhas 123, Contenda");
+		
 		pedido.setTipo(tipo);
 		pedido.setVendedor(vend);
 		

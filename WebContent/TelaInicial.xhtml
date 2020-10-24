@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html" 
+	   xmlns:f="http://java.sun.com/jsf/core" 
+	   xmlns:b="http://bootsfaces.net/ui"
+	   xmlns:p="http://primefaces.org/ui"
+	   xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Seja bem vindo</title>
+ <link rel="StyleSheet" type="text/css" href="css/style.css" />
+</h:head>
+<h:body>
+	<div id="header">
+        <ui:insert name="header">
+            <ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
+        </ui:insert>
+    </div>
+	<b:container>	
+		<p:dataGrid var="car" value="" columns="3" layout="grid"
+			id="cars">
+			<h:column>
+				<p:panel header="teste" style="text-align:center">
+					<h:panelGrid columns="2" style="width:100%">
+						<p:graphicImage
+							name="/WEB-INF/Imagens/Tênis Nike Air Zoom Pegasus 37 Masculino.jpg" />
+					</h:panelGrid>
+				</p:panel>
+			</h:column>
+		</p:dataGrid>
+		
+		<div id="footer">
+        <ui:insert name="footer">
+            <ui:include src="/WEB-INF/template/Rodape.xhtml" />
+        </ui:insert>
+    </div>
+	</b:container>
+</h:body>
+</html>
