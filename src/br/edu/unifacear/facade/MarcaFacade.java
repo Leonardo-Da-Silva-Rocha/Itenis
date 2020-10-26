@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.MarcaBo;
 import br.edu.unifacear.classes.Marca;
 
@@ -16,6 +18,10 @@ public class MarcaFacade {
 		this.marcaBo.validarMarcaSalvar(marca);
 	}
 	
+	public List<Marca> listar(String pesquisa, Marca marca){
+		this.marcaBo = new MarcaBo();
+		return this.marcaBo.listar(pesquisa, marca);
+	}
 	
 	
 }

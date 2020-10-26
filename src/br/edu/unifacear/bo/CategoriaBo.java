@@ -37,4 +37,8 @@ public class CategoriaBo {
 		}
 		
 	}
+	
+	public List<Categoria> listar(String pesquisa, String parametro){
+		return new CategoriaDao().listar(pesquisa, parametro);
+	}
 }

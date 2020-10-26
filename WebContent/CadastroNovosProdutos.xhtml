@@ -23,14 +23,18 @@
        		<h2>Cadastro de novos produtos</h2>
        		<b:row>
        			<b:inputText span="6" placeholder="Nome do produto" label="Nome do produto" required="true"></b:inputText>
-                <b:inputText span="6" placeholder="Marca" label="Marca" required="true"></b:inputText>
+              
+        	
+                <b:selectOneMenu value="#{marcaBean.marca.descricao}" span="6" label="Marca" required="true">
+					 <f:selectItems value="#{marcaBean.marcas}" var="marcas" itemValue="#{e}" itemLabel="#{c}"/>
+				</b:selectOneMenu>	
+				
+				          
        		</b:row>
        		<b:row>
-				    <b:selectOneMenu value="categoria" span="6" label="Categoria" required="true">
-				           <f:selectItem itemValue="casual" itemLabel = "Casual"></f:selectItem>
-			               <f:selectItem itemValue="corrida" itemLabel = "Corrida"></f:selectItem>
-			               <f:selectItem itemValue="chuteiras" itemLabel = "Chuteiras"></f:selectItem>
-			               <f:selectItem itemValue="basquete" itemLabel = "Basquete"></f:selectItem>
+				    <b:selectOneMenu value="#{categoriaBean.categoria.descricao}" span="6" label="Categoria" required="true">
+				           <f:selectItems value="#{categoriaBean.categorias}" var="estados" itemValue="#{e}" itemLabel="#{c}"/>
+			               
 				    </b:selectOneMenu>
 				    <b:selectOneMenu value="genero" span="6" label="Gênero" required="true">
 				           <f:selectItem itemValue="masculino" itemLabel = "Masculino"></f:selectItem>
@@ -39,8 +43,15 @@
 				    </b:selectOneMenu>
        		</b:row>
        		<b:row>
-       			<b:inputText value="" span="4" placeholder="Empresa fornecedora" label="Empresa fornecedora" required="true"></b:inputText>
-       			<b:inputText value="" span="4" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
+       			
+				<b:selectOneMenu value="#{fornecedorBean.fornecedor.descricao}" span="6" label="Fornecedores" required="true">
+				  
+			              <f:selectItems value="#{fornecedorBean.fornecedores}" var="fornecedor" itemValue="#{e}" itemLabel="#{c}"/>
+
+				    </b:selectOneMenu>
+
+
+       			<b:inputText value="ds" span="4" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
        			<b:inputText value="" span="4" placeholder="Part number" label="Part number" required="true"></b:inputText>
        		</b:row>
        		<b:row>

@@ -1,5 +1,8 @@
 package br.edu.unifacear.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -14,8 +17,21 @@ public class CategoriaController {
 	
 	private Categoria categoria;
 
+	private List<String> categorias;
 	
 	
+	public List<String> getCategorias() {
+		return categorias;
+	}
+
+
+
+	public void setCategorias(List<String> categorias) {
+		this.categorias = categorias;
+	}
+
+
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -29,6 +45,8 @@ public class CategoriaController {
 
 	public CategoriaController() {
 		this.categoria = new Categoria();
+		this.categorias = new ArrayList<>();
+		carregarCombo();
 	}
 	
 	
@@ -51,6 +69,14 @@ public class CategoriaController {
 		
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 				"Categoria salva com sucesso",""));
+	}
+	
+	public void carregarCombo() {
+		
+		for (Categoria categoria : new CategoriaFacade().listar("todos", "")) {
+			this.categorias.add(categoria.getDescricao());
+		}
+		
 	}
 	
 }

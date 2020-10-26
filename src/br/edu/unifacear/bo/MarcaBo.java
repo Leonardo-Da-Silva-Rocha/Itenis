@@ -1,5 +1,7 @@
 package br.edu.unifacear.bo;
 
+import java.util.List;
+
 import br.edu.unifacear.classes.Marca;
 import br.edu.unifacear.dao.MarcaDao;
 
@@ -16,7 +18,13 @@ public class MarcaBo {
 		}
 		
 		
+	}
+	
+	
+	public List<Marca> listar(String pesquisa, Marca marca) {
 		
+		
+		return new MarcaDao().listar(pesquisa, marca);
 		
 	}
 	

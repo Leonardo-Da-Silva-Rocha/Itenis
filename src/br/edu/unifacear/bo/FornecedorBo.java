@@ -23,4 +23,9 @@ public class FornecedorBo {
 		
 	}
 	
+	
+	public List<Fornecedor> listar(String pesquisa, Fornecedor fornecedor){
+		return new FornecedorDao().listar(pesquisa, fornecedor);
+	}
+	
 }

@@ -1,5 +1,8 @@
 package br.edu.unifacear.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -14,6 +17,16 @@ import br.edu.unifacear.facade.FornecedorFacade;
 public class FornecedorController {
 	
 	private Fornecedor fornecedor;
+	private List<String> fornecedores;
+	
+
+	public List<String> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<String> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 
 	public Fornecedor getFornecedor() {
 		return fornecedor;
@@ -25,6 +38,8 @@ public class FornecedorController {
 
 	public FornecedorController() {
 		this.fornecedor = new Fornecedor();
+		this.fornecedores = new ArrayList<>();
+		carregarCombo();
 	}
 	
 	
@@ -48,6 +63,15 @@ public class FornecedorController {
 		
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 				"Categoria salva com sucesso",""));
+		
+	}
+	
+	public void carregarCombo() {
+		
+		for (Fornecedor fornecedor : new FornecedorFacade().listar("todos", this.fornecedor)) {
+			this.fornecedores.add(fornecedor.getDescricao());
+			
+		}
 		
 	}
 	

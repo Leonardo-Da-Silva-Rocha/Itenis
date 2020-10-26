@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.FornecedorBo;
 import br.edu.unifacear.classes.Fornecedor;
 
@@ -19,5 +21,9 @@ public class FornecedorFacade {
 	}
 	
 	
+	public List<Fornecedor> listar(String pesquisa, Fornecedor fornecedor){
+		this.fornecedorBo = new FornecedorBo();
+		return this.fornecedorBo.listar(pesquisa, new Fornecedor());
+	}
 	
 }

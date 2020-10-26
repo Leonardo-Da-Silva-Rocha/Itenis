@@ -15,10 +15,21 @@ public class Fornecedor implements EntityBase {
 	private String descricao;
 	private String endereco;
 	private String telefone;
+	private String codigo;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "fornecedor")
 	private List<Calcado> calcado;
 
+	
+	
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public void setIdFornecedor(int idFornecedor) {
 		this.idFornecedor = idFornecedor;
@@ -60,11 +71,16 @@ public class Fornecedor implements EntityBase {
 		
 	}
 
-	public Fornecedor(String descricao, String endereco, String telefone, List<Calcado> calcado) {
-		
+	
+
+	public Fornecedor(int idFornecedor, String descricao, String endereco, String telefone, String codigo,
+			List<Calcado> calcado) {
+		super();
+		this.idFornecedor = idFornecedor;
 		this.descricao = descricao;
 		this.endereco = endereco;
 		this.telefone = telefone;
+		this.codigo = codigo;
 		this.calcado = calcado;
 	}
 
