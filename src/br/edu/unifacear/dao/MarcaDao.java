@@ -26,7 +26,9 @@ public class MarcaDao {
 		if(pesquisa.equals("todos")) {
 			consulta = em.createQuery("SELECT m FROM Marca m");
 		}
-		
+		else if(pesquisa.equals("marca")) {
+			consulta = em.createQuery("SELECT m FROM Marca m WHERE m.descricao = '"+ marca.getDescricao() +"'");
+		}
 		em.getTransaction().commit();
 		
 		lista = consulta.getResultList();

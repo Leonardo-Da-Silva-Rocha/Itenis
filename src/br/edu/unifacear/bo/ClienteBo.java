@@ -8,7 +8,7 @@ import br.edu.unifacear.dao.ClienteDao;
 
 public class ClienteBo {
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
 	public void salvarValidar(Cliente cliente) throws Exception {
 		
 		

@@ -22,6 +22,9 @@ public class CategoriaDao {
 		if(pesquisa.equals("todos")) {
 			consulta = em.createQuery("SELECT c FROM Categoria c");
 		}
+		else if(pesquisa.equals("categoria")) {
+			consulta = em.createQuery("SELECT c FROM Categoria c WHERE c.descricao = '" +parametro+ "'");
+		}
 	
 		
 		categoria = consulta.getResultList();

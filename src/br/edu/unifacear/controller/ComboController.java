@@ -12,7 +12,7 @@ public class ComboController {
 	private List<String> Estados;
 	
 	public ComboController() {
-		this.Estados = new ArrayList();
+		this.Estados = new ArrayList<>();
 		carregarEstados();
 	}
 

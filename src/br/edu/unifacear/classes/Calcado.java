@@ -1,8 +1,15 @@
 package br.edu.unifacear.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Calcado implements EntityBase {
@@ -110,7 +117,10 @@ public class Calcado implements EntityBase {
 	}
 	
 	public Calcado() {
-		
+		this.marca = new Marca();
+		this.categoria = new Categoria();
+		this.calcadoFoto = new ArrayList<>();
+		this.fornecedor = new Fornecedor();
 	}
 	
 	public Calcado(int idCalcado, int numero, String cor, Double valor, String descricao, int quantidade,

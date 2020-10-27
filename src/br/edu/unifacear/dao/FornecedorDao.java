@@ -10,7 +10,7 @@ import br.edu.unifacear.classes.Fornecedor;
 public class FornecedorDao {
 	
 	@SuppressWarnings("unchecked")
-	public List<Fornecedor> listar(String pesquisa , Fornecedor paramento){
+	public List<Fornecedor> listar(String pesquisa , Fornecedor parametro){
 		
 		
 		Query consulta = null;
@@ -23,6 +23,9 @@ public class FornecedorDao {
 		if(pesquisa.equals("todos")) {
 			 consulta = em.createQuery("SELECT f FROM Fornecedor f");
 			 
+		}
+		else if(pesquisa.equals("fornecedor")) {
+			 consulta = em.createQuery("SELECT f FROM Fornecedor f WHERE f.descricao = '"+ parametro.getDescricao() +"'");
 		}
 		
 		fornecedor = consulta.getResultList();

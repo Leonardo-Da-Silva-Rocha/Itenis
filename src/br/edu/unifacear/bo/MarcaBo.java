@@ -7,7 +7,7 @@ import br.edu.unifacear.dao.MarcaDao;
 
 public class MarcaBo {
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+
 	public void validarMarcaSalvar(Marca marca) throws Exception {
 		
 		
