@@ -4,15 +4,17 @@
        xmlns:h="http://java.sun.com/jsf/html" 
 	   xmlns:f="http://java.sun.com/jsf/core" 
 	   xmlns:b="http://bootsfaces.net/ui"
-	   xmlns:p="http://primefaces.org/ui">
+	   xmlns:p="http://primefaces.org/ui"
+	   xmlns:ui="http://java.sun.com/jsf/facelets">
 
  <h:head>
  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <title>Cadastrar novo cliente</title>
+        <title>Cadastrar novo produto</title>
         <link rel="StyleSheet" type="text/css" href="css/style.css" />
-       
+         
     </h:head>
     <h:body>
+     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
         <b:navBar fluid="true" styleClass="cor-navBar" position="inline">
         	<b:navbarLinks >
         		<b:navLink styleClass="logo" style="color: #00FF7F" >Itênis</b:navLink>
@@ -32,34 +34,36 @@
 				          
        		</b:row>
        		<b:row>
-				    <b:selectOneMenu value="#{categoriaBean.categoria.descricao}" span="6" label="Categoria" required="true">
+				    <b:selectOneMenu value="#{categoriaBean.categoria.descricao}" span="5" label="Categoria" required="true">
 				           <f:selectItems value="#{categoriaBean.categorias}" var="estados" itemValue="#{e}" itemLabel="#{c}"/>
-			               
 				    </b:selectOneMenu>
+				    
+				   <b:button styleClass="alinhar-botao" span="1" value="" icon="download" tooltip="Cadastrar nova categoria" />
+				    
 				    <b:selectOneMenu value="genero" span="6" label="Gênero" required="true">
 				           <f:selectItem itemValue="masculino" itemLabel = "Masculino"></f:selectItem>
 			               <f:selectItem itemValue="Feminino" itemLabel = "Feminino"></f:selectItem>
 			               <f:selectItem itemValue="Infantil" itemLabel = "Infantil"></f:selectItem>		              
 				    </b:selectOneMenu>
+				     
        		</b:row>
        		<b:row>
        			
-				<b:selectOneMenu value="#{fornecedorBean.fornecedor.descricao}" span="6" label="Fornecedores" required="true">
-				  
+				<b:selectOneMenu value="#{fornecedorBean.fornecedor.descricao}" span="5" label="Fornecedores" required="true">
 			              <f:selectItems value="#{fornecedorBean.fornecedores}" var="fornecedor" itemValue="#{e}" itemLabel="#{c}"/>
-
 				    </b:selectOneMenu>
-
-
-       			<b:inputText value="ds" span="4" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
-       			<b:inputText value="" span="4" placeholder="Part number" label="Part number" required="true"></b:inputText>
+				 <b:button styleClass="alinhar-botao" span="1" value="" icon="download" tooltip="Cadastrar novo fornecedor" />
+       			<b:inputText value="ds" span="6" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
        		</b:row>
        		<b:row>
+       			<b:inputText value="" span="6" placeholder="Part number" label="Part number" required="true"></b:inputText>
        			<b:formGroup>
-       				<b:button span="4" value="Importar imagens" icon="download"/>
-       				<b:button value="Cancelar" span="4"></b:button>
-        		    <b:button value="Salvar" span="4" look="success"></b:button>
+       				<b:button styleClass="alinhar-botao" span="6" value="Importar imagens" icon="download"/>
        			</b:formGroup>
+       		</b:row>
+       		<b:row>
+       			<b:button value="Cancelar" span="3"></b:button>
+        		<b:button value="Salvar" span="3" look="success"></b:button>
        		</b:row>
         </b:container>
     </h:body>
