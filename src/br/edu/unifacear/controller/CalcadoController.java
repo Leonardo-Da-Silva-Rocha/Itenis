@@ -2,6 +2,7 @@ package br.edu.unifacear.controller;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -35,15 +36,27 @@ public class CalcadoController {
 				FacesContext context = FacesContext.getCurrentInstance();
 			
 			
+				try {
+					
+					CadastrarCalcadoFacade facade = new CadastrarCalcadoFacade();
+					
+					
+					this.calcado.setMarca(facade.listarMarca(this.calcado.getMarca()).get(0));    
+					this.calcado.setCategoria(facade.listarCategoria(this.calcado.getCategoria().getDescricao()).get(0));
+					this.calcado.setFornecedor(facade.listarFornecedor(this.calcado.getFornecedor()).get(0));
+					facade.salvar(calcado);
+					
+					context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Calçado cadastrado com sucesso",""));
+					
+					
+				}catch(Exception e) {
+					context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							e.getMessage(),""));
+				}
 				
-				CadastrarCalcadoFacade facade = new CadastrarCalcadoFacade();
 				
 				
-				this.calcado.setMarca(facade.listarMarca(this.calcado.getMarca()).get(0));    
-				this.calcado.setCategoria(facade.listarCategoria(this.calcado.getCategoria().getDescricao()).get(0));
-				this.calcado.setFornecedor(facade.listarFornecedor(this.calcado.getFornecedor()).get(0));
-				
-				facade.salvar(calcado);
 				
 		
 	}

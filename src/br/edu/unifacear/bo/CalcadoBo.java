@@ -15,16 +15,42 @@ public class CalcadoBo {
 		
 		for (Calcado calcado2 : lista) {
 			
+			
+			
 			if(calcado2.getDescricao().toUpperCase().equals(calcado.getDescricao().toUpperCase())) {
 				
-				if(calcado2.getNumero() == calcado.getNumero()) {
+				if(calcado2.getNumero() == calcado.getNumero()) {//valida o tamanho do calçado
 					
-					throw new Exception("Nao foi possivel cadastrar, tamanho ja cadastrado");
+					throw new Exception("Não foi possível cadastrar, tamanho ja cadastrado");
 					
+				}
+				
+				if(calcado2.getPartNumber() == calcado.getPartNumber() ) {
+					throw new Exception("Não foi possível cadastrar, PartNumber já cadastrado");
+				}
+				else if(calcado.getPartNumber() <= 0) {
+					throw new Exception("Não foi possível cadastrar, PartNumber invalido");
 				}
 				
 			}
 		}
+		
+		
+		
+		if(calcado.getCodigoFornecedor().equals(calcado.getFornecedor().getCodigo()) == false) { //valida o codigo da empresa
+			throw new Exception("Não foi possível cadastrar, Codigo da empresa fornecedora invalido");
+		}
+		else if(calcado.getNumero() < 32 || calcado.getNumero() > 42) {//valida o numero do caçado
+			throw new Exception("Não foi possível cadastrar, Numero do calçado invalido");
+		}
+		else if(calcado.getQuantidade() <= 0) {// valida a quantidade daquele calçado
+			throw new Exception("Não foi possível cadastrar, quantidade de calçado invalida");
+		}
+		
+		
+		
+		
+		
 		
 		new GenericDao().saveOrUpdate(calcado);
 		

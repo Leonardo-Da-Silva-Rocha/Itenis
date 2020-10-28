@@ -19,10 +19,11 @@ public class Calcado implements EntityBase {
 	private int idCalcado;
 	
 	private int numero;
-	private String cor;
+	private int partNumber;
 	private Double valor;
 	private String descricao;
 	private int quantidade;
+	private String codigoFornecedor;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "calcado")
 	private List<ItemDoCarrinho> itemCalcado;
@@ -44,7 +45,19 @@ public class Calcado implements EntityBase {
 	private List<ItemPedido> itemPedido;
 	
 	
-
+	
+	public int getPartNumber() {
+		return partNumber;
+	}
+	public void setPartNumber(int partNumber) {
+		this.partNumber = partNumber;
+	}
+	public String getCodigoFornecedor() {
+		return codigoFornecedor;
+	}
+	public void setCodigoFornecedor(String codigoFornecedor) {
+		this.codigoFornecedor = codigoFornecedor;
+	}
 	public void setIdCalcado(int idCalcado) {
 		this.idCalcado = idCalcado;
 	}
@@ -61,12 +74,7 @@ public class Calcado implements EntityBase {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public String getCor() {
-		return cor;
-	}
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
+	
 	public Double getValor() {
 		return valor;
 	}
@@ -123,28 +131,26 @@ public class Calcado implements EntityBase {
 		this.fornecedor = new Fornecedor();
 	}
 	
-	public Calcado(int idCalcado, int numero, String cor, Double valor, String descricao, int quantidade,
-			List<ItemDoCarrinho> itemCalcado, Fornecedor fornecedor, Categoria categoria, Marca marca,
-			List<CalcadoFoto> calcadoFoto, List<ItemPedido> itemPedido) {
-		
+	
+	
+
+	public Calcado(int idCalcado, int numero, int partNumber, Double valor, String descricao, int quantidade,
+			String codigoFornecedor, List<ItemDoCarrinho> itemCalcado, Fornecedor fornecedor, Categoria categoria,
+			Marca marca, List<CalcadoFoto> calcadoFoto, List<ItemPedido> itemPedido) {
+		super();
 		this.idCalcado = idCalcado;
 		this.numero = numero;
-		this.cor = cor;
+		this.partNumber = partNumber;
 		this.valor = valor;
 		this.descricao = descricao;
 		this.quantidade = quantidade;
+		this.codigoFornecedor = codigoFornecedor;
 		this.itemCalcado = itemCalcado;
 		this.fornecedor = fornecedor;
 		this.categoria = categoria;
 		this.marca = marca;
 		this.calcadoFoto = calcadoFoto;
 		this.itemPedido = itemPedido;
-	}
-	@Override
-	public String toString() {
-		return "Calcado [numero=" + numero + ", cor=" + cor + ", valor=" + valor + ", descricao=" + descricao
-				+ ", itemCalcado=" + itemCalcado + ", fornecedor=" + fornecedor + ", categoria=" + categoria
-				+ ", marca=" + marca + ", calcadoFoto=" + calcadoFoto + ", itemPedido=" + itemPedido + "]";
 	}
 	@Override
 	public int getId() {

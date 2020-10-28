@@ -29,7 +29,7 @@ public class TesteCalcado {
 		
 		CalcadoController ct = new CalcadoController();
 		ct.setCalcado(calcado);
-		ct.salvar(calcado, "todos", "");
+		
 	
 
 	}

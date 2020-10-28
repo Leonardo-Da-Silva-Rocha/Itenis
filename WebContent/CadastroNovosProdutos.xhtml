@@ -32,8 +32,10 @@
                 <b:selectOneMenu value="#{calcadoBean.calcado.marca.descricao}" span="6" label="Marca" required="true">
 					 <f:selectItems value="#{marcaBean.marcas}" var="marcas" itemValue="#{e}" itemLabel="#{c}"/>
 				</b:selectOneMenu>	
-				
-				          
+       		</b:row>
+       		<b:row>
+       			<b:inputText value="#{calcadoBean.calcado.numero}" span="6" placeholder="Número do calçado" label="Número" required="true"/>
+       			<b:inputText value="#{calcadoBean.calcado.quantidade}" span="6" placeholder="Quantidade de pares" label="Quantidade" required="true"/>
        		</b:row>
        		<b:row>
 				    <b:selectOneMenu value="#{calcadoBean.calcado.categoria.descricao}" span="5" label="Categoria" required="true">
@@ -56,10 +58,10 @@
 			              <f:selectItems value="#{fornecedorBean.fornecedores}" var="fornecedor" itemValue="#{e}" itemLabel="#{c}"/>
 				    </b:selectOneMenu>
 				 <b:button styleClass="alinhar-botao" span="1" value="" icon="download" tooltip="Cadastrar novo fornecedor" />
-       			<b:inputText value="ds" span="6" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
+       			<b:inputText value="#{calcadoBean.calcado.codigoFornecedor}" span="6" placeholder="Código" label="Código da empresa fornecedora" required="true"></b:inputText>
        		</b:row>
        		<b:row>
-       			<b:inputText value="sds" span="6" placeholder="Part number" label="Part number" required="true"></b:inputText>
+       			<b:inputText value="#{calcadoBean.calcado.partNumber}" span="6" placeholder="Part number" label="Part number" required="true"></b:inputText>
        			<b:formGroup>
        				<b:button styleClass="alinhar-botao" span="6" value="Importar imagens" icon="download"/>
        			</b:formGroup>
@@ -67,7 +69,9 @@
        		<b:row>
        			<b:button value="Cancelar" span="3"></b:button>
        			
-        		<p:commandButton value="Salvar" span="3" look="success" action="#{calcadoBean.salvar}" ></p:commandButton>
+       			<p:growl id="growl" showDetail="true" sticky="true" />
+       			
+        		<p:commandButton value="Salvar" span="3" look="success" action="#{calcadoBean.salvar}" update="@form"></p:commandButton>
         		
        		</b:row>
        		  </h:form>
