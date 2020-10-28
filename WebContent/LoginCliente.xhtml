@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Login</title>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" />
+</h:head>
+<h:body>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
+		</ui:insert>
+	</div>
+
+	<div class="login-box">
+		<h1>Login</h1>
+		<div class="textbox">
+			<b:row>
+				<b:inputText value="" styleClass="input" placeholder="Nome" required="true"></b:inputText>
+			</b:row>
+			<b:row>
+				<b:inputSecret value="" styleClass="input" placeholder="Senha" required="true"></b:inputSecret>
+			</b:row>
+			<b:row>
+				<b:button styleClass="abc" value="Entrar" look="success"></b:button>
+			</b:row>
+			<b:row>
+				<b:label value="Não possui uma conta?"></b:label>
+				<b:commandLink value=" Clique aqui"></b:commandLink>
+			</b:row>
+		</div>
+
+	</div>
+</h:body>
+</html>
