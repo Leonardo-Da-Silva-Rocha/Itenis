@@ -46,6 +46,9 @@ public class CalcadoBo {
 		else if(calcado.getQuantidade() <= 0) {// valida a quantidade daquele calçado
 			throw new Exception("Não foi possível cadastrar, quantidade de calçado invalida");
 		}
+		else if(calcado.getValor() <= 0) {
+			throw new Exception("Não foi possível cadastrar, Valor invalido");
+		}
 		
 		
 		

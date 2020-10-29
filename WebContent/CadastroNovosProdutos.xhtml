@@ -36,7 +36,15 @@
        		<b:row>
        			<b:inputText value="#{calcadoBean.calcado.numero}" span="6" placeholder="Número do calçado" label="Número" required="true"/>
        			<b:inputText value="#{calcadoBean.calcado.quantidade}" span="6" placeholder="Quantidade de pares" label="Quantidade" required="true"/>
+       			
+       			   
+       			
+       			
+       			
+       			
        		</b:row>
+       		
+  
        		<b:row>
 				    <b:selectOneMenu value="#{calcadoBean.calcado.categoria.descricao}" span="5" label="Categoria" required="true">
 				           <f:selectItems value="#{categoriaBean.categorias}" var="estados" itemValue="#{e}" itemLabel="#{c}"/>
@@ -65,16 +73,40 @@
        			<b:formGroup>
        				<b:button styleClass="alinhar-botao" span="6" value="Importar imagens" icon="download"/>
        			</b:formGroup>
+       			
+       			
+       			
+       			
+       			
        		</b:row>
+       		
+       		
+       		
+       		
        		<b:row>
-       			<b:button value="Cancelar" span="3"></b:button>
+       		
+       			<b:inputText label="Valor *" span="3" value="#{calcadoBean.calcado.valor}">
+       				 
+		     		 <f:facet name="prepend">
+		        		<h:outputText value="$" />
+		      		</f:facet>
+		      		<f:facet name="append">
+		       			<h:outputText value=".00" />
+		      		</f:facet>
+		    	</b:inputText>
+       		
+       		
+       		</b:row>
+       		
+       		<b:row> 
+       			<b:button value="Cancelar" span="3" ></b:button>
        			
        			<p:growl id="growl" showDetail="true" sticky="true" />
        			
         		<p:commandButton value="Salvar" span="3" look="success" action="#{calcadoBean.salvar}" update="@form"></p:commandButton>
-        		
+       		
        		</b:row>
-       		  </h:form>
+       	</h:form>
         </b:container>
      
     </h:body>
