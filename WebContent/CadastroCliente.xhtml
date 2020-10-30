@@ -1,69 +1,109 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://java.sun.com/jsf/html" 
-	   xmlns:f="http://java.sun.com/jsf/core" 
-	   xmlns:b="http://bootsfaces.net/ui"
-	   xmlns:p="http://primefaces.org/ui"
-	   xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
- <h:head>
- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-        <title>Cadastrar novo cliente</title>
-        <link rel="StyleSheet" type="text/css" href="css/style.css" />
-     
-       
-    </h:head>
-    <h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
-		</ui:insert>
-	</div>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar novo cliente</title>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 
+
+</h:head>
+<h:body id="cor-body">
+	<b:navBar fluid="true" styleClass="cor-navBar" position="inline">
+		<b:navbarLinks>
+			<b:navLink styleClass="logo" style="color: #00FF7F">Itênis</b:navLink>
+			<b:navLink style="color: white" value="Conta" href="#"></b:navLink>
+			<b:navLink style="color: white" value="Ofertas" href="#"></b:navLink>
+			<b:dropMenu style="color: white" value="Categorias">
+				<b:navLink value="Maculimo"></b:navLink>
+				<b:navLink value="Feminino"></b:navLink>
+				<b:navLink value="Infantil"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
+
+		<b:navbarLinks pull="right" styleClass="hidden-xs">
+			<b:navLink>
+				<form class="navbar-form navbar-left hidden-md hidden-sm hidden-xs">
+					<b:button value="" icon="shopping-cart" look="success" />
+					<div class="form-group">
+						<input type="text" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-success"
+						style="text-align: right">Pesquisar</button>
+				</form>
+			</b:navLink>
+		</b:navbarLinks>
+
+	</b:navBar>
 	<b:container>
-        <h:form>
-        <h3>Dados pessoais</h3>
-        	<b:row>
-        		<b:inputText value="#{clienteBean.cliente.nome}" span="12" placeholder="Seu nome" label="Nome" required="true"></b:inputText>
-        	</b:row>
-        	<b:row>
-        		<b:inputText value="#{clienteBean.cliente.cpf}" span="6" placeholder="CPF" label="CPF" required="true"></b:inputText>
-        		<b:inputText value="#{clienteBean.cliente.email}" span="6" placeholder="E-mail" label="E-mail" required="true"></b:inputText>
-        	</b:row>
-        <h3>Endereço</h3>
-        	<b:row>
-        		<b:inputText value = "#{clienteBean.cliente.endereco.logradouro}" span="3" placeholder="Av. Paulista" label="Logradouro" required="true"></b:inputText>
-        		<b:inputText value = "#{clienteBean.cliente.endereco.numero}" span="3" placeholder="N°" label="Número" required="true"></b:inputText>
-        		<b:inputText value = "#{clienteBean.cliente.endereco.complemento}" span="3" placeholder="Casa, Apto, Loja" label="Complemento" required="true"></b:inputText>
-        	</b:row>
-        	<b:row>
-     			<b:inputText value="#{clienteBean.cliente.endereco.cidade}" span="6" placeholder="Cidade" label="Cidade" required="true"></b:inputText> 	
-     			<b:formGroup>
-     			
-     			 <b:selectOneMenu value="#{clienteBean.cliente.endereco.estado}" span="6" label="Estado" required="true">
-				  
-			              <f:selectItems value="#{comboBean.estados}" var="estados" itemValue="#{e}" itemLabel="#{c}"/>
+		<h:form>
+			<h3>Dados pessoais</h3>
+			<b:row>
+				<b:inputText value="#{clienteBean.cliente.nome}" span="12"
+					placeholder="Seu nome" label="Nome" required="true"></b:inputText>
+			</b:row>
+			<b:row>
+				<b:inputText value="#{clienteBean.cliente.cpf}" span="6"
+					placeholder="CPF" label="CPF" required="true"></b:inputText>
+				<b:inputText value="#{clienteBean.cliente.email}" span="6"
+					placeholder="E-mail" label="E-mail" required="true"></b:inputText>
+			</b:row>
+			<h3>Endereço</h3>
+			<b:row>
+				<b:inputText value="#{clienteBean.cliente.endereco.logradouro}"
+					span="3" placeholder="Av. Paulista" label="Logradouro"
+					required="true"></b:inputText>
+				<b:inputText value="#{clienteBean.cliente.endereco.numero}" span="3"
+					placeholder="N°" label="Número" required="true"></b:inputText>
+				<b:inputText value="#{clienteBean.cliente.endereco.complemento}"
+					span="3" placeholder="Casa, Apto, Loja" label="Complemento"
+					required="true"></b:inputText>
+			</b:row>
+			<b:row>
+				<b:inputText value="#{clienteBean.cliente.endereco.cidade}" span="6"
+					placeholder="Cidade" label="Cidade" required="true"></b:inputText>
+				<b:formGroup>
 
-				    </b:selectOneMenu>
-				  </b:formGroup>
-        	</b:row>
-        	
-        <h3>Cria uma senha</h3>	
-        	<b:row>
-        		<b:inputSecret value="#{clienteBean.cliente.senha}" span="6" placeholder="Senha" label="Senha" required="true"></b:inputSecret>
-        		<b:inputSecret value="#{clienteBean.cliente.confirmarSenha}" span="6" placeholder="Confirme sua senha" label="Confirme sua senha" required="true"></b:inputSecret>
-        	</b:row>
-        	<b:row>
-        	
-        		<b:button value="Cancelar" span="3"></b:button>
-        		
-        		<p:growl id="growl" showDetail="true" sticky="true" />
-        		
-        		<b:commandButton value="Salvar" span="3" look="success" action="#{clienteBean.salvar}" update="@form"></b:commandButton>
-        	</b:row>
-        	</h:form>
-        </b:container>
-        
-    </h:body>
+					<b:selectOneMenu value="#{clienteBean.cliente.endereco.estado}"
+						span="6" label="Estado" required="true">
+
+						<f:selectItems value="#{comboBean.estados}" var="estados"
+							itemValue="#{e}" itemLabel="#{c}" />
+
+					</b:selectOneMenu>
+				</b:formGroup>
+			</b:row>
+
+			<h3>Cria uma senha</h3>
+			<b:row>
+				<b:inputSecret value="#{clienteBean.cliente.senha}" span="6"
+					placeholder="Senha" label="Senha" required="true"></b:inputSecret>
+				<b:inputSecret value="#{clienteBean.cliente.confirmarSenha}"
+					span="6" placeholder="Confirme sua senha"
+					label="Confirme sua senha" required="true"></b:inputSecret>
+			</b:row>
+			<b:row>
+
+				<b:button value="Cancelar" span="3"></b:button>
+
+				<p:growl id="growl" showDetail="true" sticky="true" />
+
+				<b:commandButton value="Salvar" span="3" look="success"
+					action="#{clienteBean.salvar}" update="@form"></b:commandButton>
+			</b:row>
+		</h:form>
+
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="/WEB-INF/template/Rodape.xhtml" />
+			</ui:insert>
+		</div>
+	</b:container>
+
+</h:body>
 </html>
