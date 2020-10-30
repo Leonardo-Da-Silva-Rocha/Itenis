@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" 
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -20,16 +21,24 @@
 	</div>
 
 	<div class="container">
-		<div class="form-group">
-			<label for="nome">Nome</label>
-			<h:inputText class="form-control col-md-6" id="nome" required="true"/>
+		<h:form>
+			<div class="form-group">
+				<label for="nome">Email</label>
+				<h:inputText class="form-control col-md-6" value="#{clienteBean.cliente.email}" id="Email" required="true"/>
+				
+				<label for="senha">Senha</label>
+				<h:inputSecret class="form-control col-md-6" id="senha" value="#{clienteBean.cliente.senha}" required="true"/>
+			</div>
+			<div class="form-group">
 			
-			<label for="senha">Senha</label>
-			<h:inputSecret class="form-control col-md-6" id="senha" required="true"/>
-		</div>
-		<div class="form-group">
-			<h:commandButton value="Entrar" class="btn btn-primary"></h:commandButton>
-		</div>
+				
+			
+				
+					<p:growl id="growl" showDetail="true" sticky="true" />
+					<p:commandButton value="Entrar" action="#{clienteBean.logar}" update="@form"></p:commandButton>
+				
+			</div>
+		</h:form>
 	<div id="footer">
 			<ui:insert name="footer">
 				<ui:include src="/WEB-INF/template/Rodape.xhtml" />

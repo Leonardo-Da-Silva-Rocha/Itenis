@@ -20,5 +20,10 @@ public class ClienteFacade {
 		this.clienteBo.salvarValidar(cliente);
 	}
 	
+	public void login(Cliente cliente) throws Exception {
+		this.clienteBo = new ClienteBo();
+		this.clienteBo.logar(cliente);
+	}
+	
 	
 }

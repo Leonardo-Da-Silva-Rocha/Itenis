@@ -50,4 +50,34 @@ public class ClienteBo {
 		
 	}
 	
+	
+	public void logar(Cliente cliente) throws Exception {
+		
+		boolean validar = false;
+		
+		List<Cliente> lista = new ClienteDao().listar("todos", cliente);
+		
+		for (Cliente cliente2 : lista) {
+			
+			if(cliente.getEmail().toUpperCase().equals(cliente2.getEmail().toUpperCase())) {
+				
+				validar = true;
+				
+				if(cliente.getSenha().equals(cliente2.getSenha()) == false) {
+					
+					validar = false;
+					
+				}
+			}
+			
+		}
+		
+		if(validar == false) {
+			System.out.println("oi");
+			throw new Exception("E-mail ou senha invalido");
+		}
+		
+		
+	}
+	
 }

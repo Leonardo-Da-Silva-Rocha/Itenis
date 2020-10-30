@@ -7,6 +7,7 @@ import javax.faces.context.FacesContext;
 
 import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.facade.CadastrarClienteFacade;
+import br.edu.unifacear.facade.ClienteFacade;
 
 
 @ManagedBean(name="clienteBean")
@@ -55,7 +56,24 @@ public class ClienteController {
 		
 	}
 	
-	
-	
+	public void logar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		try {
+			
+			ClienteFacade facade = new ClienteFacade();
+			facade.login(cliente);
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Bem vindo" ,""));
+			
+		}catch(Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+		}
+		
+	}
+
 	
 }
