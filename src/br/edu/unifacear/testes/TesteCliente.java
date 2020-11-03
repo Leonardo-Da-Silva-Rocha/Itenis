@@ -9,7 +9,7 @@ public class TesteCliente {
 		
 		Cliente cliente = new Cliente();
 		
-		cliente.setEmail("antonio@gmail.com");
+		cliente.setEmail("ander.junior@hotmail.com");
 		cliente.setNome("Ant");
 		cliente.setSenha("123");
 		cliente.setCpf("333.999.333-88");

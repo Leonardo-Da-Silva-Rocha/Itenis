@@ -14,7 +14,7 @@ public class TesteFornecedor {
 		fornecedor.setDescricao("ola");
 		fornecedor.setEndereco("sagu 32, São Paulo");
 		fornecedor.setTelefone("11 3434-7878");
-		fornecedor.setCodigo("123HYt45");
+		fornecedor.setCodigo("123");
 		
 		FornecedorController c = new FornecedorController();
 		c.setFornecedor(fornecedor);

@@ -12,7 +12,7 @@
 	<title>Cadastrar novo produto</title>
 
 </h:head>
-<h:body>
+<h:body id="cor-body">
 	<b:navBar fluid="true" styleClass="cor-navBar" position="inline">
 		<b:navbarLinks>
 			<b:navLink styleClass="logo" style="color: #00FF7F">Itênis</b:navLink>
@@ -66,8 +66,9 @@
 						itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
 
-				<b:button styleClass="alinhar-botao" span="1" icon="download"
-					tooltip="Cadastrar nova categoria" />
+					<b:commandButton styleClass="alinhar-botao" span="1" icon="download"
+					tooltip="Cadastrar nova categoria" oncomplete="PF('novaCategoria').show()"> </b:commandButton>
+				
 
 				<b:selectOneMenu value="genero" span="6" label="Gênero"
 					required="true">
@@ -114,6 +115,16 @@
 					action="#{calcadoBean.salvar}" update="@form"></p:commandButton>
 			</b:row>
 		</h:form>
+		
+		<p:dialog modal="true" height="400" width="400"  widgetVar="novaCategoria">
+			<h:form>
+				<h:panelGrid>
+					<b:inputText value="#" span="6"
+					placeholder="Nova categoria" label="Nova categoria" required="true" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		
 		<div id="footer">
 			<ui:insert name="footer">
 				<ui:include src="/WEB-INF/template/Rodape.xhtml" />

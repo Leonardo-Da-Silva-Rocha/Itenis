@@ -8,7 +8,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Cadastrar novo cliente</title>
+	<title>Cadastrar novo vendedor</title>
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 
 
@@ -44,46 +44,24 @@
 		<h:form>
 			<h3>Dados pessoais</h3>
 			<b:row>
-				<b:inputText value="#{clienteBean.cliente.nome}" span="12"
+				<b:inputText value="#" span="6"
 					placeholder="Seu nome" label="Nome" required="true"></b:inputText>
-			</b:row>
-			<b:row>
-				<b:inputText value="#{clienteBean.cliente.cpf}" span="6"
+				<b:inputText value="#" span="6"
 					placeholder="CPF" label="CPF" required="true"></b:inputText>
-				<b:inputText value="#{clienteBean.cliente.email}" span="6"
+			</b:row>
+			<b:row>
+				<b:inputText value="#" span="6"
 					placeholder="E-mail" label="E-mail" required="true"></b:inputText>
-			</b:row>
-			<h3>Endereço</h3>
-			<b:row>
-				<b:inputText value="#{clienteBean.cliente.endereco.logradouro}"
-					span="3" placeholder="Av. Paulista" label="Logradouro"
-					required="true"></b:inputText>
-				<b:inputText value="#{clienteBean.cliente.endereco.numero}" span="3"
-					placeholder="N°" label="Número" required="true"></b:inputText>
-				<b:inputText value="#{clienteBean.cliente.endereco.complemento}"
-					span="3" placeholder="Casa, Apto, Loja" label="Complemento"
-					required="true"></b:inputText>
-			</b:row>
-			<b:row>
-				<b:inputText value="#{clienteBean.cliente.endereco.cidade}" span="6"
-					placeholder="Cidade" label="Cidade" required="true"></b:inputText>
-				<b:formGroup>
-
-					<b:selectOneMenu value="#{clienteBean.cliente.endereco.estado}"
-						span="6" label="Estado" required="true">
-
-						<f:selectItems value="#{comboBean.estados}" var="estados"
-							itemValue="#{e}" itemLabel="#{c}" />
-
-					</b:selectOneMenu>
-				</b:formGroup>
+				<b:inputText value="#" span="6"
+					placeholder="Telefone" label="Telefone" required="true"></b:inputText>	
+					
 			</b:row>
 
 			<h3>Cria uma senha</h3>
 			<b:row>
-				<b:inputSecret value="#{clienteBean.cliente.senha}" span="6"
+				<b:inputSecret value="#" span="6"
 					placeholder="Senha" label="Senha" required="true"></b:inputSecret>
-				<b:inputSecret value="#{clienteBean.cliente.confirmarSenha}"
+				<b:inputSecret value="#"
 					span="6" placeholder="Confirme sua senha"
 					label="Confirme sua senha" required="true"></b:inputSecret>
 			</b:row>
@@ -94,10 +72,10 @@
 				<p:growl id="growl" showDetail="true" sticky="true" />
 
 				<b:commandButton value="Salvar" span="3" look="success"
-					action="#{clienteBean.salvar}" update="@form"></b:commandButton>
+					action="#" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
-		
+	
 		<div id="footer">
 				<ui:insert name="footer">
 					<ui:include src="/WEB-INF/template/Rodape.xhtml" />

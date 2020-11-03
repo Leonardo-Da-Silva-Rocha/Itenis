@@ -99,3 +99,17 @@ body{
 .cor-nav-item:hover{
 	color: #00FF7F;
 }
+
+
+.container-margin{
+	margin-left: 400px;
+	margin-top: 20px;
+}
+
+#botao-login{
+	background-color: #00FF7F;
+}
+
+.rodape{
+	margin-top: 20%;
+}

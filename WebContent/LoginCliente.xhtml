@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" 
-	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -19,30 +18,34 @@
 			<ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
 		</ui:insert>
 	</div>
+	<div class="container-margin">
+		<div class="container">
 
-	<div class="container">
-		<h:form>
-			<div class="form-group">
-				<label for="nome">Email</label>
-				<h:inputText class="form-control col-md-6" value="#{clienteBean.cliente.email}" id="Email" required="true"/>
-				
-				<label for="senha">Senha</label>
-				<h:inputSecret class="form-control col-md-6" id="senha" value="#{clienteBean.cliente.senha}" required="true"/>
-			</div>
-			<div class="form-group">
-			
-				
-			
-				
+			<h:form>
+				<div class="form-group">
+					<label for="nome">Email</label>
+					<h:inputText class="form-control col-md-6"
+						value="#{clienteBean.cliente.email}" id="Email" required="true" />
+
+					<label for="senha">Senha</label>
+					<h:inputSecret class="form-control col-md-6" id="senha"
+						value="#{clienteBean.cliente.senha}" required="true" />
+				</div>
+				<div class="form-group">
 					<p:growl id="growl" showDetail="true" sticky="true" />
-					<p:commandButton value="Entrar" action="#{clienteBean.logar}" update="@form"></p:commandButton>
-				
+					
+					<h:form>
+						<p:commandButton value="Entrar" action="#{clienteBean.logar}"
+						update="@form" id="botao-login"></p:commandButton>
+					</h:form>
+					
+				</div>
+			</h:form>
+			<div id="footer">
+				<ui:insert name="footer">
+					<ui:include src="/WEB-INF/template/Rodape.xhtml" />
+				</ui:insert>
 			</div>
-		</h:form>
-	<div id="footer">
-			<ui:insert name="footer">
-				<ui:include src="/WEB-INF/template/Rodape.xhtml" />
-			</ui:insert>
 		</div>
 	</div>
 </h:body>
