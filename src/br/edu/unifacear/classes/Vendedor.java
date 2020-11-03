@@ -14,10 +14,11 @@ public class Vendedor implements EntityBase {
 	
 	private String nome;
 	private String senha;
+	private String confirmarSenha;
 	private String email;
-	private String cnpj;
-	private String nomeLoja;
-	private String enderecoLoja;
+	private String cpf;
+	
+	
 	private String telefone;
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy = "vendedor")
@@ -31,6 +32,32 @@ public class Vendedor implements EntityBase {
 	
 	
 	
+	
+	
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
+
 	public int getIdVendedor() {
 		return idVendedor;
 	}
@@ -80,38 +107,18 @@ public class Vendedor implements EntityBase {
 
 
 	public String getCnpj() {
-		return cnpj;
+		return cpf;
 	}
 
 
 
 	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+		this.cpf = cnpj;
 	}
 
 
 
-	public String getNomeLoja() {
-		return nomeLoja;
-	}
 
-
-
-	public void setNomeLoja(String nomeLoja) {
-		this.nomeLoja = nomeLoja;
-	}
-
-
-
-	public String getEnderecoLoja() {
-		return enderecoLoja;
-	}
-
-
-
-	public void setEnderecoLoja(String enderecoLoja) {
-		this.enderecoLoja = enderecoLoja;
-	}
 
 
 
@@ -169,16 +176,20 @@ public class Vendedor implements EntityBase {
 
 	
 
-	public Vendedor(int idVendedor, String nome, String senha, String email, String cnpj, String nomeLoja,
-			String enderecoLoja, String telefone, Comissao comissao, List<Pedido> pedido, Administrador administrador) {
-		
+
+	
+
+
+
+	public Vendedor(int idVendedor, String nome, String senha, String confirmarSenha, String email, String cpf,
+			String telefone, Comissao comissao, List<Pedido> pedido, Administrador administrador) {
+	
 		this.idVendedor = idVendedor;
 		this.nome = nome;
 		this.senha = senha;
+		this.confirmarSenha = confirmarSenha;
 		this.email = email;
-		this.cnpj = cnpj;
-		this.nomeLoja = nomeLoja;
-		this.enderecoLoja = enderecoLoja;
+		this.cpf = cpf;
 		this.telefone = telefone;
 		this.comissao = comissao;
 		this.pedido = pedido;

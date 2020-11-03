@@ -14,11 +14,11 @@ public class TesteVendedor {
 		ven.setAdministrador(adm);
 		ven.setCnpj("43.777.657/0001-60");
 		ven.setEmail("loja@gmail.com");
-		ven.setEnderecoLoja("rua rodolpho, 23");
+		
 		ven.setSenha("123");
 		ven.setTelefone("41 3445-3221");
 		ven.setNome("Cleiton");
-		ven.setNomeLoja("Lojas araucaria");
+	
 		VendedorController c = new VendedorController();
 		c.setVendedor(ven);
 		c.salvar();

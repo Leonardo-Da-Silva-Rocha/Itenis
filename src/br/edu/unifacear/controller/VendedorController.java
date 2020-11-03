@@ -44,6 +44,8 @@ public class VendedorController {
 			
 			VendedorFacade facade = new VendedorFacade();
 			facade.inserirVendedor(vendedor);
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Vendedor Salvo com sucesso",""));
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -51,10 +53,11 @@ public class VendedorController {
 		}
 		
 		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"Vendedor Salvo com sucesso",""));
+		
 		
 	}
+	
+	
 
 	
 }

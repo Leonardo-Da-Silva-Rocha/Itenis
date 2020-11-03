@@ -44,24 +44,22 @@
 		<h:form>
 			<h3>Dados pessoais</h3>
 			<b:row>
-				<b:inputText value="#" span="6"
-					placeholder="Seu nome" label="Nome" required="true"></b:inputText>
-				<b:inputText value="#" span="6"
-					placeholder="CPF" label="CPF" required="true"></b:inputText>
+				<b:inputText value="#{vendedorBean.vendedor.nome}" span="6" placeholder="Seu nome" label="Nome" required="true"></b:inputText>
+				<b:inputText value="#{vendedorBean.vendedor.cpf}" span="6" placeholder="CPF" label="CPF" required="true"></b:inputText>
 			</b:row>
 			<b:row>
-				<b:inputText value="#" span="6"
+				<b:inputText value="#{vendedorBean.vendedor.email}" span="6"
 					placeholder="E-mail" label="E-mail" required="true"></b:inputText>
-				<b:inputText value="#" span="6"
+				<b:inputText value="#{vendedorBean.vendedor.telefone}" span="6"
 					placeholder="Telefone" label="Telefone" required="true"></b:inputText>	
 					
 			</b:row>
 
 			<h3>Cria uma senha</h3>
 			<b:row>
-				<b:inputSecret value="#" span="6"
+				<b:inputSecret value="#{vendedorBean.vendedor.senha}" span="6"
 					placeholder="Senha" label="Senha" required="true"></b:inputSecret>
-				<b:inputSecret value="#"
+				<b:inputSecret value="#{vendedorBean.vendedor.confirmarSenha}"
 					span="6" placeholder="Confirme sua senha"
 					label="Confirme sua senha" required="true"></b:inputSecret>
 			</b:row>
@@ -71,8 +69,7 @@
 
 				<p:growl id="growl" showDetail="true" sticky="true" />
 
-				<b:commandButton value="Salvar" span="3" look="success"
-					action="#" update="@form"></b:commandButton>
+				<b:commandButton value="Salvar" span="3" look="success" action="#{vendedorBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
 	
