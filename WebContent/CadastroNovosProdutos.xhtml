@@ -109,10 +109,10 @@
 				</b:inputText>
 			</b:row>
 			<b:row>
-				<b:button value="Cancelar" span="3"></b:button>
+				<b:commandButton value="Cancelar" span="3"></b:commandButton>
 				<p:growl id="growl" showDetail="true" sticky="true" />
-				<p:commandButton value="Salvar" span="3" look="success"
-					action="#{calcadoBean.salvar}" update="@form"></p:commandButton>
+				<b:commandButton value="Salvar" span="3"  style="background:#00FF7F "
+					action="#{calcadoBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
 		
