@@ -55,6 +55,8 @@ public class MarcaController {
 			//pessoaBo.salvar(this.pessoa);
 			MarcaFacade facade = new MarcaFacade();
 			facade.inserirMarca(this.marca);
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Marca salva com sucesso!", ""));
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -62,8 +64,7 @@ public class MarcaController {
 				
 		}
 		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"Pessoa salva com sucesso!", ""));	
+			
 		
 	
 	}

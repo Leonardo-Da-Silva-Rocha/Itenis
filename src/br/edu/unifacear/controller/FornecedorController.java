@@ -18,7 +18,18 @@ public class FornecedorController {
 	
 	private Fornecedor fornecedor;
 	private List<String> fornecedores;
+	private String menssagem;
 	
+	
+	
+
+	public String getMenssagem() {
+		return menssagem;
+	}
+
+	public void setMenssagem(String menssagem) {
+		this.menssagem = menssagem;
+	}
 
 	public List<String> getFornecedores() {
 		return fornecedores;
@@ -53,16 +64,19 @@ public class FornecedorController {
 			FornecedorFacade facade = new FornecedorFacade();
 			facade.inserirFornecedor(fornecedor);
 			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Fornecedor salvo com sucesso",""));
 			
+			this.menssagem = "Fornecedor salvo com sucesso";
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					e.getMessage(),""));
+			this.menssagem = e.getMessage();
 		}
 		
 		
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"Categoria salva com sucesso",""));
+
 		
 	}
 	

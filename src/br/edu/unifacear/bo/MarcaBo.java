@@ -10,7 +10,11 @@ public class MarcaBo {
 
 	public void validarMarcaSalvar(Marca marca) throws Exception {
 		
-		
+		for (Marca lista : listar("todos", new Marca())) {
+			if(lista.getDescricao().equals(marca.getDescricao())) {
+				throw new Exception("Erro marca já cadastrada");
+			}
+		}
 		try {
 			new MarcaDao().salvar(marca);
 		}catch(Exception e) {
