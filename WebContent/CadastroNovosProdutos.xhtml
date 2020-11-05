@@ -61,15 +61,10 @@
 			</b:row>
 			<b:row>
 				<b:selectOneMenu value="#{calcadoBean.calcado.categoria.descricao}"
-					span="5" label="Categoria" required="true">
+					span="6" label="Categoria" required="true">
 					<f:selectItems value="#{categoriaBean.categorias}" var="estados"
 						itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
-
-					<b:commandButton styleClass="alinhar-botao" span="1" icon="download"
-					tooltip="Cadastrar nova categoria" oncomplete="PF('novaCategoria').show()"> </b:commandButton>
-				
-
 				<b:selectOneMenu value="genero" span="6" label="Gênero"
 					required="true">
 					<f:selectItem itemValue="masculino" itemLabel="Masculino"></f:selectItem>
@@ -79,12 +74,10 @@
 			</b:row>
 			<b:row>
 				<b:selectOneMenu value="#{calcadoBean.calcado.fornecedor.descricao}"
-					span="5" label="Fornecedores" required="true">
+					span="6" label="Fornecedores" required="true">
 					<f:selectItems value="#{fornecedorBean.fornecedores}"
 						var="fornecedor" itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
-				<b:button styleClass="alinhar-botao" span="1" value=""
-					icon="download" tooltip="Cadastrar novo fornecedor" />
 				<b:inputText value="#{calcadoBean.calcado.codigoFornecedor}"
 					span="6" placeholder="Código" label="Código da empresa fornecedora"
 					required="true"></b:inputText>
@@ -111,20 +104,21 @@
 			<b:row>
 				<b:commandButton value="Cancelar" span="3"></b:commandButton>
 				<p:growl id="growl" showDetail="true" sticky="true" />
-				<b:commandButton value="Salvar" span="3"  style="background:#00FF7F "
+				<b:commandButton value="Salvar" span="3" style="background:#00FF7F "
 					action="#{calcadoBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
-		
-		<p:dialog modal="true" height="400" width="400"  widgetVar="novaCategoria">
+
+		<p:dialog modal="true" height="400" width="400"
+			widgetVar="novaCategoria">
 			<h:form>
 				<h:panelGrid>
-					<b:inputText value="#" span="6"
-					placeholder="Nova categoria" label="Nova categoria" required="true" />
+					<b:inputText value="#" span="6" placeholder="Nova categoria"
+						label="Nova categoria" required="true" />
 				</h:panelGrid>
 			</h:form>
 		</p:dialog>
-		
+
 		<div id="footer">
 			<ui:insert name="footer">
 				<ui:include src="/WEB-INF/template/Rodape.xhtml" />
