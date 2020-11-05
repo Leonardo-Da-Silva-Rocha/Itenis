@@ -80,11 +80,12 @@
 
 .cor-nav-item{
 	color: white;
-	
+	font-size: 16px;
 }
 
 .cor-nav-item:hover{
 	color: #00FF7F;
+	background: #4F4F4F;
 }
 
 
@@ -115,6 +116,7 @@ div.body-content {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	font-size: 16px;
 }
 
 html, body {

@@ -11,10 +11,10 @@ public class TesteFornecedor {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		
-		fornecedor.setDescricao("ola");
-		fornecedor.setEndereco("sagu 32, São Paulo");
-		fornecedor.setTelefone("11 3434-7878");
-		fornecedor.setCodigo("123");
+		fornecedor.setDescricao("Adidas Brasil Sa");
+		fornecedor.setEndereco("Monte Rural 52, São Paulo");
+		fornecedor.setTelefone("11 5959-7878");
+		fornecedor.setCodigo("155");
 		
 		FornecedorController c = new FornecedorController();
 		c.setFornecedor(fornecedor);

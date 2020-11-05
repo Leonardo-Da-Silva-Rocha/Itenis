@@ -68,7 +68,7 @@
 					<label for="nome">Nova categoria</label>
 					<h:form>
 					
-					<h:inputText value="#{categoriaBean.categoria.descricao}" class="form-control" required="true" />
+					<h:inputText value="#{categoriaBean.categoria.descricao}" class="form-control" style="margin-bottom:10px" required="true" />
 					
 					
 					    <p:dataList value="#{categoriaBean.categorias}" var="categoria" type="ordered">
@@ -78,13 +78,12 @@
 					        	<h:outputLabel value="#{categoria}"/>
 					    </p:dataList>
 					    
-					    <h:button type="button"
-						data-dismiss="modal" value="Cancelar" class="btn btn-secondary"></h:button>
+					    <h:button type="button" data-dismiss="modal" style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold" value="Cancelar"></h:button>
 					    
 					    <p:growl id="growl" showDetail="true" sticky="true" />
 								
 		
-						<b:commandButton  value="Salvar"  action="#{categoriaBean.salvar}" look="success" update="@form"></b:commandButton>
+						<p:commandButton  value="Salvar"  action="#{categoriaBean.salvar}" style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold" update="@form"></p:commandButton>
 					    
 					    
 				    </h:form>    
@@ -109,7 +108,7 @@
 						<h:form>
 							
 							<label for="nome">Nova marca</label>
-							<h:inputText value="#{marcaBean.marca.descricao}" class="form-control" required="true" />
+							<h:inputText value="#{marcaBean.marca.descricao}" class="form-control" style="margin-bottom:10px" required="true" />
 							
 							
 							    <p:dataList value="#{marcaBean.marcas}" var="marca" type="ordered">
@@ -120,12 +119,12 @@
 							    </p:dataList>
 							    
 								<!-- CONTINUAR CADASTRANDO MARCA AQ COLOCAR MSG NA TELA -->
-								<h:button type="button" data-dismiss="modal" value="Cancelar" class="btn btn-secondary"></h:button>
+								<h:button type="button" data-dismiss="modal" value="Cancelar" style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold" ></h:button>
 								
 								<p:growl id="growl" showDetail="true" sticky="true" />
 								
-								<b:commandButton  value="Salvar"  action="#{marcaBean.salvar}" look="success" update="@form"></b:commandButton>
-								
+								<p:commandButton  value="Salvar"  action="#{marcaBean.salvar}" style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold" update="@form"></p:commandButton>
+								 
 							
 						</h:form>
 						
@@ -154,7 +153,7 @@
 				<div class="modal-body">
 					<label for="nome">Novo fornecedor</label>
 					<h:form>
-					<h:inputText value="#{fornecedorBean.fornecedor.descricao}" class="form-control"  required="true" />
+					<h:inputText value="#{fornecedorBean.fornecedor.descricao}" class="form-control" style="margin-bottom:10px"  required="true" />
 					
 					
 					    <p:dataList value="#{fornecedorBean.fornecedores}" var="fornecedor" type="ordered">
@@ -166,12 +165,12 @@
 					     
 					    </p:dataList>
 					    
-					    <h:button type="button" data-dismiss="modal" value="Cancelar" class="btn btn-secondary"></h:button>
+					    <h:button type="button" data-dismiss="modal" value="Cancelar" style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold" ></h:button>
 						
 						<p:growl id="growl" showDetail="true" sticky="true" />
 								
 		
-						<b:commandButton  value="Salvar"  action="#{fornecedorBean.salvar}" look="success" update="@form"></b:commandButton>
+						<p:commandButton  value="Salvar"  action="#{fornecedorBean.salvar}" style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold" update="@form"></p:commandButton>
 					
 					 </h:form>
 				       

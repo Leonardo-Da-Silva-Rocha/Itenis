@@ -11,7 +11,7 @@ public class TesteCategoria {
 		
 		
 		Categoria categoria = new Categoria();
-		categoria.setDescricao("Corrida");
+		categoria.setDescricao("Casual");
 		
 		
 		CategoriaController c = new CategoriaController();
