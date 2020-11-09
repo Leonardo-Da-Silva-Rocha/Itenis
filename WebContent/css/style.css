@@ -123,6 +123,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	 
 }
 
 .footer p{
@@ -134,5 +135,18 @@ html, body {
 	padding: 20px;
 }
 
+.centraliza-titulo-modal{
+	text-align: center;
+}
 
+.carrinho{
+	position:absolute;
+	right:0px;
+	width:300px;
+}
 
+#input{
+	margin-top:17px;
+	margin-left: 580px;
+	width:150px;
+}
