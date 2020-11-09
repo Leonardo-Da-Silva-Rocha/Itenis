@@ -3,6 +3,7 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Calcado;
+
 import br.edu.unifacear.dao.CalcadoDao;
 import br.edu.unifacear.dao.GenericDao;
 
@@ -50,10 +51,13 @@ public class CalcadoBo {
 			throw new Exception("Não foi possível cadastrar, Valor invalido");
 		}
 		
-		
-		
-		
-		
+		else if(calcado.getImagem().equals("") == true) {
+			throw new Exception("Não foi possível cadastrar, selecione uma imagem");
+		}
+		else {
+			System.out.println(calcado.getImagem()+" sddddddddd");
+		}
+	
 		
 		new GenericDao().saveOrUpdate(calcado);
 		

@@ -1,6 +1,6 @@
 package br.edu.unifacear.classes;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Calcado implements EntityBase {
@@ -24,6 +25,7 @@ public class Calcado implements EntityBase {
 	private String descricao;
 	private int quantidade;
 	private String codigoFornecedor;
+	private String imagem;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "calcado")
 	private List<ItemDoCarrinho> itemCalcado;
@@ -38,14 +40,19 @@ public class Calcado implements EntityBase {
 	@ManyToOne
 	private Marca marca;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "calcado")
-	private List<CalcadoFoto> calcadoFoto;
+
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "calcado")
 	private List<ItemPedido> itemPedido;
 	
 	
 	
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 	public int getPartNumber() {
 		return partNumber;
 	}
@@ -111,12 +118,7 @@ public class Calcado implements EntityBase {
 	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
-	public List<CalcadoFoto> getCalcadoFoto() {
-		return calcadoFoto;
-	}
-	public void setCalcadoFoto(List<CalcadoFoto> calcadoFoto) {
-		this.calcadoFoto = calcadoFoto;
-	}
+	
 	public List<ItemPedido> getItemPedido() {
 		return itemPedido;
 	}
@@ -127,17 +129,18 @@ public class Calcado implements EntityBase {
 	public Calcado() {
 		this.marca = new Marca();
 		this.categoria = new Categoria();
-		this.calcadoFoto = new ArrayList<>();
+		
 		this.fornecedor = new Fornecedor();
 	}
 	
 	
 	
-
+	
+	
 	public Calcado(int idCalcado, int numero, int partNumber, Double valor, String descricao, int quantidade,
-			String codigoFornecedor, List<ItemDoCarrinho> itemCalcado, Fornecedor fornecedor, Categoria categoria,
-			Marca marca, List<CalcadoFoto> calcadoFoto, List<ItemPedido> itemPedido) {
-		super();
+			String codigoFornecedor, String imagem, List<ItemDoCarrinho> itemCalcado, Fornecedor fornecedor,
+			Categoria categoria, Marca marca, List<ItemPedido> itemPedido) {
+		
 		this.idCalcado = idCalcado;
 		this.numero = numero;
 		this.partNumber = partNumber;
@@ -145,11 +148,11 @@ public class Calcado implements EntityBase {
 		this.descricao = descricao;
 		this.quantidade = quantidade;
 		this.codigoFornecedor = codigoFornecedor;
+		this.imagem = imagem;
 		this.itemCalcado = itemCalcado;
 		this.fornecedor = fornecedor;
 		this.categoria = categoria;
 		this.marca = marca;
-		this.calcadoFoto = calcadoFoto;
 		this.itemPedido = itemPedido;
 	}
 	@Override

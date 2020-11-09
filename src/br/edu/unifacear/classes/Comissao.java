@@ -22,7 +22,6 @@ public class Comissao implements EntityBase{
 	@OneToOne
 	private Vendedor vendedor;
 
-	
 
 	public int getIdComissao() {
 		return idComissao;
