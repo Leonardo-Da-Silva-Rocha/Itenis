@@ -165,7 +165,7 @@
 							class="form-control" style="margin-bottom:10px" required="true" />
 
 						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							type="ordered">
+							>
 							<f:facet name="header">
 					            Categorias
 					        </f:facet>
@@ -198,17 +198,18 @@
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da categoria que deseja editar</label>
-					<h:inputText value="" class="form-control"
+					<h:form>
+					<h:inputText value="#{categoriaBean.categoria.idCategoria}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 					<label for="nome">Nova categoria</label>
 
-					<h:form>
+					
 
 						<h:inputText value="#{categoriaBean.categoria.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
 						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							type="ordered">
+							>
 							<f:facet name="header">
 					            Categorias
 					        </f:facet>
@@ -219,7 +220,7 @@
 							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
 							value="Cancelar"></h:button>
 						<p:growl id="growl" showDetail="true" sticky="true" />
-						<p:commandButton value="Salvar" action="#{categoriaBean.salvar}"
+						<p:commandButton value="Salvar" action="#{categoriaBean.alterar}"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
 							update="@form"></p:commandButton>
 					</h:form>
@@ -238,13 +239,13 @@
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da categoria que deseja excluir</label>
-					<h:inputText value="" class="form-control"
+					<h:form>
+					<h:inputText value="#{categoriaBean.categoria.idCategoria}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 
-					<h:form>
+					
 
-						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							type="ordered">
+						<p:dataList value="#{categoriaBean.categorias}" var="categoria">
 							<f:facet name="header">
 					            Categorias
 					        </f:facet>
@@ -257,7 +258,7 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
+							update="@form" action="#{categoriaBean.remover}"></p:commandButton>
 					</h:form>
 				</div>
 
@@ -281,7 +282,7 @@
 						<h:inputText value="#{marcaBean.marca.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{marcaBean.marcas}" var="marca" type="ordered">
+						<p:dataList value="#{marcaBean.marcas}" var="marca">
 							<f:facet name="header">
 							            Marcas
 							        </f:facet>
@@ -312,15 +313,16 @@
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da marca que deseja editar</label>
-					<h:inputText value="" class="form-control"
+				 <h:form>
+					<h:inputText value="#{marcaBean.marca.idMarca}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 					<label for="nome">Nova marca</label>
-					<h:form>
+					
 
 						<h:inputText value="#{marcaBean.marca.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{marcaBean.marcas}" var="marca" type="ordered">
+						<p:dataList value="#{marcaBean.marcas}" var="marca">
 							<f:facet name="header">
 							            Marcas
 							        </f:facet>
@@ -331,7 +333,7 @@
 							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
 							value="Cancelar"></h:button>
 						<p:growl id="growl" showDetail="true" sticky="true" />
-						<p:commandButton value="Salvar" action="#{marcaBean.salvar}"
+						<p:commandButton value="Salvar" action="#{marcaBean.alterar}"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
 							update="@form"></p:commandButton>
 					</h:form>
@@ -350,12 +352,13 @@
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da marca que deseja excluir</label>
-					<h:inputText value="" class="form-control"
+					<h:form>
+					<h:inputText value="#{marcaBean.marca.idMarca}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 
-					<h:form>
+					
 
-						<p:dataList value="#{marcaBean.marcas}" var="marca" type="ordered">
+						<p:dataList value="#{marcaBean.marcas}" var="marca">
 							<f:facet name="header">
 							            Marcas
 							        </f:facet>
@@ -368,7 +371,7 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
+							update="@form" action="#{marcaBean.remover}"></p:commandButton>
 					</h:form>
 				</div>
 			</div>
@@ -390,7 +393,7 @@
 							class="form-control" style="margin-bottom:10px" required="true" />
 
 						<p:dataList value="#{fornecedorBean.fornecedores}"
-							var="fornecedor" type="ordered">
+							var="fornecedor" >
 							<f:facet name="header">
 					            Fornecedores
 					        </f:facet>
@@ -417,12 +420,14 @@
 				<div class="modal-header">
 					<h5 class="modal-title">Editar fornecedor</h5>
 				</div>
+				
 				<div class="modal-body">
 					<label for="id">Digite o ID do fornecedor que deseja editar</label>
-					<h:inputText value="" class="form-control"
+					<h:form>
+					<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 
-					<h:form>
+					
 					<label for="nome">Novo fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
@@ -441,7 +446,7 @@
 							class="form-control" style="margin-bottom:10px" required="true" />			
 							
 						<p:dataList value="#{fornecedorBean.fornecedores}"
-							var="fornecedor" type="ordered">
+							var="fornecedor">
 							<f:facet name="header">
 					            Fornecedores
 					        </f:facet>
@@ -470,15 +475,16 @@
 					<h5 class="modal-title">Excluir fornecedor</h5>
 				</div>
 				<div class="modal-body">
+				<h:form>
 					<label for="id">Digite o ID do fornecedor que deseja
 						excluir</label>
-					<h:inputText value="" class="form-control"
+					<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 
-					<h:form>
+					
 
 						<p:dataList value="#{fornecedorBean.fornecedores}"
-							var="fornecedor" type="ordered">
+							var="fornecedor">
 							<f:facet name="header">
 					            Fornecedores
 					        </f:facet>
@@ -491,7 +497,8 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
+							update="@form" action="#{fornecedorBean.remover}"></p:commandButton>
+							
 					</h:form>
 				</div>
 			</div>

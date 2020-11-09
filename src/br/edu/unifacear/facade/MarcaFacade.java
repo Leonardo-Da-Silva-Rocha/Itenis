@@ -23,6 +23,11 @@ public class MarcaFacade {
 		this.marcaBo.alterar(marca);
 	}
 	
+	public void remover(Marca marca) throws Exception {
+		this.marcaBo = new MarcaBo();
+		this.marcaBo.remover(marca);
+	}
+	
 	public List<Marca> listar(String pesquisa, Marca marca){
 		this.marcaBo = new MarcaBo();
 		return this.marcaBo.listar(pesquisa, marca);

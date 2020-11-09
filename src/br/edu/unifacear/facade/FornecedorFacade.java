@@ -28,6 +28,11 @@ public class FornecedorFacade {
 	}
 	
 	
+	public void remover(Fornecedor fornecedor) throws Exception {
+		this.fornecedorBo = new FornecedorBo();
+		this.fornecedorBo.remover(fornecedor);
+	}
+	
 	public List<Fornecedor> listar(String pesquisa, Fornecedor fornecedor){
 		this.fornecedorBo = new FornecedorBo();
 		return this.fornecedorBo.listar(pesquisa, new Fornecedor());

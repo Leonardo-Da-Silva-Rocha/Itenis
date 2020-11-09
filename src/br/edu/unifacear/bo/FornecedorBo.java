@@ -3,6 +3,7 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Fornecedor;
+import br.edu.unifacear.classes.Fornecedor;
 import br.edu.unifacear.dao.FornecedorDao;
 import br.edu.unifacear.dao.GenericDao;
 
@@ -26,6 +27,17 @@ public class FornecedorBo {
 	
 	public List<Fornecedor> listar(String pesquisa, Fornecedor fornecedor){
 		return new FornecedorDao().listar(pesquisa, fornecedor);
+	}
+	
+	
+	public void remover(Fornecedor fornecedor) throws Exception {
+		
+		try {
+			new GenericDao().remove(fornecedor.getClass(), fornecedor.getId());
+		}catch(Exception e) {
+			throw new Exception("Erro ao remover");
+		}
+		
 	}
 	
 	public void alterar(Fornecedor fornecedor) throws Exception {

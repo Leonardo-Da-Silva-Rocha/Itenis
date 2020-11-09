@@ -20,6 +20,12 @@ public class Categoria implements EntityBase {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "categoria")
 	private List<Calcado> calcado;
 	
+	
+	
+	
+	public int getIdCategoria() {
+		return idCategoria;
+	}
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}

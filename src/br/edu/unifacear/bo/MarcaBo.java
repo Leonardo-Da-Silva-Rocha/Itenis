@@ -3,6 +3,7 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Marca;
+import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.MarcaDao;
 
 public class MarcaBo {
@@ -33,6 +34,22 @@ public class MarcaBo {
 		}
 		
 	}
+	
+	
+	public void remover(Marca marca) throws Exception {
+		
+		try {
+			
+			new GenericDao().remove(marca.getClass(), marca.getIdMarca());
+			
+		}catch(Exception e) {
+			
+			throw new Exception("Erro ao salvar marca");
+			
+		}
+		
+	}
+	
 	public List<Marca> listar(String pesquisa, Marca marca) {
 		
 		

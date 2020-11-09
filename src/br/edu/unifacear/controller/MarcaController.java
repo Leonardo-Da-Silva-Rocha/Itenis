@@ -96,15 +96,36 @@ public class MarcaController {
 	}
 	
 	
+	public void remover() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		
+		try {
+			//pessoaBo = new PessoaBo();
+			//pessoaBo.salvar(this.pessoa);
+			MarcaFacade facade = new MarcaFacade();
+			facade.remover(marca);
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Marca removida com sucesso!", ""));
+			
+		}catch(Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+				
+		}
+		
+	}
+	
 	public void carregarComboBox(){
 		
 		MarcaFacade facade = new MarcaFacade();
 		
 		 for (Marca marca : facade.listar("todos", new Marca())) {
-			this.marcas.add(marca.getDescricao());
+			this.marcas.add("ID = " + marca.getIdMarca() +" Descrição: " + marca.getDescricao());
 		}
 		 
-		
+
 		
 	}
 	

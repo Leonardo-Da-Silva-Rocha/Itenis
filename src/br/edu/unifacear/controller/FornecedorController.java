@@ -106,10 +106,38 @@ public class FornecedorController {
 		
 	}
 	
+	
+	
+	public void remover() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+			try {
+				
+				
+				FornecedorFacade facade = new FornecedorFacade();
+				facade.remover(fornecedor);
+				
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Fornecedor removido com sucesso",""));
+				
+				this.menssagem = "Fornecedor removido com sucesso";
+				
+			}catch(Exception e) {
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						e.getMessage(),""));
+				this.menssagem = e.getMessage();
+			}
+		
+		
+
+		
+	}
+	
 	public void carregarCombo() {
 		
 		for (Fornecedor fornecedor : new FornecedorFacade().listar("todos", this.fornecedor)) {
-			this.fornecedores.add(fornecedor.getDescricao());
+			this.fornecedores.add("ID = "+fornecedor.getIdFornecedor()+" Descrição: " + fornecedor.getDescricao());
 			
 		}
 		

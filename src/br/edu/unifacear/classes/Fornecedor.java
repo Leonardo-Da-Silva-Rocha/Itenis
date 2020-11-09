@@ -23,6 +23,10 @@ public class Fornecedor implements EntityBase {
 	
 	
 
+	public int getIdFornecedor() {
+		return idFornecedor;
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}

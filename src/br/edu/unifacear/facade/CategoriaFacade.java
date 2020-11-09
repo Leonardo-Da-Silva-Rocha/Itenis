@@ -26,6 +26,11 @@ public class CategoriaFacade {
 		categoriaBo.alterar(categoria);
 	}
 	
+	public void remover(Categoria categoria) throws Exception {
+		this.categoriaBo = new CategoriaBo();
+		categoriaBo.remover(categoria);
+	}
+	
 	public List<Categoria> listar(String pesquisa, String parametro){
 		this.categoriaBo = new CategoriaBo();
 		return this.categoriaBo.listar(pesquisa, parametro);

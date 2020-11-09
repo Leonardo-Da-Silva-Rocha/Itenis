@@ -48,6 +48,16 @@ public class CategoriaBo {
 		
 	}
 	
+	public void remover(Categoria categoria) throws Exception {
+		
+		try {
+			new GenericDao().remove(categoria.getClass(), categoria.getId());
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		
+	}
+	
 	public List<Categoria> listar(String pesquisa, String parametro){
 		return new CategoriaDao().listar(pesquisa, parametro);
 	}
