@@ -21,6 +21,11 @@ public class CategoriaFacade {
 		categoriaBo.salvar(categoria);
 	}
 	
+	public void alterar(Categoria categoria) throws Exception {
+		this.categoriaBo = new CategoriaBo();
+		categoriaBo.alterar(categoria);
+	}
+	
 	public List<Categoria> listar(String pesquisa, String parametro){
 		this.categoriaBo = new CategoriaBo();
 		return this.categoriaBo.listar(pesquisa, parametro);

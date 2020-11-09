@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Categoria;
+import br.edu.unifacear.classes.Categoria;
+import util.copy.Conexao;
 
 public class CategoriaDao {
 
@@ -33,5 +35,29 @@ public class CategoriaDao {
 		em.close();
 		
 		return categoria;
+	}
+	
+	
+	
+	public void alterar(Categoria categoria) throws Exception {
+		
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			
+			em.getTransaction().begin();
+			
+			
+			em.merge(categoria);
+			
+			em.getTransaction().commit();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar categoria");
+		}
+		
+		
 	}
 }

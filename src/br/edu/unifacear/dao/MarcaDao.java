@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Marca;
+import br.edu.unifacear.classes.Marca;
 import util.copy.Conexao;
 
 public class MarcaDao {
@@ -56,6 +57,28 @@ public class MarcaDao {
 		}catch(Exception e) {
 			throw new Exception("Erro ao salvar produto");
 		}
+		
+	}
+	
+	public void alterar(Marca marca) throws Exception {
+		
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			
+			em.getTransaction().begin();
+			
+			
+			em.merge(marca);
+			
+			em.getTransaction().commit();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar marca");
+		}
+		
 		
 	}
 

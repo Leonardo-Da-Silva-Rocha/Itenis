@@ -71,6 +71,25 @@ public class CategoriaController {
 				"Categoria salva com sucesso",""));
 	}
 	
+	public void alterar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		try {
+			
+			
+			CategoriaFacade facade = new CategoriaFacade();
+			facade.alterar(categoria);
+			
+		}catch(Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+		}
+		
+		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+				"Categoria salva com sucesso",""));
+	}
+	
 	public void carregarCombo() {
 		
 		for (Categoria categoria : new CategoriaFacade().listar("todos", "")) {

@@ -24,7 +24,15 @@ public class MarcaBo {
 		
 	}
 	
-	
+	public void alterar(Marca marca) throws Exception {
+		
+		try {
+			new MarcaDao().alterar(marca);
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar marca");
+		}
+		
+	}
 	public List<Marca> listar(String pesquisa, Marca marca) {
 		
 		

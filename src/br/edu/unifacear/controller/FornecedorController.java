@@ -80,6 +80,32 @@ public class FornecedorController {
 		
 	}
 	
+	public void alterar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+			try {
+				
+				
+				FornecedorFacade facade = new FornecedorFacade();
+				facade.alterar(fornecedor);
+				
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Fornecedor Alterado com sucesso",""));
+				
+				this.menssagem = "Fornecedor Alterado com sucesso";
+				
+			}catch(Exception e) {
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						e.getMessage(),""));
+				this.menssagem = e.getMessage();
+			}
+		
+		
+
+		
+	}
+	
 	public void carregarCombo() {
 		
 		for (Fornecedor fornecedor : new FornecedorFacade().listar("todos", this.fornecedor)) {

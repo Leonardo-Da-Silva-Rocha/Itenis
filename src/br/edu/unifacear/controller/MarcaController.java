@@ -69,6 +69,33 @@ public class MarcaController {
 	
 	}
 	
+	
+	
+	public void alterar() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		
+		try {
+			//pessoaBo = new PessoaBo();
+			//pessoaBo.salvar(this.pessoa);
+			MarcaFacade facade = new MarcaFacade();
+			facade.alterar(marca);
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Marca salva com sucesso!", ""));
+			
+		}catch(Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+				
+		}
+		
+			
+		
+	
+	}
+	
+	
 	public void carregarComboBox(){
 		
 		MarcaFacade facade = new MarcaFacade();

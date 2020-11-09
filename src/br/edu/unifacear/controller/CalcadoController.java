@@ -202,7 +202,7 @@ public class CalcadoController {
 				byte[] texto = Files.readAllBytes(caminho);
 				String leitura = new String(texto);
 				
-				this.calcado.setImagem(leitura);
+				this.calcado.setImagem(this.diretorio+leitura);
 				
 				
 				Files.deleteIfExists(caminho);

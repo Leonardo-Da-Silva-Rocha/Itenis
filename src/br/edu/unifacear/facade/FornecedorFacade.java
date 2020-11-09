@@ -21,6 +21,13 @@ public class FornecedorFacade {
 	}
 	
 	
+	
+	public void alterar(Fornecedor fornecedor) throws Exception {
+		this.fornecedorBo = new FornecedorBo();
+		this.fornecedorBo.alterar(fornecedor);
+	}
+	
+	
 	public List<Fornecedor> listar(String pesquisa, Fornecedor fornecedor){
 		this.fornecedorBo = new FornecedorBo();
 		return this.fornecedorBo.listar(pesquisa, new Fornecedor());

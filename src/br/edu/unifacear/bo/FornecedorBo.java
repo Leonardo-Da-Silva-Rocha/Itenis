@@ -28,4 +28,15 @@ public class FornecedorBo {
 		return new FornecedorDao().listar(pesquisa, fornecedor);
 	}
 	
+	public void alterar(Fornecedor fornecedor) throws Exception {
+		
+		try {
+			new FornecedorDao().alterar(fornecedor);
+			
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		
+	}
+	
 }

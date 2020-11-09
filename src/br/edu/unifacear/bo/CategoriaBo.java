@@ -26,6 +26,16 @@ public class CategoriaBo {
 		
 	}
 
+	public void alterar(Categoria categoria) throws Exception {
+		
+		try {
+			new CategoriaDao().alterar(categoria);
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		
+	}
+	
 	private void validarCategoria(Categoria validar) throws Exception{
 		
 		List<Categoria> lista = new CategoriaDao().listar("todos", validar.getDescricao());

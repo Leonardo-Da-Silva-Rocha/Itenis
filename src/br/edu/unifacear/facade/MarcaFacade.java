@@ -18,6 +18,11 @@ public class MarcaFacade {
 		this.marcaBo.validarMarcaSalvar(marca);
 	}
 	
+	public void alterar(Marca marca) throws Exception {
+		this.marcaBo = new MarcaBo();
+		this.marcaBo.alterar(marca);
+	}
+	
 	public List<Marca> listar(String pesquisa, Marca marca){
 		this.marcaBo = new MarcaBo();
 		return this.marcaBo.listar(pesquisa, marca);
