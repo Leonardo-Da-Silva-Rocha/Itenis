@@ -93,8 +93,34 @@
 			})
 		})
 	</script>
+	<!-- SCRIPT PARA ABRIR A MODAL NOVO TIPO DE ENTREGA -->
+	<script>
+		$(document).ready(function() {
+			$("#id-modal-entregas").click(function() {
+				$("#modal-entregas").modal('show');
+			})
+		})
+	</script>
+	
+	
+	<!-- SCRIPT PARA ABRIR A MODAL DE EDITAR TIPO DE ENTREGA -->
+	<script>
+		$(document).ready(function() {
+			$("#id-modal-editar-entregas").click(function() {
+				$("#modal-editar-entregas").modal('show');
+			})
+		})
+	</script>
 
 
+	<!-- SCRIPT PARA ABRIR A MODAL EXCLUIR TIPO DE ENTREGA -->
+	<script>
+		$(document).ready(function() {
+			$("#id-modal-excluir-entregas").click(function() {
+				$("#modal-excluir-entregas").modal('show');
+			})
+		})
+	</script>
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -146,6 +172,18 @@
 					href="#">Editar existente</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="id-modal-excluir-fornecedor" href="#">Excluir</a>
+			</div></li>
+			
+			<li class="nav-item dropdown testando"><a
+			class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
+			role="button" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false">Entregas</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" id="id-modal-entregas" href="#">Cadastrar tipos de entrega
+					</a> <a class="dropdown-item" id="id-modal-editar-entregas"
+					href="#">Editar tipos existentes</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" id="id-modal-excluir-entregas" href="#">Excluir</a>
 			</div></li>
 	</ol>
 
@@ -505,6 +543,121 @@
 		</div>
 	</div>
 	<!-- FIM MODAL EXCLUIR FORNECEDOR -->
+	
+	<!-- MODAL CADASTRAR NOVO TIPO DE ENTREGA -->
+	<div class="modal" id="modal-entregas">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Cadastrar novo tipo de entrega</h5>
+				</div>
+				<div class="modal-body">
+					<label for="nome">Novo tipo</label>
+					<h:form>
+						<h:inputText value="#{tipoEntregaBean.tipoEntrega.descricao}"
+							class="form-control" style="margin-bottom:10px" required="true" />
+
+						<p:dataList value="#{tipoEntregaBean.tipoEntrega}"
+							var="fornecedor" >
+							<f:facet name="header">
+					            Fornecedores
+					        </f:facet>
+							<h:outputLabel value="#{descricao}" />
+						</p:dataList>
+
+						<h:button type="button" data-dismiss="modal" value="Cancelar"
+							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"></h:button>
+						<p:growl id="growl" showDetail="true" sticky="true" />
+						<p:commandButton value="Salvar" action="#{tipoEntregaBean.salvar}"
+							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
+							update="@form"></p:commandButton>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FIM MODAL entregas -->
+	
+	
+	<!-- MODAL EDITAR MARCA -->
+	<div class="modal" id="modal-editar-entregas">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Editar tipo de entrega</h5>
+				</div>
+				<div class="modal-body">
+					<label for="id">Digite o ID do tipo de entrega que deseja editar</label>
+				 <h:form>
+					<h:inputText value="" class="form-control"
+						style="margin-bottom:10px" required="true" />
+					<label for="nome">Nova tipo de entrega</label>
+					
+
+						<h:inputText value=""
+							class="form-control" style="margin-bottom:10px" required="true" />
+
+						<p:dataList value="}" var="marca">
+							<f:facet name="header">
+							            Tipos de entrega
+							        </f:facet>
+							<h:outputLabel value="" />
+						</p:dataList>
+
+						<h:button type="button" data-dismiss="modal"
+							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
+							value="Cancelar"></h:button>
+						<p:growl id="growl" showDetail="true" sticky="true" />
+						<p:commandButton value="Salvar" 
+							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
+							update="@form"></p:commandButton>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FIM MODAL EDITAR entrega -->
+	
+		<!-- MODAL EXCLUIR TIPOS DE ENTREGA -->
+	<div class="modal" id="modal-excluir-entregas">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Excluir tipos de entrega</h5>
+				</div>
+				<div class="modal-body">
+				<h:form>
+					<label for="id">Digite o ID do tipo de entrega que deseja
+						excluir</label>
+					<h:inputText value="" class="form-control"
+						style="margin-bottom:10px" required="true" />
+
+					
+
+						<p:dataList value=""
+							var="fornecedor">
+							<f:facet name="header">
+					           Tipos de entrega
+					        </f:facet>
+							<h:outputLabel value="" />
+						</p:dataList>
+
+						<h:button type="button" data-dismiss="modal"
+							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
+							value="Cancelar"></h:button>
+						<p:growl id="growl" showDetail="true" sticky="true" />
+						<p:commandButton value="Excluir"
+							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
+							update="@form" ></p:commandButton>
+							
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FIM MODAL EXCLUIR TIPOS DE ENTREGA -->
+	
+	
 	<div id="footer">
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/Rodape.xhtml" />
