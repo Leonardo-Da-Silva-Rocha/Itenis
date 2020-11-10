@@ -5,8 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-
 import br.edu.unifacear.classes.TipoEntrega;
+import br.edu.unifacear.classes.TipoEntrega;
+import util.copy.Conexao;
 
 public class TipoEntregaDao {
 	
@@ -30,6 +31,28 @@ public class TipoEntregaDao {
 		lista = consulta.getResultList();
 		
 		return lista;
+		
+	}
+	
+	public void alterar(TipoEntrega entrega) throws Exception {
+		
+		EntityManager em = Conexao.getEntityManager();
+		
+		try {
+			
+			em.getTransaction().begin();
+			
+			
+			em.merge(entrega);
+			
+			em.getTransaction().commit();
+			
+			
+			
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar entrega");
+		}
+		
 		
 	}
 	

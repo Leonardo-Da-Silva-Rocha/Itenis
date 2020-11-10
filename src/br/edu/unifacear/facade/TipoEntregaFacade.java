@@ -17,4 +17,14 @@ public class TipoEntregaFacade {
 		this.tipoBo.salvarValidar("todos", tipo);
 	}
 	
+	public void remover(TipoEntrega entrega) throws Exception {
+		this.tipoBo = new TipoEntregaBo();
+		this.tipoBo.remover(entrega);
+	}
+	
+	public void alterar(TipoEntrega entrega) throws Exception {
+		this.tipoBo = new TipoEntregaBo();
+		this.tipoBo.alterar(entrega);
+	}
+	
 }

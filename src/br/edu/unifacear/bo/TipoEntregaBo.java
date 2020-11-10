@@ -21,4 +21,22 @@ public class TipoEntregaBo {
 		new GenericDao().saveOrUpdate(parametro);
 	}
 	
+	public void alterar(TipoEntrega entrega) throws Exception {
+		
+		try {
+			new TipoEntregaDao().alterar(entrega);
+		}catch(Exception e) {
+			throw new Exception("Erro ao alterar");
+		}
+		
+	}
+	
+	public void remover(TipoEntrega entrega) throws Exception {
+		try {
+			new GenericDao().remove(entrega.getClass(), entrega.getId());
+		}catch(Exception e) {
+			throw new Exception("Erro ao excluir");
+		}
+	}
+	
 }

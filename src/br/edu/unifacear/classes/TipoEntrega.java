@@ -20,6 +20,9 @@ public class TipoEntrega implements EntityBase {
 	
 	
 	
+	public int getIdTipoEntrega() {
+		return idTipoEntrega;
+	}
 	public void setIdTipoEntrega(int idTipoEntrega) {
 		this.idTipoEntrega = idTipoEntrega;
 	}

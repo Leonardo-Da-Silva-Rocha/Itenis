@@ -554,15 +554,15 @@
 				<div class="modal-body">
 					<label for="nome">Novo tipo</label>
 					<h:form>
-						<h:inputText value="#{tipoEntregaBean.tipoEntrega.descricao}"
+						<h:inputText value="#{tipoEntregaBean.tipo.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{tipoEntregaBean.tipoEntrega}"
-							var="fornecedor" >
+						<p:dataList value="#{tipoEntregaBean.entregas}"
+							var="entrega" >
 							<f:facet name="header">
-					            Fornecedores
+					             Tipos de entrega
 					        </f:facet>
-							<h:outputLabel value="#{descricao}" />
+							<h:outputLabel value="#{entrega}" />
 						</p:dataList>
 
 						<h:button type="button" data-dismiss="modal" value="Cancelar"
@@ -570,7 +570,7 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Salvar" action="#{tipoEntregaBean.salvar}"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
+							update="@form" ></p:commandButton>
 					</h:form>
 				</div>
 			</div>
@@ -589,19 +589,19 @@
 				<div class="modal-body">
 					<label for="id">Digite o ID do tipo de entrega que deseja editar</label>
 				 <h:form>
-					<h:inputText value="" class="form-control"
+					<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 					<label for="nome">Nova tipo de entrega</label>
 					
 
-						<h:inputText value=""
+						<h:inputText value="#{tipoEntregaBean.tipo.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="}" var="marca">
+						<p:dataList value="#{tipoEntregaBean.entregas}" var="entrega">
 							<f:facet name="header">
 							            Tipos de entrega
 							        </f:facet>
-							<h:outputLabel value="" />
+							<h:outputLabel value="#{entrega}" />
 						</p:dataList>
 
 						<h:button type="button" data-dismiss="modal"
@@ -610,7 +610,7 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Salvar" 
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
+							update="@form" action="#{tipoEntregaBean.alterar}"></p:commandButton>
 					</h:form>
 				</div>
 			</div>
@@ -629,17 +629,17 @@
 				<h:form>
 					<label for="id">Digite o ID do tipo de entrega que deseja
 						excluir</label>
-					<h:inputText value="" class="form-control"
+					<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}" class="form-control"
 						style="margin-bottom:10px" required="true" />
 
 					
 
-						<p:dataList value=""
-							var="fornecedor">
+						<p:dataList value="#{tipoEntregaBean.entregas}"
+							var="entrega">
 							<f:facet name="header">
 					           Tipos de entrega
 					        </f:facet>
-							<h:outputLabel value="" />
+							<h:outputLabel value="#{entrega}" />
 						</p:dataList>
 
 						<h:button type="button" data-dismiss="modal"
@@ -648,7 +648,7 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form" ></p:commandButton>
+							update="@form" action="#{tipoEntregaBean.remover}" ></p:commandButton>
 							
 					</h:form>
 				</div>
