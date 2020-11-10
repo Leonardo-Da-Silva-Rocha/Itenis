@@ -18,8 +18,23 @@ public class CategoriaController {
 	private Categoria categoria;
 
 	private List<String> categorias;
+	private List<String> listaCategorias;
 	
 	
+	
+	
+	public List<String> getListaCategorias() {
+		return listaCategorias;
+	}
+
+
+
+	public void setListaCategorias(List<String> listaCategorias) {
+		this.listaCategorias = listaCategorias;
+	}
+
+
+
 	public List<String> getCategorias() {
 		return categorias;
 	}
@@ -46,7 +61,9 @@ public class CategoriaController {
 	public CategoriaController() {
 		this.categoria = new Categoria();
 		this.categorias = new ArrayList<>();
+		this.listaCategorias = new ArrayList<>();
 		carregarCombo();
+		carregarCategorias();
 	}
 	
 	
@@ -114,6 +131,14 @@ public class CategoriaController {
 		
 		for (Categoria categoria : new CategoriaFacade().listar("todos", "")) {
 			this.categorias.add("ID = "+categoria.getIdCategoria() +" Desrição: " + categoria.getDescricao());
+		}
+		
+	}
+	
+	public void carregarCategorias() {
+		
+		for (Categoria categoria : new CategoriaFacade().listar("todos", "")) {
+			this.listaCategorias.add(categoria.getDescricao());
 		}
 		
 	}

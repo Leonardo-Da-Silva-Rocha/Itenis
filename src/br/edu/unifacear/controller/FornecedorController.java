@@ -18,10 +18,19 @@ public class FornecedorController {
 	
 	private Fornecedor fornecedor;
 	private List<String> fornecedores;
+	private List<String> listaFornecedores;
 	private String menssagem;
 	
 	
 	
+
+	public List<String> getListaFornecedores() {
+		return listaFornecedores;
+	}
+
+	public void setListaFornecedores(List<String> listaFornecedores) {
+		this.listaFornecedores = listaFornecedores;
+	}
 
 	public String getMenssagem() {
 		return menssagem;
@@ -50,7 +59,9 @@ public class FornecedorController {
 	public FornecedorController() {
 		this.fornecedor = new Fornecedor();
 		this.fornecedores = new ArrayList<>();
+		this.listaFornecedores = new ArrayList<>();
 		carregarCombo();
+		carregarFornecedores();
 	}
 	
 	
@@ -138,6 +149,16 @@ public class FornecedorController {
 		
 		for (Fornecedor fornecedor : new FornecedorFacade().listar("todos", this.fornecedor)) {
 			this.fornecedores.add("ID = "+fornecedor.getIdFornecedor()+" Descrição: " + fornecedor.getDescricao());
+			
+		}
+		
+	}
+	
+	
+		public void carregarFornecedores() {
+		
+		for (Fornecedor fornecedor : new FornecedorFacade().listar("todos", this.fornecedor)) {
+			this.listaFornecedores.add(fornecedor.getDescricao());
 			
 		}
 		

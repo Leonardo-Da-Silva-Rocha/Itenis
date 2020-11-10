@@ -28,7 +28,7 @@
 					required="true"></b:inputText>
 				<b:selectOneMenu value="#{calcadoBean.calcado.marca.descricao}"
 					span="6" label="Marca" required="true">
-					<f:selectItems value="#{marcaBean.marcas}" var="marcas"
+					<f:selectItems value="#{marcaBean.listaMarcas}" var="marcas"
 						itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
 			</b:row>
@@ -42,7 +42,7 @@
 			<b:row>
 				<b:selectOneMenu value="#{calcadoBean.calcado.categoria.descricao}"
 					span="6" label="Categoria" required="true">
-					<f:selectItems value="#{categoriaBean.categorias}" var="estados"
+					<f:selectItems value="#{categoriaBean.listaCategorias}" var="estados"
 						itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
 				<b:selectOneMenu value="genero" span="6" label="Gênero"
@@ -55,7 +55,7 @@
 			<b:row>
 				<b:selectOneMenu value="#{calcadoBean.calcado.fornecedor.descricao}"
 					span="6" label="Fornecedores" required="true">
-					<f:selectItems value="#{fornecedorBean.fornecedores}"
+					<f:selectItems value="#{fornecedorBean.listaFornecedores}"
 						var="fornecedor" itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
 				<b:inputText value="#{calcadoBean.calcado.codigoFornecedor}"

@@ -19,7 +19,17 @@ public class MarcaController {
 	private Marca marca;
 	private List<String> marcas;
 
+	private List<String> listaMarcas;
 	
+	
+
+	public List<String> getListaMarcas() {
+		return listaMarcas;
+	}
+
+	public void setListaMarcas(List<String> listaMarcas) {
+		this.listaMarcas = listaMarcas;
+	}
 
 	public List<String> getMarcas() {
 		return marcas;
@@ -41,7 +51,9 @@ public class MarcaController {
 	public MarcaController() {
 		this.marca = new Marca();
 		this.marcas = new ArrayList<>();
+		this.listaMarcas = new ArrayList<>();
 		carregarComboBox();
+		carregarMarcas();
 	}
 	
 	
@@ -123,6 +135,19 @@ public class MarcaController {
 		
 		 for (Marca marca : facade.listar("todos", new Marca())) {
 			this.marcas.add("ID = " + marca.getIdMarca() +" Descrição: " + marca.getDescricao());
+		}
+		 
+
+		
+	}
+	
+	
+	public void carregarMarcas(){
+		
+		MarcaFacade facade = new MarcaFacade();
+		
+		 for (Marca marca : facade.listar("todos", new Marca())) {
+			this.listaMarcas.add(marca.getDescricao());
 		}
 		 
 
