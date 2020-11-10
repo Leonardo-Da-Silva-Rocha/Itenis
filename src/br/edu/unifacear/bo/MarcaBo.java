@@ -8,7 +8,10 @@ import br.edu.unifacear.dao.MarcaDao;
 
 public class MarcaBo {
 	
+	private void sysout() {
+		// TODO Auto-generated method stub
 
+	}
 	public void validarMarcaSalvar(Marca marca) throws Exception {
 		
 		for (Marca lista : listar("todos", new Marca())) {
