@@ -11,7 +11,7 @@
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Cadastrar novo produto</title>
-
+	
 </h:head>
 <h:body id="cor-body">
 	<b:navBar fluid="true" styleClass="cor-navBar" position="inline">
@@ -21,6 +21,24 @@
 	</b:navBar>
 	<b:container>
 		<h2>Cadastro de novos produtos</h2>
+		<html 	xmlns="http://www.w3.org/1999/xhtml"
+						xmlns:h="http://xmlns.jcp.org/jsf/html"
+					    xmlns:f="http://java.sun.com/jsf/core"
+						xmlns:b="http://bootsfaces.net/ui" 
+						xmlns:p="http://primefaces.org/ui"
+						xmlns:ui="http://java.sun.com/jsf/facelets">	
+						<h:form id="form" enctype="multipart/form-data" >
+							<b:row>
+								<b:formGroup  style="margin-left:15px">
+									<!-- Importando imagem -->	
+									<h:outputLabel value="Imagem" for="arquivo"/> 
+									<h:inputFile  id="arquivo" value="#{calcadoBean.arquivo}" required="true" label="arquivo"  />
+									
+								</b:formGroup>
+								<b:commandButton value="Importar" action="#{calcadoBean.importa}"  span="3" style="width:253px; margin-bottom:15px;"></b:commandButton>
+							</b:row>
+						</h:form>
+				</html>	
 		<h:form >
 			<b:row>
 				<b:inputText value="#{calcadoBean.calcado.descricao}" span="6"
@@ -63,12 +81,9 @@
 					required="true"></b:inputText>
 			</b:row>
 			<b:row>
-				<b:inputText value="#{calcadoBean.calcado.partNumber}" span="6"
+				<b:inputText value="#{calcadoBean.calcado.partNumber}" span="3"
 					placeholder="Part number" label="Part number" required="true"></b:inputText>
-					
-					
-			</b:row>
-			<b:row>
+				
 				<b:inputText label="Valor *" span="3"
 					value="#{calcadoBean.calcado.valor}">
 					<f:facet name="prepend">
@@ -77,13 +92,13 @@
 					<f:facet name="append">
 						<h:outputText value=".00" />
 					</f:facet>
-				</b:inputText>
+				</b:inputText>		
 			</b:row>
 			<b:row>
 				<b:commandButton value="Cancelar" span="3"></b:commandButton>
 				<p:growl id="growl" showDetail="true" sticky="true" />
-				<p:commandButton value="Salvar" span="3" style="background:#00FF7F "
-					action="#{calcadoBean.salvar}" update="@form"></p:commandButton>
+				<b:commandButton value="Salvar" span="3" style="background:#00FF7F "
+					action="#{calcadoBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
 
@@ -94,35 +109,10 @@
 					<b:inputText value="#" span="6" placeholder="Nova categoria"
 						label="Nova categoria" required="true" />
 				</h:panelGrid>
-			
-				
-				
-				
-				
 			</h:form>
 		</p:dialog>
 		
-		<html 	xmlns="http://www.w3.org/1999/xhtml"
-						xmlns:h="http://xmlns.jcp.org/jsf/html"
-						xmlns:f="http://java.sun.com/jsf/core"
-						xmlns:b="http://bootsfaces.net/ui" 
-						xmlns:p="http://primefaces.org/ui"
-						xmlns:ui="http://java.sun.com/jsf/facelets">
-						
-							<h:form id="form" enctype="multipart/form-data" >
-								<b:formGroup>
-									 <!-- Importando imagem -->
-										
-									<h:outputLabel value="arquivo" for="arquivo" /> 
-									<h:inputFile  id="arquivo" value="#{calcadoBean.arquivo}" required="true" label="arquivo"  />
-									<h:commandButton value="importar" action="#{calcadoBean.importa}" ></h:commandButton>
-										
-								</b:formGroup>
-							</h:form>
-					
-				</html>
 
-	
 	</b:container>
 	<div id="footer">
 		<ui:insert name="footer">
