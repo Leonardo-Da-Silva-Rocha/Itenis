@@ -2,7 +2,6 @@ package br.edu.unifacear.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -10,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -32,8 +32,7 @@ public class CalcadoController {
 	private String nomeArquivo;
 	private Calcado calcado;
 	
-	
-	
+
 	public String getDiretorio() {
 		return diretorio;
 	}
@@ -58,14 +57,17 @@ public class CalcadoController {
 		this.nomeArquivo = nomeArquivo;
 	}
 
-	public CalcadoController() {
+	public CalcadoController() throws Exception {
 		this.calcado = new Calcado();
 		this.diretorio = "C://temp//";
+		
 		
 	}
 
 	public Calcado getCalcado() {
+		
 		return calcado;
+		
 		
 	}
 
@@ -213,6 +215,8 @@ public class CalcadoController {
 			}
 			
 		}
+		
+		
 	
 		
 		
@@ -224,5 +228,12 @@ public class CalcadoController {
 	public void adicionarMarca() {
 		this.calcado.setMarca(new CadastrarCalcadoFacade().listarMarca(this.calcado.getMarca()).get(0));
 	}
+	
+	
+	
+
+	
+	
+	
 	
 }

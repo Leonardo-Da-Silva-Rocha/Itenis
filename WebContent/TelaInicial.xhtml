@@ -29,14 +29,15 @@
 			<div class="card" style="width: 18rem;">
 
 				<div class="card-body">
-				<h:graphicImage value="C://temp//2020-11-10-16-18-46-445.png" style="width:300px; heigth:50px;"/>
-			
-					<p class="card-text">Tênis Nike Legend React 2 Masculino</p>
+				<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+					
+					
+					<p class="card-text" > <h:outputText  value="#{imagemBean.descricao}" /> </p>
 					<p class="card-text">
-						<b>Marca: Nike</b>
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}" /></b>
 					</p>
 					<p class="card-text">
-						<b>R$ 449,99</b> ou 10x de 44,99
+						<b>R$ <h:outputText  value="#{imagemBean.valor}" /></b>
 					</p>
 
 					<button id="id-modal-excluir-fornecedor" type="button" class="btn btn-primary" name="button">Comprar</button>
@@ -45,14 +46,14 @@
 			<div class="card" style="width: 18rem;">
 
 				<div class="card-body">
-					<h:graphicImage value="C://temp//2020-11-10-16-18-46-445.png" style="width:300px; heigth:50px;"/>
+					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
 				
-					<p class="card-text">Tênis Nike React Miler Masculino</p>
+					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}" /></p>
 					<p class="card-text">
-						<b>Marca: Nike</b>
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}" /></b>
 					</p>
 					<p class="card-text">
-						<b>R$ 449,99</b> ou 10x de 49,99
+						<b>R$ <h:outputText  value="#{imagemBean.valor}" /></b>
 					</p>
 
 					<button type="button" class="btn btn-primary" name="button">Comprar</button>
@@ -61,12 +62,14 @@
 			<div class="card" style="width: 18rem;">
 
 				<div class="card-body">
-					<p class="card-text">Tênis Nike Air Zoom Pegasus 37 Masculino</p>
+					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+				
+					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
 					<p class="card-text">
-						<b>Marca: Nike</b>
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
 					</p>
 					<p class="card-text">
-						<b>R$ 649,99</b> ou 10x de 64,99
+						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
 					</p>
 
 					<button type="button" class="btn btn-primary" name="button">Comprar</button>
@@ -77,27 +80,14 @@
 			<div class="card" style="width: 18rem;">
 
 				<div class="card-body">
-					<p class="card-text">Tênis Nike Renew Run Masculino</p>
+				
+					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
 					<p class="card-text">
-						<b>Marca: Nike</b>
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
 					</p>
 					<p class="card-text">
-						<b>R$ 319,99</b> ou 10x de 31,99
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-					<p class="card-text">Tênis Nike React Infinity Run Flyknit
-						Masculino</p>
-					<p class="card-text">
-						<b>Marca: Nike</b>
-					</p>
-					<p class="card-text">
-						<b>R$ 749,99</b> ou 10x de 74,99
+						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
 					</p>
 
 					<button type="button" class="btn btn-primary" name="button">Comprar</button>
@@ -106,12 +96,28 @@
 			<div class="card" style="width: 18rem;">
 
 				<div class="card-body">
-					<p class="card-text">Tênis Nike Downshifter 10 Masculino</p>
+					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
 					<p class="card-text">
-						<b>Marca: Nike</b>
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
 					</p>
 					<p class="card-text">
-						<b>R$ 249,99</b> ou 10x de 24,99
+						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b> 
+					</p>
+
+					<button type="button" class="btn btn-primary" name="button">Comprar</button>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+
+				<div class="card-body">
+					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
+					<p class="card-text">
+						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
+					</p>
+					<p class="card-text">
+						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
 					</p>
 
 					<button type="button" class="btn btn-primary" name="button">Comprar</button>
