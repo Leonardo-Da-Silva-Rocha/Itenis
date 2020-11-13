@@ -165,3 +165,7 @@ html, body {
 .muda-cor-importar-produto:hover{
 	background:#00FF7F 
 }
+
+.paginacao{
+	justify-content: center;
+}
