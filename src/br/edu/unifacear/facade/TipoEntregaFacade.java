@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+
+
 import br.edu.unifacear.bo.TipoEntregaBo;
 import br.edu.unifacear.classes.TipoEntrega;
 

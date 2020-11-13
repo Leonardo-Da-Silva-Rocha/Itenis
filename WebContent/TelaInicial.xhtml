@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" 
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -25,111 +26,44 @@
 	<div class="container">
 
 		<h3 class="borda-titulo">Tênis Corrida Masculino</h3>
-		<div class="card-deck espaco-card">
-			<div class="card" style="width: 18rem;">
 
-				<div class="card-body">
-				<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
+		<h:form id="form">
+    		<p:dataGrid var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
+       			rows="12" paginator="true" id="calcados"
+     			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+      			rowsPerPageTemplate="6,12,16">
+         
+      			<f:facet name="header">
+        				    
+       			</f:facet>
+ 
+       			<p:panel header="#{produto.descricao}" style="text-align:center">
+            	<h:panelGrid columns="1" style="width:100%">
+                <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
+ 
+                <h:outputText value="R$ #{produto.valor}" />
+                <h:outputText value="Tamanho: #{produto.numero}" />
+                
+                
+                <h:commandButton oncomplete="PF('carDialog').show()" title="View Detail" action="#{clienteBean.adicionarAoCarrinho}" value="Adicionar ao carrinho">
+                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{produto}" target="#{clienteBean.calcadoSelecionado}" />
+                </h:commandButton>
+         
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+    </h:form>	
 					
-					
-					<p class="card-text" > <h:outputText  value="#{imagemBean.descricao}" /> </p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}" /></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}" /></b>
-					</p>
-
-					<button id="id-modal-excluir-fornecedor" type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
-				
-					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}" /></p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}" /></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}" /></b>
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
-				
-					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-		</div>
-		<div class="card-deck espaco-card">
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-				
-					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
-					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
-					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b> 
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-			<div class="card" style="width: 18rem;">
-
-				<div class="card-body">
-					<h:graphicImage value="#{imagemBean.caminho}" style="width:300px; heigth:50px;"/>
-					<p class="card-text"><h:outputText  value="#{imagemBean.descricao}"/></p>
-					<p class="card-text">
-						<b>Marca: <h:outputText  value="#{imagemBean.marca}"/></b>
-					</p>
-					<p class="card-text">
-						<b>R$ <h:outputText  value="#{imagemBean.valor}"/></b>
-					</p>
-
-					<button type="button" class="btn btn-primary" name="button">Comprar</button>
-				</div>
-			</div>
-		</div>
+	</div>
+			
+	
 		<div id="footer">
         <ui:insert name="footer">
             <ui:include src="/WEB-INF/template/Rodape.xhtml" />
         </ui:insert>
     </div>
-	</div>
 
 </h:body>
 </html>

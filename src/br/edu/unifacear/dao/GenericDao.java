@@ -1,5 +1,7 @@
 package br.edu.unifacear.dao;
 
+
+
 import javax.persistence.EntityManager;
 
 import br.edu.unifacear.classes.EntityBase;

@@ -1,5 +1,7 @@
 package br.edu.unifacear.dao;
 
+
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,6 +33,9 @@ public class CalcadoDao {
 		}
 		else if(pesquisa.equals("marca")) {
 			consulta = em.createQuery("SELECT c FROM Calcado c INNER JOIN Marca m ON c.marca.idMarca = m.idMarca WHERE m.descricao = '" +parametro2+"'");
+		}
+		else if(pesquisa.equals("adicionar")) {
+			consulta = em.createQuery("SELECT c FROM Calcado c WHERE c.imagem = '" + parametro2 + "'");
 		}
 		
 		

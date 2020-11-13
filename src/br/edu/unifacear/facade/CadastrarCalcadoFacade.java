@@ -1,14 +1,13 @@
 package br.edu.unifacear.facade;
 
+
 import java.util.List;
 
 import br.edu.unifacear.bo.CalcadoBo;
-
 import br.edu.unifacear.bo.CategoriaBo;
 import br.edu.unifacear.bo.FornecedorBo;
 import br.edu.unifacear.bo.MarcaBo;
 import br.edu.unifacear.classes.Calcado;
-
 import br.edu.unifacear.classes.Categoria;
 import br.edu.unifacear.classes.Fornecedor;
 import br.edu.unifacear.classes.Marca;

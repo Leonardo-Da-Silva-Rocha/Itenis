@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+
+
 import br.edu.unifacear.bo.EnderecoBo;
 import br.edu.unifacear.classes.Endereco;
 

@@ -7,7 +7,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.edu.unifacear.classes.Calcado;
-import br.edu.unifacear.classes.Marca;
+import br.edu.unifacear.classes.Cliente;
+import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.facade.CalcadoFacade;
 
 @ManagedBean(name="imagemBean")
@@ -16,46 +17,46 @@ public class ImagemController {
 
 	private List<Calcado> imagens;
 	
-	private Calcado calcado;
+	private ItemDoCarrinho item;
 	
-	private String caminho;
+	private List<Calcado> calcado;
 	
-	private String descricao;
+	private List<String> caminho;
 	
-	private String valor;
+	private List<String> descricao;
 	
-	private String quantidade;
+	private List<String> valor;
+	
+	private List<String> quantidade;
 
-	private String numero;
+	private List<String> numero;
 	
+	private Calcado CalcadoSelecionado;
+	
+	private List<String> caminhos;
 	
 
 	public ImagemController() throws Exception {
 		
+		this.calcado = new ArrayList<>();
+		this.caminhos = new ArrayList<>();
 		this.imagens =  new ArrayList<>();
+		this.valor = new ArrayList<>();
+		this.item = new ItemDoCarrinho();
+		this.descricao = new ArrayList<>();
+		this.numero = new ArrayList<>();
 		adicionaLista(new Calcado(), "todos","");
 	}
 	
 	
 
-	
-	public Calcado getCalcado() {
-		return calcado;
-	}
-
-
-
-
-	public void setCalcado(Calcado calcado) {
-		this.calcado = calcado;
-	}
-
-
-
-
 	public List<Calcado> getImagens() {
 		return imagens;
 	}
+
+
+
+
 
 
 
@@ -67,104 +68,182 @@ public class ImagemController {
 
 
 
-	public String getCaminho() {
-		if(imagens.size() > 0) {
-			this.caminho = imagens.get(0).getImagem();
-		}
-		else {
-			this.caminho = "";
-		}
-		
+
+
+
+
+	public List<Calcado> getCalcado() {
+		return calcado;
+	}
+
+
+
+
+
+
+
+
+	public void setCalcado(List<Calcado> calcado) {
+		this.calcado = calcado;
+	}
+
+
+
+
+
+
+
+
+	public List<String> getCaminho() {
 		return caminho;
 	}
 
 
 
 
-	public void setCaminho(String caminho) {
+
+
+
+
+	public void setCaminho(List<String> caminho) {
 		this.caminho = caminho;
 	}
 
 
 
 
-	public String getDescricao() {
-		if(imagens.size() > 0) {
-			this.descricao = imagens.get(0).getDescricao();
-		}
-		else {
-			this.descricao = "Produto Indisponivel";
-		}
-		
+
+
+
+
+	public List<String> getDescricao() {
 		return descricao;
 	}
 
-	public String getMarca() {
-		
-		if(imagens.size() > 0) {
-			return this.imagens.get(0).getMarca().getDescricao();
-		}
-		else {
-			return "";
-		}
-		
-	}
 
 
-	public void setDescricao(String descricao) {
+
+
+
+
+
+	public void setDescricao(List<String> descricao) {
 		this.descricao = descricao;
 	}
 
 
 
 
-	public String getValor() {
-		if(imagens.size() > 0) {
-			this.valor = imagens.get(0).getValor().toString();
-			this.imagens.remove(0);
-		}
-		else {
-			this.valor = "";
-		}
-		
-		
+
+
+
+
+	public List<String> getValor() {
 		return valor;
 	}
 
 
 
 
-	public void setValor(String valor) {
+
+
+
+
+	public void setValor(List<String> valor) {
 		this.valor = valor;
 	}
 
 
 
 
-	public String getQuantidade() {
+
+
+
+
+	public List<String> getQuantidade() {
 		return quantidade;
 	}
 
 
 
 
-	public void setQuantidade(String quantidade) {
+
+
+
+
+	public void setQuantidade(List<String> quantidade) {
 		this.quantidade = quantidade;
 	}
 
 
 
 
-	public String getNumero() {
+
+
+
+
+	public List<String> getNumero() {
 		return numero;
 	}
 
 
 
 
-	public void setNumero(String numero) {
+
+
+
+
+	public void setNumero(List<String> numero) {
 		this.numero = numero;
 	}
+
+
+
+
+
+
+
+
+	public Calcado getCalcadoSelecionado() {
+		return CalcadoSelecionado;
+	}
+
+
+
+
+
+
+
+
+	public void setCalcadoSelecionado(Calcado calcadoSelecionado) {
+		CalcadoSelecionado = calcadoSelecionado;
+	}
+
+
+
+
+
+
+
+
+	public List<String> getCaminhos() {
+		return caminhos;
+	}
+
+
+
+
+
+
+
+
+	public void setCaminhos(List<String> caminhos) {
+		this.caminhos = caminhos;
+	}
+
+
+
+
 
 
 
@@ -186,9 +265,11 @@ public class ImagemController {
 		CalcadoFacade facade = new CalcadoFacade();
 		
 		for (Calcado calcado2 : facade.listar(calcado, "todos", "")) {
-			this.imagens.add(calcado2);
+			this.calcado.add(calcado2);
 		}
 	}
+	
+	
 	
 	
 	

@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+
+
 import br.edu.unifacear.bo.VendedorBo;
 import br.edu.unifacear.classes.Vendedor;
 

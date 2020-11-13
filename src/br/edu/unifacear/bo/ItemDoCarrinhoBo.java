@@ -13,6 +13,7 @@ public class ItemDoCarrinhoBo {
 		
 		validarQuantidade(item, quantidadeCalcado);
 		
+		
 		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
 		
 		try {
@@ -47,6 +48,8 @@ public class ItemDoCarrinhoBo {
 			
 		}
 	}
+	
+	
 	
 	
 	

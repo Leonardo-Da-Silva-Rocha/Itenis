@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+
+
 import java.util.List;
 
 import br.edu.unifacear.bo.CategoriaBo;

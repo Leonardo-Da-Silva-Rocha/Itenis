@@ -8,10 +8,10 @@ import br.edu.unifacear.dao.GenericDao;
 
 public class CarrinhoBo {
 
-	public List<Carrinho> listar(String pesquisa, Carrinho parametro) throws Exception {
+	public List<Carrinho> listar(String pesquisa, Carrinho parametro, int parametro2) throws Exception {
 		
 		try {
-			return new CarrinhoDao().listar(pesquisa, parametro);
+			return new CarrinhoDao().listar(pesquisa, parametro, parametro2);
 		}catch(Exception e) {
 			throw new Exception("Erro ao listar");
 		}

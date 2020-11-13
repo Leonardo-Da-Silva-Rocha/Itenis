@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16052101898970" configfile="/Integrador_WEB/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="LoginCliente.xhtml" id="pf160521066249810" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf160521066249811" path="/LoginCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="TelaInicial.xhtml" id="pf160521066249812" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf160521066249811" path="/TelaInicial.xhtml"/>
+  <links id="pf160521066249811" target="pf160521066249812" source="pf160521066249810" outcome="logado"/>
+</pageflow:Pageflow>

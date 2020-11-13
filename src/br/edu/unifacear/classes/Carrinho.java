@@ -24,6 +24,11 @@ public class Carrinho implements EntityBase {
 	private List<ItemDoCarrinho> itemCalcado;
 
 
+	
+	public int getIdCarrinho() {
+		return idCarrinho;
+	}
+
 	public void setIdCarrinho(int id) {
 		this.idCarrinho = id;
 	}

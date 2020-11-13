@@ -1,13 +1,15 @@
 package br.edu.unifacear.dao;
 
+
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.edu.unifacear.classes.Categoria;
-import br.edu.unifacear.classes.Categoria;
-import util.copy.Conexao;
+
+
 
 public class CategoriaDao {
 
@@ -41,7 +43,7 @@ public class CategoriaDao {
 	
 	public void alterar(Categoria categoria) throws Exception {
 		
-		EntityManager em = Conexao.getEntityManager();
+		EntityManager em = Fabrica.getEntityManager();
 		
 		try {
 			

@@ -68,14 +68,20 @@ public class ClienteBo {
 					validar = false;
 					
 				}
+				
+				cliente.setCpf(cliente2.getCpf());
+				cliente.setNome(cliente2.getNome());
+				cliente.setIdCliente(cliente2.getIdCliente());
+				
 			}
 			
 		}
 		
 		if(validar == false) {
-			System.out.println("oi");
+		
 			throw new Exception("E-mail ou senha invalido");
 		}
+		
 		
 		
 	}
