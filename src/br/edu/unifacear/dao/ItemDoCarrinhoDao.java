@@ -25,7 +25,7 @@ public class ItemDoCarrinhoDao {
 		em.getTransaction().begin();
 		
 		if(pesquisa.equals("validarQuantidade")) {
-			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i INNER JOIN Calcado c on i.calcado.idCalcado = c.idCalcado");
+			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i WhERE i.calcado.idCalcado = calcado_idCalcado");
 			 
 		}
 		else if(pesquisa.equals("itens")) {

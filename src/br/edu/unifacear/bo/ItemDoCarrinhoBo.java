@@ -12,7 +12,7 @@ public class ItemDoCarrinhoBo {
 	public void salvar(ItemDoCarrinho item, int quantidadeCalcado) throws Exception {
 		
 		validarQuantidade(item, quantidadeCalcado);
-		
+		valida(item);
 		
 		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
 		
@@ -50,7 +50,21 @@ public class ItemDoCarrinhoBo {
 	}
 	
 	
-	
+	public void valida(ItemDoCarrinho item) throws Exception {
+		
+		for (ItemDoCarrinho i :new ItemDoCarrinhoDao().listar("validarQuantidade", item)) {
+			
+			if(i.getCalcado().getDescricao().equals(item.getCalcado().getDescricao())) {
+				
+				if(i.getCalcado().getNumero() == item.getCalcado().getNumero()) {
+					
+					throw new Exception("Este Calçado já esta em seu c arrinho");
+				}
+				
+			}
+			
+		}
+	}
 	
 	
 }
