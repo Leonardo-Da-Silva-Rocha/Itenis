@@ -26,4 +26,10 @@ public class CalcadoFacade {
 		this.calcadoBo = new CalcadoBo();
 		return this.calcadoBo.listar(pesquisa, calcado, parametro);
 	}
+	
+	
+	public void alterar(Calcado calcado) throws Exception {
+		this.calcadoBo = new CalcadoBo();
+		this.calcadoBo.alterar(calcado);
+	}
 }

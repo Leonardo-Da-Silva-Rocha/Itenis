@@ -115,7 +115,7 @@ public class CalcadoController {
 			try {
 				
 				
-				String nomeArq = getFileName(this.arquivo.getName() + ".png");
+				String nomeArq = getFileName(this.arquivo.getName() + ".jpg");
 				
 				copyFile(nomeArq, arquivo.getInputStream());
 				gerarTxt();

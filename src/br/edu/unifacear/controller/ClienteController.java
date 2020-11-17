@@ -10,6 +10,7 @@ import br.edu.unifacear.classes.Carrinho;
 import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.facade.CadastrarClienteFacade;
+import br.edu.unifacear.facade.CalcadoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
 
@@ -18,12 +19,21 @@ import br.edu.unifacear.facade.ItemCarrinhoFacade;
 @SessionScoped
 public class ClienteController {
 	
+	private int quantidade;
 	private ItemDoCarrinho item;
 	private Cliente cliente;
 	private Calcado calcadoSelecionado;
 	
 	
 	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public Calcado getCalcadoSelecionado() {
 		return calcadoSelecionado;
 	}
@@ -121,8 +131,9 @@ public class ClienteController {
 		try {
 			this.item.setCalcado(this.calcadoSelecionado);
 			this.item.setCarrinho(this.cliente.getCarrinho());
-			
+			this.item.setQuantidade(this.quantidade);
 			itemFacade.adicionarProduto(item, this.calcadoSelecionado);
+			atualizar();
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -131,6 +142,13 @@ public class ClienteController {
 		
 		
 		
+	}
+	
+	public void atualizar() throws Exception {
+		
+		CalcadoFacade facade = new CalcadoFacade();
+		this.calcadoSelecionado.setQuantidade(this.calcadoSelecionado.getQuantidade() - this.quantidade);
+		facade.alterar(this.calcadoSelecionado);
 	}
 	
 	

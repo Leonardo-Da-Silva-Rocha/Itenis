@@ -11,7 +11,7 @@ public class TesteFornecedor {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		
-		fornecedor.setDescricao("Adidas Brasil Sa");
+		fornecedor.setDescricao("Nike Brasil Sa");
 		fornecedor.setEndereco("Monte Rural 52, São Paulo");
 		fornecedor.setTelefone("11 5959-7878");
 		fornecedor.setCodigo("155");

@@ -58,13 +58,12 @@ public class ItemDoCarrinhoBo {
 				
 				if(i.getCalcado().getNumero() == item.getCalcado().getNumero()) {
 					
-					throw new Exception("Este Calçado já esta em seu c arrinho");
+					throw new Exception("Este Calçado já esta em seu carrinho");
 				}
 				
 			}
 			
 		}
 	}
-	
 	
 }

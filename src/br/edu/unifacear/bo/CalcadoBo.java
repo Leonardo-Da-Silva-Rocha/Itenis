@@ -71,4 +71,14 @@ public class CalcadoBo {
 		}
 	}
 	
+	public void alterar(Calcado calcado) throws Exception {
+		
+		try {
+			new GenericDao().saveOrUpdate(calcado);
+		}catch(Exception e) {
+			throw new Exception("Erro ao alterar o calcado");
+		}
+		
+	}
+	
 }

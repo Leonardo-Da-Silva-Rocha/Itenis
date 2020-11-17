@@ -10,7 +10,7 @@ public class TesteMarca {
 	public static void main(String[] args) {
 		
 		Marca marca = new Marca();
-		marca.setDescricao("Nike");
+		marca.setDescricao("Mizuno");
 		MarcaController controller = new MarcaController();
 		controller.setMarca(marca);
 		

@@ -37,13 +37,19 @@
       			<f:facet name="header">
         				    
        			</f:facet>
- 
+ 				
        			<p:panel header="#{produto.descricao}" style="text-align:center">
             	<h:panelGrid columns="1" style="width:100%">
+            	
+            	
                 <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
- 
+ 					
                 <h:outputText value="R$ #{produto.valor}" />
                 <h:outputText value="Tamanho: #{produto.numero}" />
+                <h:outputText value="quantidade disponivel: #{produto.quantidade}" />
+                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="0" max="#{produto.quantidade}" size="1" />
+                
+              	
                 
                 
                 <h:commandButton oncomplete="PF('carDialog').show()" title="View Detail" action="#{clienteBean.adicionarAoCarrinho}" value="Adicionar ao carrinho">

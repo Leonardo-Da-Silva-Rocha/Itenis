@@ -57,8 +57,6 @@ public class CadastrarCalcadoFacade {
 		this.calcadoBo = new CalcadoBo();
 		this.calcadoBo.salvarValidar("todos", calcado, "");
 		
-		
-		
 	}
 	
 	
