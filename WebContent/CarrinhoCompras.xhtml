@@ -25,7 +25,8 @@
 		<h3 class="text-center" style="margin-top:15px; font-family: 'Lobster', cursive;">MEU CARRINHO</h3>
 			
 		<h:form id="form">
-                    <p:dataGrid var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
+		
+                    <p:dataGrid var="produto" value="#{clienteBean.cliente.carrinho.item}" columns="3" layout="grid"
                           rows="12" paginator="true" id="calcados"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="6,12,16">
@@ -34,12 +35,12 @@
 
                          </f:facet>
  
-                         <p:panel header="#{produto.descricao}" style="text-align:center">
+                         <p:panel header="#{produto.calcado.descricao}" style="text-align:center">
                         <h:panelGrid columns="1" style="width:100%">
-                    <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
+                    	<h:graphicImage value="#{produto.calcado.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
  
                 <h:outputText value="R$ #{produto.valor}" />
-                <h:outputText value="Tamanho: #{produto.numero}" />
+                <h:outputText value="Tamanho: #{produto.calcado.numero}" />
 
 
                 <h:commandLink oncomplete="PF('carDialog').show()" title="View Detail" action="#{imagemBean.teste}" value="Adicionar ao carrinho">
@@ -57,7 +58,7 @@
     </h:form>
     
 		<div class="d-flex justify-content-end" >
-			<h5 style="margin-top:20px; margin-right:13px"><b>Total da compra: R$ 1.349,99</b></h5>
+			<h5 style="margin-top:20px; margin-right:13px"><b><h:outputLabel value="Valor total: #{clienteBean.total}"/></b></h5>
 		</div>
 		<div class="d-flex">
 			<button type="button" value="teste" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px">Continuar</button>

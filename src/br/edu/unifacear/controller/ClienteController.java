@@ -1,5 +1,8 @@
 package br.edu.unifacear.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,6 +14,7 @@ import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.facade.CadastrarClienteFacade;
 import br.edu.unifacear.facade.CalcadoFacade;
+import br.edu.unifacear.facade.CarrinhoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
 
@@ -19,13 +23,32 @@ import br.edu.unifacear.facade.ItemCarrinhoFacade;
 @SessionScoped
 public class ClienteController {
 	
+	private Double total;
 	private int quantidade;
 	private ItemDoCarrinho item;
 	private Cliente cliente;
 	private Calcado calcadoSelecionado;
+	public List<ItemDoCarrinho> itens;
 	
 	
 	
+	
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public List<ItemDoCarrinho> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemDoCarrinho> itens) {
+		this.itens = itens;
+	}
+
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -60,9 +83,11 @@ public class ClienteController {
 	}
 	
 	public ClienteController() {
+		this.itens = new ArrayList<>();
 		this.calcadoSelecionado = new Calcado();
 		this.item = new ItemDoCarrinho();
 		this.cliente = new Cliente();
+		this.total = 0.0;
 	
 	}
 	
@@ -103,12 +128,13 @@ public class ClienteController {
 			facade.login(cliente);
 			
 			this.cliente.setCarrinho(facade.carrinho(cliente).get(0));
-			
+			this.total = 0.0;
+			total();
 			
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Bem vindo" ,""));
 			
-			return "logado";
+			return "logado"; 
 			
 		}catch(Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -143,7 +169,7 @@ public class ClienteController {
 		
 		
 	}
-	
+				
 	public void atualizar() throws Exception {
 		
 		CalcadoFacade facade = new CalcadoFacade();
@@ -151,5 +177,23 @@ public class ClienteController {
 		facade.alterar(this.calcadoSelecionado);
 	}
 	
+	
+	
+	
+	
+	public void total() {
+		
+		
+		for (ItemDoCarrinho itemDoCarrinho : this.cliente.getCarrinho().getItem()) {
+			
+			this.total = this.total + itemDoCarrinho.getValor();
+		}
+		
+		
+		
+		
+		
+		
+	}
 	
 }
