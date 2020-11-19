@@ -1,9 +1,4 @@
-.logo {
-	font-family: 'Permanent Marker', cursive;
-	font-size: 40px;
-	color: #00FF7F;
-	margin-left: 15px;
-}
+
 .logo:hover{
 	color: #00FF7F;
 }
@@ -169,3 +164,4 @@ html, body {
 .paginacao{
 	justify-content: center;
 }
+
