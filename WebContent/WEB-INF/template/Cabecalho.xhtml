@@ -45,13 +45,13 @@
 			
 		
 				<form class="form-inline my-2 my-lg-0">
-					<a href="CarrinhoCompras.xhtml" class="material-icons" style="margin-right:7px; color:#00FF7F; text-decoration:none;margin-left:500px">add_shopping_cart</a>
+					<a href="CarrinhoCompras.xhtml" class="material-icons" style="margin-right:7px; color:#00FF7F; text-decoration:none;margin-left:800px">add_shopping_cart</a>
 				</form>
 				
-				 <form class="form-inline my-2 my-lg-0">
-	     			 <input class="form-control mr-sm-2" type="search" placeholder="O que você procura?" aria-label="Search"/>
-	     			 <button class="btn my-2 my-sm-0" type="submit" style="background: #00FF7F">Pesquisar</button>
-	    		</form>
+				<h:form class="form-inline my-2 my-lg-0">
+     			 <h:inputText value="#{imagemBean.pesquisa}" class="form-control mr-sm-2" type="search" placeholder="O que você procura?" aria-label="Search"/>
+     			 <h:commandButton action="#{imagemBean.pesquisar}" value="Pesquisar" class="btn my-2 my-sm-0" type="submit" style="background: #00FF7F"></h:commandButton>
+    		</h:form>
     	
 		</ul>
 				

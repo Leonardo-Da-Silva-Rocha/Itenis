@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.edu.unifacear.classes.Calcado;
-import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.facade.CalcadoFacade;
 
@@ -35,6 +34,7 @@ public class ImagemController {
 	
 	private List<String> caminhos;
 	
+	private String pesquisa;
 
 	public ImagemController() throws Exception {
 		
@@ -45,10 +45,23 @@ public class ImagemController {
 		this.item = new ItemDoCarrinho();
 		this.descricao = new ArrayList<>();
 		this.numero = new ArrayList<>();
+		this.pesquisa = "";
 		adicionaLista(new Calcado(), "todos","");
 	}
 	
 	
+
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+
 
 	public List<Calcado> getImagens() {
 		return imagens;
@@ -270,7 +283,30 @@ public class ImagemController {
 	}
 	
 	
+	public void pesquisar() {
+		
+		List<Calcado> calcados = new ArrayList<>();
+		
 	
+		
+		for (Calcado calcado2 : calcado) {
+			
+			if(calcado2.getCategoria().getDescricao().toUpperCase().equals(pesquisa.toUpperCase())) {
+				
+				calcados.add(calcado2);
+			}
+			else if(calcado2.getMarca().getDescricao().toUpperCase().equals(pesquisa.toUpperCase())){
+				calcados.add(calcado2);
+			}
+			else if(calcado2.getDescricao().toUpperCase().equals(pesquisa.toUpperCase())) {
+				calcados.add(calcado2);
+			}
+			
+		}
+		
+		this.calcado = calcados;
+		
+	}
 	
 	
 }

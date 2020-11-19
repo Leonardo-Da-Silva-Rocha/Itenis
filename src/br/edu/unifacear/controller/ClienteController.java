@@ -27,12 +27,21 @@ public class ClienteController {
 	private int quantidade;
 	private ItemDoCarrinho item;
 	private Cliente cliente;
+	private String pesquisa;
 	private Calcado calcadoSelecionado;
 	public List<ItemDoCarrinho> itens;
 	
 	
 	
 	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
 	public Double getTotal() {
 		return total;
 	}
@@ -88,6 +97,7 @@ public class ClienteController {
 		this.item = new ItemDoCarrinho();
 		this.cliente = new Cliente();
 		this.total = 0.0;
+		this.pesquisa = "";
 	
 	}
 	
@@ -188,7 +198,6 @@ public class ClienteController {
 			
 			this.total = this.total + itemDoCarrinho.getValor();
 		}
-		
 		
 		
 		
