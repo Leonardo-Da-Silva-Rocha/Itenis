@@ -24,38 +24,90 @@
 	<div class="container">
 		<h3 class="text-center" style="margin-top:15px; font-family: 'Lobster', cursive;">MEU CARRINHO</h3>
 			
-		<h:form id="form">
-		
-                    <p:dataGrid var="produto" value="#{clienteBean.cliente.carrinho.item}" columns="3" layout="grid"
-                          rows="12" paginator="true" id="calcados"
-                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="6,12,16">
-
-                        <f:facet name="header">
-
-                         </f:facet>
+		<style type="text/css"> 
+    /*demo*/
+    .ui-dataview-list .ui-dataview-row {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
  
-                         <p:panel header="#{produto.calcado.descricao}" style="text-align:center">
-                        <h:panelGrid columns="1" style="width:100%">
-                    	<h:graphicImage value="#{produto.calcado.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 25px;
+    }
+	</style>
  
-                <h:outputText value="R$ #{produto.valor}" />
-                <h:outputText value="Tamanho: #{produto.calcado.numero}" />
-
-
-                <h:commandLink oncomplete="PF('carDialog').show()" title="View Detail" action="#{imagemBean.teste}" value="Adicionar ao carrinho">
-                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                    <f:setPropertyActionListener value="#{produto}" target="#{imagemBean.calcadoSelecionado}" />
-                </h:commandLink>
-
-
+<h:form id="form">
+    <p:dataView var="car" value="#{clienteBean.cliente.carrinho.item}"
+                gridIcon="pi pi-th-large" listIcon="pi pi-bars">
  
-
+        <p:dataViewGridItem>
+            <p:panel header="#{car.id}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+                    <p:graphicImage value="#{car.calcado.imagem}"/> 
+ 
+                    <h:outputText value="#{car.descricao}" />
+ 
+                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                        <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
+                    </p:commandLink>
+                </h:panelGrid>
+            </p:panel>
+        </p:dataViewGridItem>
+ 
+        <p:dataViewListItem>
+            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+                <p:graphicImage value="#{car.calcado.imagem}" style="width:150px; heigth:50px;" /> 
+ 
+                <p:outputPanel>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
+                    </h:panelGrid>
+                </p:outputPanel>
+ 
+                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
+                </p:commandLink>
             </h:panelGrid>
-        </p:panel>
+        </p:dataViewListItem>
+    </p:dataView>
  
-    </p:dataGrid>
-    </h:form>
+    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{car.calcado.descricao}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{car.calcado.descricao}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{car.calcado.descricao}" style="color:#{dataGridView.selectedCar.color}"/>
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="$#{car.calcado.descricao}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
     
 		<div class="d-flex justify-content-end" >
 			<h5 style="margin-top:20px; margin-right:13px"><b><h:outputLabel value="Valor total: #{clienteBean.total}"/></b></h5>
