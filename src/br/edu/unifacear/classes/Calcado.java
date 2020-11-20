@@ -19,6 +19,7 @@ public class Calcado implements EntityBase {
 	@Id
 	private int idCalcado;
 	
+	private String genero;
 	private int numero;
 	private int partNumber;
 	private Double valor;
@@ -47,6 +48,12 @@ public class Calcado implements EntityBase {
 	
 	
 	
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 	public String getImagem() {
 		return imagem;
 	}

@@ -41,5 +41,16 @@ public class VendedorBo {
 		
 	}
 	
+	public List<Vendedor> listar(String pesquisa) throws Exception {
+		
+		try {
+			
+			return new VendedorDao().listar(pesquisa);
+			
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 	
 }

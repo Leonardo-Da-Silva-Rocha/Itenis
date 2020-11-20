@@ -12,17 +12,21 @@ import br.edu.unifacear.classes.Calcado;
 import br.edu.unifacear.classes.Carrinho;
 import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
+import br.edu.unifacear.classes.Vendedor;
 import br.edu.unifacear.facade.CadastrarClienteFacade;
 import br.edu.unifacear.facade.CalcadoFacade;
-import br.edu.unifacear.facade.CarrinhoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
+import br.edu.unifacear.facade.VendedorFacade;
 
 
 @ManagedBean(name="clienteBean")
 @SessionScoped
 public class ClienteController {
 	
+	private int login;
+	private String emailUsuario;
+	private String senhaUsuario;
 	private Double total;
 	private int quantidade;
 	private ItemDoCarrinho item;
@@ -34,6 +38,30 @@ public class ClienteController {
 	
 	
 	
+	public int getLogin() {
+		return login;
+	}
+
+	public void setLogin(int login) {
+		this.login = login;
+	}
+
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
+	}
+
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
+
 	public String getPesquisa() {
 		return pesquisa;
 	}
@@ -98,7 +126,7 @@ public class ClienteController {
 		this.cliente = new Cliente();
 		this.total = 0.0;
 		this.pesquisa = "";
-	
+		this.login = 0;
 	}
 	
 	
@@ -199,8 +227,98 @@ public class ClienteController {
 			this.total = this.total + itemDoCarrinho.getValor();
 		}
 		
+	
+		
+	}
+	
+	public String loginDinamico() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
 		
 		
+		try {
+			
+			ClienteFacade facade = new ClienteFacade();
+			VendedorFacade vend = new VendedorFacade();
+			
+			
+			
+			for (Cliente cli : facade.listar("todos", cliente)) {
+				
+				if(cli.getEmail().equals(this.emailUsuario)) {
+					
+					this.login = 1;
+					
+					if(cli.getSenha().equals(this.senhaUsuario)) {
+						
+						
+						this.cliente = cli;
+						this.cliente.setCarrinho(facade.carrinho(cliente).get(0));
+						this.total = 0.0;
+						total();
+						
+						
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"cli" ,""));
+						
+						return "cli";
+						
+					}
+					else {
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"Erro Email ou senha invalido" ,""));
+					}
+					
+					
+				}
+				
+			}
+			
+			for (Vendedor vendedor : vend.listar("todos")) {
+				
+				if(vendedor.getEmail().equals(this.emailUsuario)) {
+					
+					this.login = 1;
+					
+					if(vendedor.getSenha().equals(this.senhaUsuario)) {
+						
+						
+						
+						VendedorController c = new VendedorController();
+						
+						c.setVendedor(vendedor);
+						
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"vend" ,""));
+						
+						return "vend";
+						
+					}
+					else {
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+								"Erro Email ou senha invalido" ,""));
+					}
+					
+				}
+				
+			}
+			
+			if(login == 0) {
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Erro Realize um cadastro no site" ,""));
+			}
+			
+			this.login = 0;
+			
+			return "erro";
+			
+		}catch(Exception e) {
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Erro Email ou senha invalido" ,""));
+			
+			return "erro";
+		}
 		
 		
 	}

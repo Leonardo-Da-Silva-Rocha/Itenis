@@ -30,13 +30,11 @@
 
 		<h:form id="form">
     		<p:dataGrid var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
-       			rows="12" paginator="true" paginatorPosition="bottom" id="calcados"
+       			rows="9" paginator="true" paginatorPosition="bottom" id="calcado"
      			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-      			rowsPerPageTemplate="6,12,16">
+      			rowsPerPageTemplate="3,6,9">
          
-      			<f:facet name="header">
-        				    
-       			</f:facet>
+      			
  				
        			<p:panel header="#{produto.descricao}" style="text-align:center;">
             	<h:panelGrid columns="1" style="width:100%">
@@ -47,7 +45,7 @@
                 <h:outputText value="R$ #{produto.valor}" />
                 <h:outputText value="Tamanho: #{produto.numero}" />
                 <h:outputText value="Quantidade disponivel: #{produto.quantidade}" />
-                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="0" max="#{produto.quantidade}" size="1" style="margin-top:10px" />
+                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="1" max="#{produto.quantidade}" size="1" style="margin-top:10px" />
                 
               	
                 

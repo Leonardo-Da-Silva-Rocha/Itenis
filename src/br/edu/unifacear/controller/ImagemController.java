@@ -308,5 +308,60 @@ public class ImagemController {
 		
 	}
 	
+	public void pesquisarMasculino() {
+		
+		
+		List<Calcado> calcados = new ArrayList<>();
+		
+		
+		for (Calcado calcado2 : calcado) {
+			
+			if(calcado2.getGenero().equals("Masculino")) {
+				calcados.add(calcado2);
+			}
+			
+		}
+		
+		this.calcado = calcados;
+		
+	}
+	
+		public void pesquisarFeminino() {
+		
+		
+		List<Calcado> calcados = new ArrayList<>();
+		
+		
+		for (Calcado calcado2 : calcado) {
+			
+			if(calcado2.getGenero().equals("Feminino")) {
+				calcados.add(calcado2);
+			}
+			
+		}
+		
+		this.calcado = calcados;
+		
+	}
+		
+		
+	public void pesquisarInfantil() {
+			
+			
+			List<Calcado> calcados = new ArrayList<>();
+			
+			
+			for (Calcado calcado2 : calcado) {
+				
+				if(calcado2.getGenero().equals("Infantil")) {
+					calcados.add(calcado2);
+				}
+				
+			}
+			
+			this.calcado = calcados;
+			
+		}
+	
 	
 }

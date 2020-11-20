@@ -37,6 +37,10 @@ public class ClienteFacade {
 		
 	}
 	
+	public List<Cliente> listar(String pesquisa, Cliente cliente) throws Exception{
+		return this.clienteBo.listar(pesquisa, cliente);
+	}
+	
 	
 	
 	

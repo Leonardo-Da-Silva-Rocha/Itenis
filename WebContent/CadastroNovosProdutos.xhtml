@@ -63,9 +63,9 @@
 					<f:selectItems value="#{categoriaBean.listaCategorias}" var="estados"
 						itemValue="#{e}" itemLabel="#{c}" />
 				</b:selectOneMenu>
-				<b:selectOneMenu value="genero" span="6" label="Gênero"
+				<b:selectOneMenu value="#{calcadoBean.calcado.genero}" span="6" label="Gênero"
 					required="true">
-					<f:selectItem itemValue="masculino" itemLabel="Masculino"></f:selectItem>
+					<f:selectItem itemValue="Masculino" itemLabel="Masculino"></f:selectItem>
 					<f:selectItem itemValue="Feminino" itemLabel="Feminino"></f:selectItem>
 					<f:selectItem itemValue="Infantil" itemLabel="Infantil"></f:selectItem>
 				</b:selectOneMenu>

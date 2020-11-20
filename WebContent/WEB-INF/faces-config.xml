@@ -9,8 +9,17 @@
   <navigation-rule>
     <from-view-id>/LoginCliente.xhtml</from-view-id>
     <navigation-case>
-      <from-outcome>logado</from-outcome>
+      <from-outcome>cli</from-outcome>
       <to-view-id>/TelaInicial.xhtml</to-view-id>
+      
+      
+    </navigation-case>
+    
+    <navigation-case>
+      <from-outcome>vend</from-outcome>
+      <to-view-id>/TelaPrincipalVendedor.xhtml</to-view-id>
+      
+      
     </navigation-case>
  
   </navigation-rule>

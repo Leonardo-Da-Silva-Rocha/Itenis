@@ -35,6 +35,10 @@ public class Cliente implements EntityBase{
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "cliente")
 	private List<Pedido> pedido;
 	
+	
+	
+	
+
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
