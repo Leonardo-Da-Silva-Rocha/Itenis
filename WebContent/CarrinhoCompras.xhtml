@@ -13,7 +13,12 @@
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 	<link rel="StyleSheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	<script>
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
 </h:head>
 <h:body id="cor-body">
 	<div id="header">
@@ -54,7 +59,7 @@
                
  
                     <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                        <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+          
                         <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
                     </p:commandLink>
                 </h:panelGrid>
@@ -62,26 +67,28 @@
         </p:dataViewGridItem>
  
         <p:dataViewListItem>
-            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+            <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
                 <p:graphicImage value="#{car.calcado.imagem}" style="width:150px; heigth:50px;" /> 
  
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Id:" />
+                        <h:outputText value="Descrição:" />
                         <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
  
-                        <h:outputText value="Year:" />
+                        <h:outputText value="Numeração:" />
                         <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
  
-                        <h:outputText value="Color:" />
+                        <h:outputText value="Quantidade:" />
+                         <p:spinner id="basic" size="1"/>
+                        
+                        <h:outputText value="Valor unitário:" />
                         <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>
- 
-                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                    <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
-                    <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
-                </p:commandLink>
+
+                <h:commandLink styleClass="material-icons" style="color:#0000FF; width:40px" data-toggle="tooltip" data-placement="top" title="Editar item do carrinho">edit</h:commandLink>
+                <h:commandLink styleClass="material-icons" style="color:#FF0000" data-toggle="tooltip" data-placement="top" title="Excluir item">delete_forever</h:commandLink>
+              
             </h:panelGrid>
         </p:dataViewListItem>
     </p:dataView>
@@ -107,14 +114,17 @@
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>
-</h:form>
     
-		<div class="d-flex justify-content-end" >
+    
+    <div class="d-flex justify-content-end" >
 			<h5 style="margin-top:20px; margin-right:13px"><b><h:outputLabel value="Valor total: #{clienteBean.total}"/></b></h5>
 		</div>
 		<div class="d-flex">
-			<button type="button" value="teste" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px">Continuar</button>
+			<h:commandButton type="button" value="Continuar" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px"></h:commandButton>
 		</div>
+</h:form>
+    
+		
 
 	</div>
 		<div id="footer">
