@@ -24,40 +24,32 @@
             <ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
         </ui:insert>
 </div>
+<!-- 	<h:graphicImage value="C://temp//capa.jpg" class="d-block w-100" alt="..."/> -->
 	<div class="container">
-
-		<h3 class="borda-titulo" style="text-align:center; margin:15px">Tênis Corrida Masculino</h3>
-
 		<h:form id="form">
-    		<p:dataGrid var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
+    		<p:dataGrid style="background-color: blue !important;" var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
        			rows="9" paginator="true" paginatorPosition="bottom" id="calcado"
      			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
       			rowsPerPageTemplate="3,6,9">
-         
-      			
- 				
-       			<p:panel header="#{produto.descricao}" style="text-align:center;">
-            	<h:panelGrid columns="1" style="width:100%">
-            	
-            	
-                <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
- 					
-                <h:outputText value="R$ #{produto.valor}" />
-                <h:outputText value="Tamanho: #{produto.numero}" />
-                <h:outputText value="Quantidade disponivel: #{produto.quantidade}" />
-                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="1" max="#{produto.quantidade}" size="1" style="margin-top:10px" />
-                
-              	
-                
-                
-                <h:commandButton oncomplete="PF('carDialog').show()" title="View Detail" action="#{clienteBean.adicionarAoCarrinho}" 
-                	value="Adicionar ao carrinho" style="background:#00FF7F; border-radius: 5px; margin-top:10px">
-                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                    <f:setPropertyActionListener value="#{produto}" target="#{clienteBean.calcadoSelecionado}" />
-                </h:commandButton>
-         
-            </h:panelGrid>
-        </p:panel>
+
+	       		<p:panel header="#{produto.descricao}" style="text-align:center;">
+	            	<h:panelGrid columns="1"  style="width:100%;">
+	            	
+	                <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
+	 					
+	                <h:outputText value="R$ #{produto.valor}" />
+	                <h:outputText value="Tamanho: #{produto.numero}" />
+	                <h:outputText value="Quantidade disponivel: #{produto.quantidade}" />
+	                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="1" max="#{produto.quantidade}" size="1" style="margin-top:10px" />
+	                
+	                <h:commandButton oncomplete="PF('carDialog').show()" title="View Detail" action="#{clienteBean.adicionarAoCarrinho}" 
+	                	value="Adicionar ao carrinho" style="background:#00FF7F; border-radius: 5px; margin-top:10px">
+	                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+	                    <f:setPropertyActionListener value="#{produto}" target="#{clienteBean.calcadoSelecionado}" />
+	                </h:commandButton>
+	         
+	            </h:panelGrid>
+	        </p:panel>
  
     </p:dataGrid>
     </h:form>				

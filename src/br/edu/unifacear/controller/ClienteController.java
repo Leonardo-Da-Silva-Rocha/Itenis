@@ -142,7 +142,7 @@ public class ClienteController {
 			facade.salvar(this.cliente.getEndereco(), this.cliente, new Carrinho());
 			
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Cadastrado com sucesso no site",""));
+					"Bem Vindo!",""));
 			
 			
 		}catch(Exception e) {

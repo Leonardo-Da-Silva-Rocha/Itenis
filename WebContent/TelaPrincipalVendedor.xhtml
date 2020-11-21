@@ -668,85 +668,29 @@
 		
 		 <form class="form-inline" style="margin-bottom:10px">
      			 <input class="form-control mr-sm-2" type="search" placeholder="Nome / Marca / Fornecedor" aria-label="Search"/>
-     			 <button class="btn my-2 my-sm-0" style="background: #00FF7F" type="submit">Buscar produto</button>
+     			 <h:commandButton value="Buscar produto" class="btn my-2 my-sm-0" style="background: #00FF7F" type="submit"></h:commandButton>
     		</form>
-		
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">PRODUTO</th>
-					<th scope="col">NUMERAÇÃO</th>
-					<th scope="col">DESCRIÇÃO</th>
-					<th scope="col">CÓDIGO FORNECEDOR</th>
-					<th scope="col">PART NUMBER</th>
-					<th scope="col">CATEGORIA</th>
-					<th scope="col">VALOR UNITÁRIO</th>
-					<th scope="col">OPÇÕES</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<h:form>
-							<h:commandLink href="cadastro.html" ata-toggle="tooltip"
-								data-placement="top" title="Tenis nike blablablabla">
-								<h:graphicImage value="C://temp//2020-11-10-16-18-46-445.png"
-									style="width:100px; heigth:50px;" />
-							</h:commandLink>
-						</h:form>
-					</td>
-					<td>40</td>
-					<td>TÊNIS NIKE LEGEND REACT 2 MASCULINO</td>
-					<td>1556</td>
-					<td>123456</td>
-					<td>CORRIDA</td>
-					<td>R$ 499,99</td>
-					<td>
 
-						<button class="btn btn-primary btn-sm">
-							<i class="material-icons">edit</i>
-						</button>
+		<p:dataTable>
+			<p:column headerText="Descrição">
+				<h:outputLabel>teste</h:outputLabel>
+			</p:column>
 
-						<button class="btn btn-danger btn-sm">
-							<i class="material-icons">delete_forever</i>
-						</button>
+			<p:column headerText="Quantidade">
+				<h:outputText />
+			</p:column>
 
+			<p:column headerText="Valor Unitário">
+				<h:outputText  />
+			</p:column>
 
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h:form>
-							<h:commandLink href="cadastro.html" ata-toggle="tooltip"
-								data-placement="top" title="Tenis nike blablablabla">
-								<h:graphicImage value="C://temp//2020-11-10-16-18-46-445.png"
-									style="width:100px; heigth:50px;" />
-							</h:commandLink>
-						</h:form>
-					</td>
-					<td>40</td>
-					<td>TÊNIS NIKE LEGEND REACT 2 MASCULINO</td>
-					<td>1556</td>
-					<td>123456</td>
-					<td>CORRIDA</td>
-					<td>R$ 499,99</td>
-					<td>
-						<button class="btn btn-primary btn-sm"><i class="material-icons">edit</i></button>
-						<button class="btn btn-danger btn-sm"><i class="material-icons">delete_forever</i></button>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+			<p:column headerText="Numeração">
+				<h:outputText  />
+			</p:column>
+			<p:column headerText="Editar / Excluir">
+				<h6>a</h6>
+			</p:column>
+		</p:dataTable>
 	</div>
 	<div id="footer">
 		<ui:insert name="footer">
