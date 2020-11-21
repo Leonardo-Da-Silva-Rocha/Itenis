@@ -11,7 +11,7 @@
 
 
 .cor-navBar {
-	background: #4F4F4F;
+	background: #000000;
 }
 
 .btn-cor {
@@ -76,9 +76,7 @@
 	background-color:  #4F4F4F; 
 }
 
-#cor-body{
-	background:#B5B5B5; 
-}
+
 
 .cor-nav-item{
 	color: white;
