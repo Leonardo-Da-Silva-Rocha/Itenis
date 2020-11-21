@@ -52,8 +52,26 @@
             </h:panelGrid>
         </p:panel>
     </p:dataGrid>
-    
-    </h:form>
+    	<h5 class="d-flex justify-content-center" style="margin-top:0">Selecione a forma de pagamento</h5>
+    	
+		    <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
+		        <p:selectOneRadio id="pagamento" value="#{radioView.console}" unselectable="true">
+		            <f:selectItem itemLabel="Cartão de crédito" itemValue="cartao" />
+		            <f:selectItem itemLabel="Boleto" itemValue="boleto" />
+		            <f:selectItem itemLabel="PayPal" itemValue="paypal" />
+		        </p:selectOneRadio>		        
+		    </h:panelGrid>
+		
+		  <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
+        	<p:outputLabel for="tipo-entrega" value="Tipo de Entrega:" />
+       		<p:selectOneRadio id="tipo-entrega" value="#{radioView.city}"  layout="grid" columns="3">
+            	<f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+        	</p:selectOneRadio>
+    	</h:panelGrid>
+		
+		
+		<h5 class="d-flex justify-content-center">Endereço de entrega</h5>
+		<h:outputText class="d-flex justify-content-center" value="#{clienteBean.cliente.endereco.cidade}"></h:outputText>
 
 
 		<div class="d-flex justify-content-end" >
@@ -62,7 +80,7 @@
 		<div class="d-flex">
 			<h:commandButton type="button" value="Finalizar" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px"></h:commandButton>
 		</div>
-		
+    </h:form>
 	</div>
 	<div id="footer">
         	<ui:insert name="footer">

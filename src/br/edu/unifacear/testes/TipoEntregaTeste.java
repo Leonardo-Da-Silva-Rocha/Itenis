@@ -9,7 +9,7 @@ public class TipoEntregaTeste {
 	public static void main(String[] args) {
 		TipoEntrega t = new TipoEntrega();
 		
-		t.setDescricao("Azul");
+		t.setDescricao("Sedex");
 		
 		TipoEntregaController c = new TipoEntregaController();
 		c.setTipo(t);
