@@ -56,8 +56,6 @@
                 <h:panelGrid columns="1" style="width:100%">
                     <p:graphicImage value="#{car.calcado.imagem}"/> 
  
-               
- 
                     <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
           
                         <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
@@ -69,25 +67,33 @@
         <p:dataViewListItem>
             <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
                 <p:graphicImage value="#{car.calcado.imagem}" style="width:150px; heigth:50px;" /> 
- 
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Descrição:" />
                         <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
  
                         <h:outputText value="Numeração:" />
-                        <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
+                        <h:outputText value="#{car.calcado.numero}" style="font-weight: bold"/>
  
-                        <h:outputText value="Quantidade:" />
-                         <p:spinner id="basic" size="1"/>
+                        <h:outputText value="Quantidade: #{car.quantidade}" />
                         
-                        <h:outputText value="Valor unitário:" />
-                        <h:outputText value="#{car.calcado.descricao}" style="font-weight: bold"/>
+                         <p:spinner id="minMax" value="#{car.quantidade}" min="1" max="#{car.calcado.quantidade}" size="1"></p:spinner>
+                        
+                        <h:outputText value="Valor unitário" />
+                        <h:outputText value="#{car.calcado.valor}" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>
 
-                <h:commandLink styleClass="material-icons" style="color:#0000FF; width:40px" data-toggle="tooltip" data-placement="top" title="Editar item do carrinho">edit</h:commandLink>
-                <h:commandLink styleClass="material-icons" style="color:#FF0000" data-toggle="tooltip" data-placement="top" title="Excluir item">delete_forever</h:commandLink>
+                <h:commandLink action="#{clienteBean.alterarItem}" styleClass="material-icons" style="color:#0000FF; width:40px" data-toggle="tooltip" data-placement="top" title="Editar item do carrinho">edit
+
+                	<f:setPropertyActionListener value="#{car}" target="#{clienteBean.item}" />
+               		
+                </h:commandLink>
+                <h:commandLink  action="#{clienteBean.removerItem}"  styleClass="material-icons" style="color:#FF0000" data-toggle="tooltip" data-placement="top" title="Excluir item" >
+                	
+                	<f:setPropertyActionListener value="#{car}" target="#{clienteBean.item}" />
+                	
+                delete_forever</h:commandLink>
               
             </h:panelGrid>
         </p:dataViewListItem>

@@ -8,10 +8,9 @@ import br.edu.unifacear.dao.ItemDoCarrinhoDao;
 
 public class ItemDoCarrinhoBo {
 	
-	
 	public void salvar(ItemDoCarrinho item, int quantidadeCalcado) throws Exception {
 		
-		validarQuantidade(item, quantidadeCalcado);
+		validarQuantidade(item, item.getCalcado().getQuantidade());
 		valida(item);
 		
 		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
@@ -24,6 +23,20 @@ public class ItemDoCarrinhoBo {
 	
 	}
 	
+	public void alterar(ItemDoCarrinho item) throws Exception {
+		
+		validarQuantidade(item, item.getCalcado().getQuantidade());
+		
+		
+		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
+		
+		try {
+			new GenericDao().saveOrUpdate(item);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	
+	}
 	
 	public void validarQuantidade(ItemDoCarrinho item, int quantidade) throws Exception {
 		
@@ -66,4 +79,13 @@ public class ItemDoCarrinhoBo {
 		}
 	}
 	
+	public void remover(ItemDoCarrinho item) throws Exception {
+		try {
+			
+			new GenericDao().remove(item.getClass(), item.getId());
+			
+		}catch(Exception e) {
+			throw new Exception("Errro ao remover este item");
+		}
+	}
 }

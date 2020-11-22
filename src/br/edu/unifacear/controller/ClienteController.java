@@ -3,9 +3,12 @@ package br.edu.unifacear.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
 import br.edu.unifacear.classes.Calcado;
@@ -34,9 +37,6 @@ public class ClienteController {
 	private String pesquisa;
 	private Calcado calcadoSelecionado;
 	public List<ItemDoCarrinho> itens;
-	
-	
-	
 	
 	public int getLogin() {
 		return login;
@@ -120,6 +120,7 @@ public class ClienteController {
 	}
 	
 	public ClienteController() {
+		
 		this.itens = new ArrayList<>();
 		this.calcadoSelecionado = new Calcado();
 		this.item = new ItemDoCarrinho();
@@ -142,7 +143,7 @@ public class ClienteController {
 			facade.salvar(this.cliente.getEndereco(), this.cliente, new Carrinho());
 			
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Bem Vindo!",""));
+					"Cadastrado com sucesso no site",""));
 			
 			
 		}catch(Exception e) {
@@ -153,37 +154,7 @@ public class ClienteController {
 		
 		
 	}
-	
-	public String logar() {
-		
-		FacesContext context = FacesContext.getCurrentInstance();
-		
-		try {
-			
-			ClienteFacade facade = new ClienteFacade();
-			
-			
-			facade.login(cliente);
-			
-			this.cliente.setCarrinho(facade.carrinho(cliente).get(0));
-			this.total = 0.0;
-			total();
-			
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Bem vindo" ,""));
-			
-			return "logado"; 
-			
-		}catch(Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					e.getMessage(),""));
-			
-			return "erro ao logar";
-		}
-		
-	}
 
-	
 	public void adicionarAoCarrinho() {
 		
 		
@@ -193,10 +164,12 @@ public class ClienteController {
 		
 
 		try {
+			
 			this.item.setCalcado(this.calcadoSelecionado);
 			this.item.setCarrinho(this.cliente.getCarrinho());
 			this.item.setQuantidade(this.quantidade);
 			itemFacade.adicionarProduto(item, this.calcadoSelecionado);
+			
 			atualizar();
 			
 		}catch(Exception e) {
@@ -214,34 +187,18 @@ public class ClienteController {
 		this.calcadoSelecionado.setQuantidade(this.calcadoSelecionado.getQuantidade() - this.quantidade);
 		facade.alterar(this.calcadoSelecionado);
 	}
+
 	
 	
-	
-	
-	
-	public void total() {
-		
-		
-		for (ItemDoCarrinho itemDoCarrinho : this.cliente.getCarrinho().getItem()) {
-			
-			this.total = this.total + itemDoCarrinho.getValor();
-		}
-		
-	
-		
-	}
 	
 	public String loginDinamico() {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		
-		
 		try {
 			
 			ClienteFacade facade = new ClienteFacade();
 			VendedorFacade vend = new VendedorFacade();
-			
-			
 			
 			for (Cliente cli : facade.listar("todos", cliente)) {
 				
@@ -255,7 +212,8 @@ public class ClienteController {
 						this.cliente = cli;
 						this.cliente.setCarrinho(facade.carrinho(cliente).get(0));
 						this.total = 0.0;
-						total();
+						
+						valorTotal();
 						
 						
 						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -268,7 +226,6 @@ public class ClienteController {
 						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 								"Erro Email ou senha invalido" ,""));
 					}
-					
 					
 				}
 				
@@ -320,7 +277,77 @@ public class ClienteController {
 			return "erro";
 		}
 		
+	}
+	
+	
+	
+	public void valorTotal() {
+		
+		this.total = 0.0;
+		
+		for (ItemDoCarrinho itemDoCarrinho : this.cliente.getCarrinho().getItem()) {
+			
+			this.total = this.total + itemDoCarrinho.getValor();
+			
+		}
 		
 	}
 	
+	public void alterarItem() {
+		
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		try {
+			
+			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
+			
+			facade.alterar(this.item);
+			valorTotal();
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Item alterardo com sucesso!",""));
+			
+			
+		}catch(Exception e) {
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+			
+		}
+		
+	}
+	
+	public void removerItem() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		try {
+			
+			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
+			
+			facade.remover(this.item);
+			this.cliente.getCarrinho().getItem().remove(this.item);
+			atualizarEstoque(this.item);
+			valorTotal();
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Item removido com sucesso!",""));
+			
+			
+		}catch(Exception e) {
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					e.getMessage(),""));
+			
+		}
+		
+	}
+	
+	public void atualizarEstoque(ItemDoCarrinho item) throws Exception {
+		
+		item.getCalcado().setQuantidade(item.getQuantidade() + item.getCalcado().getQuantidade());
+		CalcadoFacade facade = new CalcadoFacade();
+		facade.alterar(item.getCalcado());
+	}
 }

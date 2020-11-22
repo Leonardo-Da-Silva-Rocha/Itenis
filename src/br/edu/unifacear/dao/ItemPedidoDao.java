@@ -30,4 +30,21 @@ public class ItemPedidoDao {
 		
 	}
 	
+	
+	public void alterar(ItemPedido item) throws Exception {
+	
+		try {
+			
+			EntityManager em = Fabrica.getEntityManager();
+			em.getTransaction().begin();
+			em.merge(item);
+			em.getTransaction().commit();
+			
+		}catch(Exception e) {
+		
+			throw new Exception("Erro ao alterar item do pedido");
+		}
+	
+	}
+	
 }

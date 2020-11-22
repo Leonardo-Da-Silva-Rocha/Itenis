@@ -16,4 +16,17 @@ public class ItemPedidoBo {
 		}
 		
 	}
+	
+	
+	public void alterar(ItemPedido item) throws Exception {
+		
+		item.setPreco(item.getQuantidade() * item.getCalcado().getValor());
+		
+		try {
+			new ItemPedidoDao().alterar(item);
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar o pedido");
+		}
+		
+	}
 }

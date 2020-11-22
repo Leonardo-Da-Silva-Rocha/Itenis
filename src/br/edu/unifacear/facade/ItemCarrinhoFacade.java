@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.ItemDoCarrinhoBo;
 import br.edu.unifacear.classes.Calcado;
 import br.edu.unifacear.classes.Carrinho;
@@ -20,5 +22,16 @@ public class ItemCarrinhoFacade {
 		this.item = new ItemDoCarrinhoBo();
 		this.item.salvar(item, calcado.getQuantidade());
 		
+	}
+	
+	public void alterar(ItemDoCarrinho item) throws Exception {
+		this.item = new ItemDoCarrinhoBo();
+		this.item.alterar(item);
+	}
+
+
+	public void remover(ItemDoCarrinho item) throws Exception {
+		this.item = new ItemDoCarrinhoBo();
+		this.item.remover(item);
 	}
 }	
