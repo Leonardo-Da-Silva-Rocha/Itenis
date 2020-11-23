@@ -1,5 +1,7 @@
 package br.edu.unifacear.controller;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ import br.edu.unifacear.facade.CalcadoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.CriarPedidoFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
+
 import br.edu.unifacear.facade.VendedorFacade;
 
 @ManagedBean(name = "clienteBean")
