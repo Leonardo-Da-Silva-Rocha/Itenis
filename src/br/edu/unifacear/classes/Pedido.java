@@ -31,6 +31,13 @@ public class Pedido implements EntityBase {
 	private Vendedor vendedor;
 	
 	
+	
+	public int getIdPedido() {
+		return idPedido;
+	}
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
+	}
 	public boolean isStatus() {
 		return status;
 	}

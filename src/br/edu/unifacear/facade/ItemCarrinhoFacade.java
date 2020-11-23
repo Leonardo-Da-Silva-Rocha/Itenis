@@ -13,7 +13,7 @@ public class ItemCarrinhoFacade {
 	private ItemDoCarrinhoBo item;
 	
 	
-	public void ItemCarrinhoFacade() {
+	public ItemCarrinhoFacade() {
 		this.item = new ItemDoCarrinhoBo();
 	}
 	
@@ -28,7 +28,7 @@ public class ItemCarrinhoFacade {
 		this.item = new ItemDoCarrinhoBo();
 		this.item.alterar(item);
 	}
-
+	
 
 	public void remover(ItemDoCarrinho item) throws Exception {
 		this.item = new ItemDoCarrinhoBo();

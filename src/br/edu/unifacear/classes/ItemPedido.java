@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-public class ItemPedido {
+public class ItemPedido implements EntityBase {
 	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
@@ -24,6 +24,12 @@ public class ItemPedido {
 	private Pedido pedido;
 	
 	
+	public int getIdItemPedido() {
+		return idItemPedido;
+	}
+	public void setIdItemPedido(int idItemPedido) {
+		this.idItemPedido = idItemPedido;
+	}
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -56,7 +62,8 @@ public class ItemPedido {
 	}
 	
 	public ItemPedido() {
-		
+		this.pedido = new Pedido();
+		this.calcado = new Calcado();
 	}
 	public ItemPedido(int quantidade, Double preco, Calcado calcado, List<Avaliacao> avaliacao, Pedido pedido) {
 		
@@ -71,6 +78,11 @@ public class ItemPedido {
 	public String toString() {
 		return "ItemPedido [quantidade=" + quantidade + ", preco=" + preco + ", calcado=" + calcado + ", avaliacao="
 				+ avaliacao + ", pedido=" + pedido + "]";
+	}
+	@Override
+	public int getId() {
+		
+		return this.idItemPedido;
 	}
 	
 	

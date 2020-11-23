@@ -11,7 +11,6 @@ public class CarrinhoFacade {
 	
 	private CarrinhoBo carrinhoBo;
 	
-	
 	public CarrinhoFacade() {
 		this.carrinhoBo = new CarrinhoBo();
 	}

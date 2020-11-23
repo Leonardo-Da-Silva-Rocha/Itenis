@@ -3,6 +3,7 @@ package br.edu.unifacear.bo;
 import java.util.List;
 
 import br.edu.unifacear.classes.Pedido;
+import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.PedidoDao;
 
 public class PedidoBo {
@@ -29,5 +30,18 @@ public class PedidoBo {
 		}
 		
 	}
+	
+	public void salvar(Pedido pedido) throws Exception {
+		
+		
+		try {
+			new GenericDao().saveOrUpdate(pedido);
+		}catch(Exception e) {
+			throw new Exception("Erro ao salvar pedido");
+		}
+		
+	}
+	
+	
 	
 }

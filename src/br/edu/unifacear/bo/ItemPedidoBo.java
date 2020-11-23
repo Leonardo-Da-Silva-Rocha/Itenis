@@ -1,16 +1,17 @@
 package br.edu.unifacear.bo;
 
 import br.edu.unifacear.classes.ItemPedido;
-import br.edu.unifacear.dao.ItemPedidoDao;
+import br.edu.unifacear.dao.GenericDao;
+
 
 public class ItemPedidoBo {
 	
 	public void salvar(ItemPedido item) throws Exception {
 		
-		item.setPreco(item.getQuantidade() * item.getCalcado().getValor());
+		
 		
 		try {
-			new ItemPedidoDao().salvar(item);
+			new GenericDao().saveOrUpdate(item);
 		}catch(Exception e) {
 			throw new Exception("Erro ao salvar o pedido");
 		}
@@ -18,15 +19,4 @@ public class ItemPedidoBo {
 	}
 	
 	
-	public void alterar(ItemPedido item) throws Exception {
-		
-		item.setPreco(item.getQuantidade() * item.getCalcado().getValor());
-		
-		try {
-			new ItemPedidoDao().alterar(item);
-		}catch(Exception e) {
-			throw new Exception("Erro ao salvar o pedido");
-		}
-		
-	}
 }
