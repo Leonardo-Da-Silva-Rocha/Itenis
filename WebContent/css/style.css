@@ -105,12 +105,12 @@
 div.body-content {
 	/** Altura do rodapé tem que ser igual a isso aqui e vice-versa **/
 	padding-bottom: 100px;
-	margin-left: 550px;
+	margin-left: 750px;
 	margin-top: 150px;
 }
 
 .footer {
-	position: absolute;
+	
 	bottom: 0;
 	left: 0;
 	background: #4F4F4F;

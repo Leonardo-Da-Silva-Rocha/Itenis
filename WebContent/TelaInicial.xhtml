@@ -27,21 +27,40 @@
 <!-- 	<h:graphicImage value="C://temp//capa.jpg" class="d-block w-100" alt="..."/> -->
 	<div class="container">
 	<div >
-		<h3>A melhor loja, com os melhores calçados e os MENORES PREÇOS</h3>
-		<h5>Um pouquinho sobre nós</h5>
-		<p>A Itênis foi fundada por Phil Knight e Bill Bowerman, em 1971, nos Estados Unidos, após os empresários importarem e modificarem tênis do Japão para revenda... A expansão internacional da Itênis teve início em 1978, quando a companhia começou suas operações na América do Sul e na Europa.</p>
+	
+		<p:carousel var="produto" value="#{imagemBean.calcado}" headerText="Conheça alguns de nossos produtos!" itemStyle="text-align:center" responsive="true">
+	        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+	            <f:facet name="header">
+	                <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
+	            </f:facet>
+	        </p:panelGrid>
+		</p:carousel>
+		<div style=" text-align: center">
+				<h3>
+					<strong>A melhor loja, com os melhores calçados e os
+						MENORES PREÇOS</strong>
+				</h3>
+				<div>
+					<h5>Um pouquinho sobre nós</h5>
+					<p >A itênis é uma empresa estadunidense de calçados fundada em
+						1972 por Bill Bowerman e Phillip Knight. A nossa sede fica em
+						Beaverton, no estado de Oregon, nos Estados Unidos.</p>
+				</div>
+			</div>
+		
+		
 	</div>
 		
 		<h:form id="form">
     		<p:dataGrid style="background-color: blue !important;" var="produto" value="#{imagemBean.calcado}" columns="3" layout="grid"
        			rows="9" paginator="true" paginatorPosition="bottom" id="calcado"
-     			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+     			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
       			rowsPerPageTemplate="3,6,9">
 
 	       		<p:panel header="#{produto.descricao}" style="text-align:center;">
 	            	<h:panelGrid columns="1"  style="width:100%;">
 	            	
-	                <h:graphicImage value="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
+	                <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
 	 					
 	                <h:outputText value="R$ #{produto.valor}" />
 	                <h:outputText value="Tamanho: #{produto.numero}" />

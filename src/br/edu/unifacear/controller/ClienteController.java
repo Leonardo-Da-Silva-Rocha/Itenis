@@ -230,9 +230,9 @@ public class ClienteController {
 
 						valorTotal();
 
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "cli", ""));
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "cli", ""));
 
-						return "cli";
+						return "TelaInicial.xhtml?faces-redirect=true";
 
 					} else {
 						context.addMessage(null,
