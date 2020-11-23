@@ -27,7 +27,7 @@
 		
 			<h:form id="form">
 				
-                    <p:dataGrid var="produto" value="#{clienteBean.cliente.carrinho.item}" columns="3" layout="grid"
+                    <p:dataGrid var="produto" value="#{clienteBean.itensDoPedido}" columns="3" layout="grid"
                           rows="12" paginator="true" paginatorPosition="bottom" id="calcados"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="6,12,16">
@@ -37,18 +37,21 @@
                          </f:facet>
  						
  						
-                        <p:panel header="#{produto.calcado.descricao}" style="text-align:center">
-                        <h:panelGrid columns="1" style="width:100%">
-                    	<h:graphicImage value="#{produto.calcado.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
+                        <p:panel  style="text-align:center">
+                       	 <h:panelGrid columns="1" style="width:100%">
+                    		<h:graphicImage library="imagens" name="#{produto.calcado.imagem}"  style="width:150px; heigth:50px;"></h:graphicImage> 
  
-                <h:outputText value="R$ #{produto.valor}" />
-                <h:outputText value="Tamanho: #{produto.calcado.numero}" />
+               
+						<h:outputText value="R$ #{produto.preco}" />
+		                <h:outputText value="Tamanho: #{produto.calcado.numero}" />
+		
+		
+		                <h:commandLink oncomplete="PF('carDialog').show()" title="View Detail" action="#{imagemBean.teste}" value="Adicionar ao carrinho">
+		                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+		                    <f:setPropertyActionListener value="#{produto}" target="#{imagemBean.calcadoSelecionado}" />
+		                </h:commandLink>
 
-
-                <h:commandLink oncomplete="PF('carDialog').show()" title="View Detail" action="#{imagemBean.teste}" value="Adicionar ao carrinho">
-                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-                    <f:setPropertyActionListener value="#{produto}" target="#{imagemBean.calcadoSelecionado}" />
-                </h:commandLink>
+               
             </h:panelGrid>
         </p:panel>
     </p:dataGrid>
@@ -64,12 +67,9 @@
 		
 		  <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
         	<p:outputLabel for="tipo-entrega" value="Tipo de Entrega:" />
-       		 <p:selectOneMenu id="tipo-entrega" style="width:125px">
-	            <f:selectItem itemLabel="Select One" itemValue="" />
-	            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-	            <f:selectItem itemLabel="PS4" itemValue="PS4" />
-	            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-       		</p:selectOneMenu>
+       		<p:selectOneRadio id="tipo-entrega" value="#{radioView.city}"  layout="grid" columns="3">
+            	<f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
+        	</p:selectOneRadio>
     	</h:panelGrid>
 		
 		

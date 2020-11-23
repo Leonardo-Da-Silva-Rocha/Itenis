@@ -18,6 +18,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
+import org.hibernate.event.RefreshEvent;
+
 import br.edu.unifacear.classes.Calcado;
 import br.edu.unifacear.facade.CadastrarCalcadoFacade;
 import br.edu.unifacear.facade.CalcadoFacade;
@@ -122,10 +124,12 @@ public class CalcadoController {
 			while ((read = in.read(bytes)) != -1) {
 				out.write(bytes, 0, read);
 			}
-
+			
+			
 			in.close();
 			out.flush();
 			out.close();
+			
 
 			System.out.println("Novo arquivo criado '" + fileName + "'!");
 		} catch (IOException e) {

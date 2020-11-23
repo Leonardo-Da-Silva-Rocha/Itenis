@@ -1,7 +1,5 @@
 package br.edu.unifacear.controller;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -352,7 +350,7 @@ public class ClienteController {
 		facade.alterar(item.getCalcado());
 	}
 
-	public void Criarpedido() {
+	public String Criarpedido() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -365,8 +363,11 @@ public class ClienteController {
 			facade.salvarPedido(pedido);
 			CriaritemPedido();
 
+			return "FinalizarPedido.xhtml?faces-redirect=true";
+
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "TelaInicial.xhtml";
 		}
 
 	}
@@ -391,6 +392,7 @@ public class ClienteController {
 			this.itemPedido.setPedido(this.pedido);
 			this.itemPedido.setQuantidade(i.getQuantidade());
 			this.itemPedido.setPreco(i.getValor());
+			this.itensDoPedido.add(this.itemPedido);
 			facade.salvarItem(this.itemPedido);
 
 		}
