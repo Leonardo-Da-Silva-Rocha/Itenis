@@ -27,7 +27,6 @@
 <!-- 	<h:graphicImage value="C://temp//capa.jpg" class="d-block w-100" alt="..."/> -->
 	<div class="container">
 	<div >
-	
 		<p:carousel var="produto" value="#{imagemBean.calcado}" headerText="Conheça alguns de nossos produtos!" itemStyle="text-align:center" responsive="true">
 	        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
 	            <f:facet name="header">
@@ -36,18 +35,49 @@
 	        </p:panelGrid>
 		</p:carousel>
 		<div style=" text-align: center">
-				<h3>
+				
+		</div>
+		
+        <section id="tenis-perfeito"> 
+            <div id="tenis-perfeito-esquerda">
+
+            </div>
+            <div id="tenis-perfeito-centro">
+           <div style="width:100%; text-align:center">
+           		<h3 style="margin-bottom:20px">
 					<strong>A melhor loja, com os melhores calçados e os
 						MENORES PREÇOS</strong>
 				</h3>
-				<div>
+				<div style="margin-bottom:30px">
 					<h5>Um pouquinho sobre nós</h5>
 					<p >A itênis é uma empresa estadunidense de calçados fundada em
 						1972 por Bill Bowerman e Phillip Knight. A nossa sede fica em
 						Beaverton, no estado de Oregon, nos Estados Unidos.</p>
 				</div>
-			</div>
-		
+           
+           </div>
+           	
+            
+              <div id="pontos-chave-mestre">
+                  <div class="pontos-chave">
+                    <h4>Família</h4>
+                    <p>
+                      Domingo a noite é dia da família se reunir, conversar, rir e saborear uma maravilhosa pizza. Mas agora, você não precisa mais ligar para pedir, nós enviaremos todos os domingos para você.</p>
+                  </div>
+                  <div class="pontos-chave">
+                    <h4>Horário</h4>
+                    <p>Sabe aquela sensação de ficar aguardando a pizza chegar e ela nunca chega? Pois é, aqui sua pizza chegará sempre no horário programado por você. Nosso intervalo de espera nunca supera 15 minutos.</p>
+                  </div>
+                  <div class="pontos-chave">
+                    <h4>Preço</h4>
+                    <p>Quando o entregador chegar na sua casa, você só recebe, nem precisa pagar. Por um preço justo, você pagará apenas pela frequência que você deseja receber sua pizza.</p>
+                  </div>
+              </div>
+            </div>
+            <div id="tenis-perfeito-direita">
+              
+            </div>
+        </section>
 		
 	</div>
 		
@@ -59,23 +89,16 @@
 
 	       		<p:panel header="#{produto.descricao}" style="text-align:center;">
 	            	<h:panelGrid columns="1"  style="width:100%;">
-	            	
-	                <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 
-	 					
+	                <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:300px; heigth:50px;"></h:graphicImage> 	
 	                <h:outputText value="R$ #{produto.valor}" />
 	                <h:outputText value="Tamanho: #{produto.numero}" />
-	                <h:outputText value="Quantidade disponivel: #{produto.quantidade}" />
-	                <p:spinner id="minMax" value="#{clienteBean.quantidade}" min="1" max="#{produto.quantidade}" size="1" style="margin-top:10px" />
-	                
 	                <h:commandButton oncomplete="PF('carDialog').show()" title="View Detail" action="#{clienteBean.adicionarAoCarrinho}" 
 	                	value="Adicionar ao carrinho" style="background:#00FF7F; border-radius: 5px; margin-top:10px">
 	                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
 	                    <f:setPropertyActionListener value="#{produto}" target="#{clienteBean.calcadoSelecionado}" />
 	                </h:commandButton>
-	         
 	            </h:panelGrid>
 	        </p:panel>
- 
     </p:dataGrid>
     </h:form>				
 </div>

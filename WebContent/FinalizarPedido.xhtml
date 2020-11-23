@@ -64,9 +64,12 @@
 		
 		  <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
         	<p:outputLabel for="tipo-entrega" value="Tipo de Entrega:" />
-       		<p:selectOneRadio id="tipo-entrega" value="#{radioView.city}"  layout="grid" columns="3">
-            	<f:selectItems value="#{radioView.cities}" var="c" itemLabel="#{city}" itemValue="#{city}"/>
-        	</p:selectOneRadio>
+       		 <p:selectOneMenu id="tipo-entrega" style="width:125px">
+	            <f:selectItem itemLabel="Select One" itemValue="" />
+	            <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+	            <f:selectItem itemLabel="PS4" itemValue="PS4" />
+	            <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+       		</p:selectOneMenu>
     	</h:panelGrid>
 		
 		

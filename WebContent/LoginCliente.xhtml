@@ -16,7 +16,7 @@
 <h:body>
 	<h:message/>
 	<ul class="nav cor-navBar">
-			<li class="nav-item "><a class="nav-link logo" href="#">Itênis</a></li>
+			<li class="nav-item "><a class="nav-link logo" style="font-size: 40px;color: #00FF7F;margin-left: 15px;font-family: 'Permanent Marker', cursive;" href="#">Itênis</a></li>
 		</ul>
 	<div id="wrapper">
 		<div class="container body-content">
@@ -34,7 +34,7 @@
 						value="#{clienteBean.senhaUsuario}" required="true" />
 				</div>
 				<div class="form-group">
-					<p:growl id="growl" showDetail="true" sticky="true" />
+					<p:growl id="growl" life="5"/>
 						<h:commandButton value="Entrar" action="#{clienteBean.loginDinamico}"
 						update="@form" style="background:#00FF7F"></h:commandButton>
 				</div>
@@ -43,12 +43,13 @@
 					</label>
 				</div>
 			</h:form>
-			<div id="footer">
+			
+		</div>
+	</div>
+	<div id="footer">
 				<ui:insert name="footer">
 					<ui:include src="/WEB-INF/template/Rodape.xhtml" />
 				</ui:insert>
 			</div>
-		</div>
-	</div>
 </h:body>
 </html>

@@ -11,7 +11,7 @@
 
 
 .cor-navBar {
-	background: #000000;
+	background:#4F4F4F;
 }
 
 .btn-cor {
@@ -171,4 +171,53 @@ html, body {
 }
 .oi{
 	background: red;
+}
+
+
+section#tenis-perfeito{
+    width: 100%;
+    padding: 40px 0 80px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+div#tenis-perfeito-esquerda{
+    position: relative;
+    width: 15%;
+}
+div#tenis-perfeito-direita{
+    position: relative;
+    width: 15%;
+}
+
+div#tenis-perfeito-centro{
+    width: 65%;
+}
+
+
+div#pontos-chave-mestre{
+    width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+div.pontos-chave{
+    text-align: center;
+    width: 25%;
+    
+}
+div.pontos-chave h4{
+    color: #404040;
+}
+div.pontos-chave h4:after {
+    display: block;
+    background-color: #078C31;
+    height: 5px;
+    width: 30%;
+    margin: 20px auto 10px;
+    content: " ";
 }
