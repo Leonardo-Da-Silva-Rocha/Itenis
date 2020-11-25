@@ -67,22 +67,16 @@
 					label="Confirme sua senha" required="true"></b:inputSecret>
 			</b:row>
 			<b:row>
-
-				<b:button value="Cancelar" span="3"></b:button>
-
 				<p:growl id="growl" showDetail="true" sticky="true" />
-
-				<b:commandButton value="Salvar" span="3" look="success"
+				<b:commandButton value="Salvar" span="6" look="success"
 					action="#{clienteBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
 	</b:container>
-	
 		<div id="footer">
 				<ui:insert name="footer">
 					<ui:include src="/WEB-INF/template/Rodape.xhtml" />
 				</ui:insert>
 			</div>	
-
 </h:body>
 </html>

@@ -95,24 +95,13 @@
 				</b:inputText>		
 			</b:row>
 			<b:row>
-				<b:commandButton value="Cancelar" span="3"></b:commandButton>
 				<p:growl id="growl" showDetail="true" sticky="true" />
-				<b:commandButton value="Salvar" span="3" style="background:#00FF7F "
+				<b:commandButton value="Salvar" span="6" style="background:#00FF7F "
 					action="#{calcadoBean.salvar}" update="@form"></b:commandButton>
 			</b:row>
 		</h:form>
-
-		<p:dialog modal="true" height="400" width="400"
-			widgetVar="novaCategoria">
-			<h:form>
-				<h:panelGrid>
-					<b:inputText value="#" span="6" placeholder="Nova categoria"
-						label="Nova categoria" required="true" />
-				</h:panelGrid>
-			</h:form>
-		</p:dialog>
 	</b:container>
-	
+		
 	<div id="footer">
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/Rodape.xhtml" />

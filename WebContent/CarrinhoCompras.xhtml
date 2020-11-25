@@ -19,17 +19,8 @@
 			$('[data-toggle="tooltip"]').tooltip()
 		})
 	</script>
-</h:head>
-<h:body id="cor-body">
-	<div id="header">
-        <ui:insert name="header">
-            <ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
-        </ui:insert>
-    </div>
-	<div class="container">
-		<h3 class="text-center" style="margin-top:15px; font-family: 'Lobster', cursive;">MEU CARRINHO</h3>
-			
-		<style type="text/css"> 
+	
+	<style type="text/css"> 
     /*demo*/
     .ui-dataview-list .ui-dataview-row {
         border-bottom: 1px solid #A8A8A8;
@@ -47,6 +38,17 @@
     }
 	</style>
  
+</h:head>
+<h:body id="cor-body">
+	<div id="header">
+        <ui:insert name="header">
+            <ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
+        </ui:insert>
+    </div>
+	<div class="container">
+		<h3 class="text-center" style="margin-top:15px; font-family: 'Lobster', cursive;">MEU CARRINHO</h3>
+			
+	
 <h:form id="form">
     <p:dataView var="car" value="#{clienteBean.cliente.carrinho.item}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars">
@@ -66,7 +68,7 @@
  
         <p:dataViewListItem>
             <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
-                <p:graphicImage value="#{car.calcado.imagem}" style="width:150px; heigth:50px;" /> 
+                <p:graphicImage library="imagens" name="#{car.calcado.imagem}" style="width:150px; heigth:50px;" /> 
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Descrição:" />
@@ -79,7 +81,7 @@
                         
                          <p:spinner id="minMax" value="#{car.quantidade}" min="1" max="#{car.calcado.quantidade}" size="1"></p:spinner>
                         
-                        <h:outputText value="Valor unitário" />
+                        <h:outputText value="Valor unitário:" />
                         <h:outputText value="#{car.calcado.valor}" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>

@@ -667,31 +667,45 @@
 		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">PRODUTOS CADASTRADOS</h3>
 		
 		 <form class="form-inline" style="margin-bottom:10px">
-     			 <input class="form-control mr-sm-2" type="search" placeholder="Nome / Marca / Fornecedor" aria-label="Search"/>
-     			 <h:commandButton value="Buscar produto" class="btn my-2 my-sm-0" style="background: #00FF7F" type="submit"></h:commandButton>
-    		</form>
+     		<h:commandButton value="Cadastrar novo produto" class="btn my-2 my-sm-0" style="background: #00FF7F" type="submit"></h:commandButton>
+    	</form>
 
-		<p:dataTable>
-			<p:column headerText="Descrição">
-				<h:outputLabel>teste</h:outputLabel>
+		<p:dataTable var="produto" value="#{imagemBean.calcado}" frame="box"
+                rules="all" widgetVar="VeiculoTable" cellpadding="3" paginator="true"
+                paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
+                {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="15,30,45">
+                
+			<p:column headerText="Imagem" style="text-align:center">
+				  <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
+			</p:column>
+		
+			<p:column headerText="Descrição" style="text-align:center" filterBy="#{produto.descricao}" filterMatchMode="contains">
+				<h:outputLabel value="#{produto.descricao}"></h:outputLabel>
 			</p:column>
 
-			<p:column headerText="Quantidade">
-				<h:outputText />
+			<p:column headerText="Quantidade" style="text-align:center">
+				<h:outputLabel value="#{produto.quantidade}"></h:outputLabel>
 			</p:column>
 
-			<p:column headerText="Valor Unitário">
-				<h:outputText  />
+			<p:column headerText="Valor Unitário" style="text-align:center">
+				<h:outputLabel value="#{produto.valor}"></h:outputLabel>
 			</p:column>
 
-			<p:column headerText="Numeração">
-				<h:outputText  />
+			<p:column headerText="Numeração" style="text-align:center">
+				<h:outputLabel value="#{produto.numero}"></h:outputLabel>
 			</p:column>
-			<p:column headerText="Editar / Excluir">
-				<h6>a</h6>
+			<p:column headerText="Editar / Excluir" style="text-align:center">
+			<h:form>
+				<h:commandLink styleClass="material-icons" style="color:#0000FF; width:40px;" data-toggle="tooltip" data-placement="top" title="Editar item"> edit </h:commandLink>
+                <h:commandLink styleClass="material-icons" style="color:#FF0000;" data-toggle="tooltip" data-placement="top" title="Excluir item" > delete_forever</h:commandLink>
+			</h:form>
+				
 			</p:column>
 		</p:dataTable>
 	</div>
+	
+	
 	<div id="footer">
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/Rodape.xhtml" />
