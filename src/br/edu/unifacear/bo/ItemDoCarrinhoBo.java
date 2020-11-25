@@ -82,7 +82,7 @@ public class ItemDoCarrinhoBo {
 	public void remover(ItemDoCarrinho item) throws Exception {
 		try {
 			
-			new GenericDao().remove(item.getClass(), item.getId());
+			new GenericDao().remove(item.getClass(), item.getIdItemDoCarrinho());
 			
 		}catch(Exception e) {
 			throw new Exception("Errro ao remover este item");

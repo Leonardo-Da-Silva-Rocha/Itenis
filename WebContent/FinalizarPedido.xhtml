@@ -9,11 +9,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Finalizar pedido</title>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 	<link rel="StyleSheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
 
 	<script>
 		$(document).ready(function() {
@@ -22,69 +23,68 @@
 			})
 		})
 	</script>
-		
+
 </h:head>
 <h:body id="cor-body">
-<div id="header">
-        <ui:insert name="header">
-            <ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
-        </ui:insert>
-</div>
-	<div style="margin:15px">
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
+		</ui:insert>
+	</div>
+	<div style="margin: 15px">
 		
-			<h:form>
+		<h:form>
+	
+			<p:dataGrid var="produto" value="#{clienteBean.itensDoPedido}"
+				columns="3" layout="grid" rows="12" paginator="true"
+				paginatorPosition="bottom" id="calcados"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+					<h3>Resumo do seu pedido</h3>
+				</f:facet>
+
 				
-                    <p:dataGrid var="produto" value="#{clienteBean.itensDoPedido}" columns="3" layout="grid"
-                          rows="12" paginator="true" paginatorPosition="bottom" id="calcados"
-                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="6,12,16">
+				<p:panel style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<h:graphicImage library="imagens" name="#{produto.calcado.imagem}"
+							style="width:150px; heigth:50px;"></h:graphicImage>
 
-                        <f:facet name="header">
-								<h3>Resumo do seu pedido</h3>
-                         </f:facet>
- 						
- 						
-                        <p:panel  style="text-align:center">
-                       	 <h:panelGrid columns="1" style="width:100%">
-                    		<h:graphicImage library="imagens" name="#{produto.calcado.imagem}"  style="width:150px; heigth:50px;"></h:graphicImage> 
- 
-               
+
 						<h:outputText value="R$ #{produto.preco}" />
-		                <h:outputText value="Tamanho: #{produto.calcado.numero}" />
-		
-		
-		                <h:commandLink oncomplete="PF('carDialog').show()" title="View Detail" action="#{imagemBean.teste}" value="Adicionar ao carrinho">
-		                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
-		                    <f:setPropertyActionListener value="#{produto}" target="#{imagemBean.calcadoSelecionado}" />
-		                </h:commandLink>
+						<h:outputText value="Tamanho: #{produto.calcado.numero}" />
 
-               
-            </h:panelGrid>
-        </p:panel>
-    </p:dataGrid>
-    	<h5 class="d-flex justify-content-center" style="margin-top:0">Selecione a forma de pagamento</h5>
-    	
-		    <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
-		        <p:selectOneRadio id="pagamento" unselectable="true">
-		            <f:selectItem itemLabel="Cartão de crédito" itemValue="cartao" />
-		            <f:selectItem itemLabel="Boleto" itemValue="boleto" />
-		            <f:selectItem itemLabel="PayPal" itemValue="paypal" />
-		        </p:selectOneRadio>		        
-		    </h:panelGrid>
-		
-		  <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
-        	<p:outputLabel for="tipo-entrega" value="Tipo de Entrega:" />
-       		   <p:selectOneMenu id="tipo-entrega" style="width:125px" dir="rtl">
-               <f:selectItem itemLabel="Entrega" itemValue="" />
-        </p:selectOneMenu>
-    	</h:panelGrid>
-		
-		
-		
-		  <h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
-        	<h5 class="d-flex justify-content-center">Endereço de entrega</h5>
-    	</h:panelGrid>
-		
+
+						<h:commandLink oncomplete="PF('carDialog').show()"
+							title="View Detail" action="#{imagemBean.teste}"
+							value="Adicionar ao carrinho">
+							<h:outputText styleClass="pi pi-search" style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{produto}"
+								target="#{imagemBean.calcadoSelecionado}" />
+						</h:commandLink>
+
+
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+			<h5 class="d-flex justify-content-center" style="margin-top: 0">Selecione
+				a forma de pagamento</h5>
+
+			<h:panelGrid class="d-flex justify-content-center" columns="2"
+				style="margin-bottom:10px" cellpadding="5">
+				<p:selectOneRadio id="pagamento" value="#{clienteBean.formaPagamento}" unselectable="true">
+					<f:selectItem itemLabel="Cartão de crédito" itemValue="cartao" />
+					<f:selectItem itemLabel="Boleto" itemValue="boleto" />
+					<f:selectItem itemLabel="PayPal" itemValue="paypal" />
+				</p:selectOneRadio>
+			</h:panelGrid>
+
+			<h:panelGrid class="d-flex justify-content-center" columns="2"
+				style="margin-bottom:10px" cellpadding="5">
+				<h5 class="d-flex justify-content-center">Endereço de entrega</h5>
+			</h:panelGrid>
+
 			<p:panelGrid columns="4" layout="grid"
 				styleClass="showcase-text-align-center">
 				<h:outputText value="Cidade" />
@@ -97,61 +97,31 @@
 				<h:inputText value="#{clienteBean.cliente.endereco.logradouro}" />
 				<h:inputText value="#{clienteBean.cliente.endereco.numero}" />
 			</p:panelGrid>
-			
-			
-			<h:commandButton type="button" value="Atualizar endereço de entrega" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px; margin-top:10px"></h:commandButton>
+	
+			<h:commandButton action="#{clienteBean.EnderecoCliente}"
+				value="Atualizar endereço de entrega"
+				class="ml-auto p-2 btn btn-dark"
+				style="width:300px; border-radius:20px; margin-top:10px"></h:commandButton>
 
-			<div class="d-flex justify-content-end" >
-				<h5 style="margin-top:20px; margin-right:13px"><b>Total da compra: R$ 1.349,99</b></h5>
+			<div class="d-flex justify-content-end">
+				<h5 style="margin-top: 20px; margin-right: 13px">
+					<b><h:outputText value="R$ #{clienteBean.pedido.preco}" /></b>
+				</h5>
 			</div>
+			
 			<div class="d-flex">
-				<h:commandButton type="button" value="Finalizar" class="ml-auto p-2 btn btn-dark" style="width:300px; border-radius:20px"></h:commandButton>
+				<h:commandButton action="#{clienteBean.finalizar}" value="Finalizar"
+					class="ml-auto p-2 btn btn-dark"
+					style="width:300px; border-radius:20px"></h:commandButton>
 			</div>
-			<!-- MODAL CADASTRAR NOVA MARCA -->
-	<!-- MODAL CADASTRAR CATEGORIA-->
-	<div class="modal" id="modal-categoria">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Cadastrar nova categoria</h5>
-				</div>
-				<div class="modal-body">
-					<label for="nome">Nova categoria</label>
-					<h:form>
 
-						<h:inputText value="#{categoriaBean.categoria.descricao}"
-							class="form-control" style="margin-bottom:10px" required="true" />
-
-						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							>
-							<f:facet name="header">
-					            Categorias
-					        </f:facet>
-							<h:outputLabel value="#{categoria}" />
-						</p:dataList>
-
-						<h:button type="button" data-dismiss="modal"
-							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
-							value="Cancelar"></h:button>
-						<p:growl id="growl" showDetail="true" sticky="true" />
-						<p:commandButton value="Salvar" action="#{categoriaBean.salvar}"
-							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form"></p:commandButton>
-					</h:form>
-				</div>
-
-			</div>
-		</div>
+		</h:form>
 	</div>
-	<!-- FIM MODAL CATEGORIA -->
-    </h:form>
-	</div>
-
 	<!-- FIM MODAL MARCA -->
 	<div id="footer">
-        	<ui:insert name="footer">
-           	 <ui:include src="/WEB-INF/template/Rodape.xhtml" />
-      	   </ui:insert>
-    	</div>
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/template/Rodape.xhtml" />
+		</ui:insert>
+	</div>
 </h:body>
 </html>

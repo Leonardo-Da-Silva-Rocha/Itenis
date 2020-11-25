@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.PedidoBo;
 import br.edu.unifacear.classes.Pedido;
 
@@ -28,6 +30,11 @@ public class PedidoFacade {
 	public void salvar(Pedido pedido) throws Exception {
 		this.pedidoBo = new PedidoBo();
 		this.pedidoBo.salvar(pedido);
+	}
+	
+	public List<Pedido> listar(String pesquisa, int id) throws Exception{
+		this.pedidoBo = new PedidoBo();
+		return this.pedidoBo.listar(pesquisa, id);
 	}
 	
 	

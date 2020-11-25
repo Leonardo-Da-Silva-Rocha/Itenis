@@ -1,6 +1,9 @@
 package br.edu.unifacear.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.edu.unifacear.classes.ItemPedido;
 import util.copy.Conexao;
@@ -38,6 +41,26 @@ public class ItemPedidoDao {
 
 			throw new Exception("Erro ao alterar item do pedido");
 		}
+
+	}
+	
+	public List<ItemPedido> listar(int id) {
+
+		EntityManager em = Fabrica.getEntityManager();
+
+		List<ItemPedido> lista = null;
+
+		Query consulta = null;
+
+		em.getTransaction().begin();
+
+		consulta = em.createQuery("SELECT p FROM ItemPedido p WHERE p.pedido.idPedido = " + id);
+
+		em.getTransaction().commit();
+
+		lista = consulta.getResultList();
+
+		return lista;
 
 	}
 

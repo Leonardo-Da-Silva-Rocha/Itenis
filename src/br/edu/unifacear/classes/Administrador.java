@@ -3,21 +3,19 @@ package br.edu.unifacear.classes;
 import java.util.List;
 
 import javax.persistence.*;
+
 @Entity
 public class Administrador implements EntityBase {
-	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int idAdministrador;
-	
+
 	private String nome;
 	private String senha;
-	
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "administrador")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "administrador")
 	private List<Vendedor> vendedor;
-	
-	
 
 	public int getIdAdministrador() {
 		return idAdministrador;
@@ -52,13 +50,11 @@ public class Administrador implements EntityBase {
 	}
 
 	public Administrador() {
-		
+
 	}
 
-	
-
 	public Administrador(int idAdministrador, String nome, String senha, List<Vendedor> vendedor) {
-		
+
 		this.idAdministrador = idAdministrador;
 		this.nome = nome;
 		this.senha = senha;
@@ -72,11 +68,8 @@ public class Administrador implements EntityBase {
 
 	@Override
 	public int getId() {
-		
+
 		return this.idAdministrador;
 	}
 
-	
-	
-	
 }

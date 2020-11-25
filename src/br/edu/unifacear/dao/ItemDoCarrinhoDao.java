@@ -27,6 +27,9 @@ public class ItemDoCarrinhoDao {
 			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i WhERE i.calcado.idCalcado = calcado_idCalcado");
 			 
 		}
+		else if(pesquisa.equals("meusItens")) {
+			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i WHERE i.carrinho.idCarrinho = " + parametro.getCarrinho().getIdCarrinho());
+		}
 		
 		else if(pesquisa.equals("itens")) {
 			consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i INNER JOIN Calcado c on i.calcado.idCalcado = c.idCalcado WHERE i.idItemDoCarrinho = "+parametro.getId());

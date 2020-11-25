@@ -9,12 +9,14 @@ import br.edu.unifacear.dao.GenericDao;
 public class EnderecoBo {
 	
 	public void salvar(Endereco endereco) throws Exception {
-		
-		if(endereco.getNumero() != -0) {
+		System.out.println("oi");
+		if(endereco.getNumero() != 0) {
+			System.out.println("save");
 			new GenericDao().saveOrUpdate(endereco);
 			endereco = new Endereco();
 		}
 		else {
+			System.out.println("erro");
 			endereco = new Endereco();
 		}
 		

@@ -1,5 +1,7 @@
 package br.edu.unifacear.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +21,9 @@ import br.edu.unifacear.facade.CadastrarClienteFacade;
 import br.edu.unifacear.facade.CalcadoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.CriarPedidoFacade;
+import br.edu.unifacear.facade.EnderecoFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
-
+import br.edu.unifacear.facade.PedidoFacade;
 import br.edu.unifacear.facade.VendedorFacade;
 
 @ManagedBean(name = "clienteBean")
@@ -38,8 +41,26 @@ public class ClienteController {
 	private Cliente cliente;
 	private String pesquisa;
 	private Calcado calcadoSelecionado;
+	private List<Pedido> pedidos;
 	private List<ItemPedido> itensDoPedido;
 	private List<ItemDoCarrinho> itens;
+	private String formaPagamento;
+
+	public String getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public ItemPedido getItemPedido() {
 		return itemPedido;
@@ -148,6 +169,7 @@ public class ClienteController {
 
 	public ClienteController() {
 
+		this.pedidos = new ArrayList<>();
 		this.itemPedido = new ItemPedido();
 		this.itensDoPedido = new ArrayList<>();
 		this.pedido = new Pedido();
@@ -190,9 +212,10 @@ public class ClienteController {
 
 			this.item.setCalcado(this.calcadoSelecionado);
 			this.item.setCarrinho(this.cliente.getCarrinho());
-			this.item.setQuantidade(this.quantidade);
+			this.item.setQuantidade(1);
 			itemFacade.adicionarProduto(item, this.calcadoSelecionado);
-
+			this.itens.add(this.item);
+			this.cliente.getCarrinho().setItem(this.itens);
 			atualizar();
 
 		} catch (Exception e) {
@@ -367,6 +390,7 @@ public class ClienteController {
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			System.out.println("erro");
 			return "TelaInicial.xhtml";
 		}
 
@@ -397,20 +421,58 @@ public class ClienteController {
 
 		}
 
-		deletarItensDoCarrinho();
-
 	}
 
 	public void deletarItensDoCarrinho() throws Exception {
 
 		ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
-
+		
+		this.cliente.getCarrinho().getItem().removeAll(cliente.getCarrinho().getItem());
+		this.cliente.getCarrinho().setItem(facade.listar("meusItens", this.item));
+			
 		for (ItemDoCarrinho i : this.cliente.getCarrinho().getItem()) {
-
 			facade.remover(i);
-
+			this.cliente.getCarrinho().getItem().remove(i);
 		}
+	}
+
+	public void EnderecoCliente() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		EnderecoFacade facade = new EnderecoFacade();
+		try {
+			facade.salvar(this.cliente.getEndereco());
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+	}
+
+	public void finalizar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		PedidoFacade facade = new PedidoFacade();
+		try {
+			
+			dataEntrega();
+			this.pedido.setFormaPagamento(this.formaPagamento);
+			this.pedido.setStatus(true);
+			this.pedido.setEndereco(this.cliente.getEndereco());
+			
+			facade.salvar(pedido);
+			deletarItensDoCarrinho();
+
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+		
+		
 
 	}
 
+	public void dataEntrega() {
+		System.out.println(this.formaPagamento);
+		LocalDate localDate = LocalDate.now().plusDays(7);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+		String formato = formatter.format(localDate);
+		this.pedido.setDataDeEntrega(formato);
+			
+	}
 }

@@ -34,4 +34,9 @@ public class ItemCarrinhoFacade {
 		this.item = new ItemDoCarrinhoBo();
 		this.item.remover(item);
 	}
+	
+	public List<ItemDoCarrinho> listar(String pesquisa, ItemDoCarrinho item) throws Exception {
+		this.item = new ItemDoCarrinhoBo();
+		return this.item.listar(pesquisa, item);
+	}
 }	

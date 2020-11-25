@@ -12,7 +12,7 @@ import br.edu.unifacear.classes.Pedido;
 
 public class PedidoDao {
 	
-	public List<Pedido> listar(String pesquisa, Pedido pedido){
+	public List<Pedido> listar(String pesquisa, int id){
 		
 		
 		EntityManager em = Fabrica.getEntityManager();
@@ -24,7 +24,7 @@ public class PedidoDao {
 		em.getTransaction().begin();
 		
 		if(pesquisa.equals("meuPedido")) {
-			consulta = em.createQuery("SELECT p FROM Pedido p WHERE p.idPedido = "+pedido.getId());
+			consulta = em.createQuery("SELECT p FROM Pedido p WHERE p.cliente.idCliente = "+id);
 		}
 		
 		em.getTransaction().commit();

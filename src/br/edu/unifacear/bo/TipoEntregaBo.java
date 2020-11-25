@@ -39,4 +39,12 @@ public class TipoEntregaBo {
 		}
 	}
 	
+	public List<TipoEntrega> listar(String pesquisa, TipoEntrega tipo) throws Exception{
+		try {
+			return new TipoEntregaDao().listar(pesquisa, tipo);
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 }
