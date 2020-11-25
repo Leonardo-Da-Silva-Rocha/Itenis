@@ -2,9 +2,9 @@ package br.edu.unifacear.bo;
 
 import java.util.List;
 
-import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.classes.ItemPedido;
 import br.edu.unifacear.dao.GenericDao;
+import br.edu.unifacear.dao.ItemPedidoDao;
 
 public class ItemPedidoBo {
 
@@ -20,7 +20,7 @@ public class ItemPedidoBo {
 
 	public List<ItemPedido> listar(int id) throws Exception {
 		try {
-			return new ItemPedidoBo().listar(id);
+			return new ItemPedidoDao().listar(id);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

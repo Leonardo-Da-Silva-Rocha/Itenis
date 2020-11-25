@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.unifacear.classes.Endereco;
@@ -24,7 +23,16 @@ public class PedidoController {
 	private TipoEntrega tipoEntrega;
 	private List<TipoEntrega> tipos;
 	private List<ItemPedido> itens;
+	private List<Pedido> pedidos;
 	private ItemPedido item;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -89,7 +97,7 @@ public class PedidoController {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		try {
-			System.out.println(this.item.getId()+"skad");
+			System.out.println(this.item.getId() + "skad");
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));

@@ -23,6 +23,7 @@ import br.edu.unifacear.facade.ClienteFacade;
 import br.edu.unifacear.facade.CriarPedidoFacade;
 import br.edu.unifacear.facade.EnderecoFacade;
 import br.edu.unifacear.facade.ItemCarrinhoFacade;
+import br.edu.unifacear.facade.ItemPedidoFacade;
 import br.edu.unifacear.facade.PedidoFacade;
 import br.edu.unifacear.facade.VendedorFacade;
 
@@ -45,6 +46,15 @@ public class ClienteController {
 	private List<ItemPedido> itensDoPedido;
 	private List<ItemDoCarrinho> itens;
 	private String formaPagamento;
+	private List<ItemPedido> comprasCliente;
+
+	public List<ItemPedido> getComprasCliente() {
+		return comprasCliente;
+	}
+
+	public void setComprasCliente(List<ItemPedido> comprasCliente) {
+		this.comprasCliente = comprasCliente;
+	}
 
 	public String getFormaPagamento() {
 		return formaPagamento;
@@ -168,7 +178,7 @@ public class ClienteController {
 	}
 
 	public ClienteController() {
-
+		this.comprasCliente = new ArrayList<>();
 		this.pedidos = new ArrayList<>();
 		this.itemPedido = new ItemPedido();
 		this.itensDoPedido = new ArrayList<>();
@@ -177,6 +187,7 @@ public class ClienteController {
 		this.calcadoSelecionado = new Calcado();
 		this.item = new ItemDoCarrinho();
 		this.cliente = new Cliente();
+
 		this.total = 0.0;
 		this.pesquisa = "";
 		this.login = 0;
@@ -253,6 +264,7 @@ public class ClienteController {
 						this.total = 0.0;
 
 						valorTotal();
+						comprasCliente();
 
 						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "cli", ""));
 
@@ -426,10 +438,10 @@ public class ClienteController {
 	public void deletarItensDoCarrinho() throws Exception {
 
 		ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
-		
+
 		this.cliente.getCarrinho().getItem().removeAll(cliente.getCarrinho().getItem());
 		this.cliente.getCarrinho().setItem(facade.listar("meusItens", this.item));
-			
+
 		for (ItemDoCarrinho i : this.cliente.getCarrinho().getItem()) {
 			facade.remover(i);
 			this.cliente.getCarrinho().getItem().remove(i);
@@ -450,20 +462,18 @@ public class ClienteController {
 		FacesContext context = FacesContext.getCurrentInstance();
 		PedidoFacade facade = new PedidoFacade();
 		try {
-			
+
 			dataEntrega();
 			this.pedido.setFormaPagamento(this.formaPagamento);
 			this.pedido.setStatus(true);
 			this.pedido.setEndereco(this.cliente.getEndereco());
-			
+
 			facade.salvar(pedido);
 			deletarItensDoCarrinho();
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
-		
-		
 
 	}
 
@@ -473,6 +483,28 @@ public class ClienteController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 		String formato = formatter.format(localDate);
 		this.pedido.setDataDeEntrega(formato);
-			
+
+	}
+
+	public void comprasCliente() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		PedidoFacade facade = new PedidoFacade();
+		ItemPedidoFacade i = new ItemPedidoFacade();
+		try {
+
+			this.pedidos = facade.listar("meuPedido", this.cliente.getIdCliente());
+
+			for (Pedido pedido : this.pedidos) {
+				for (ItemPedido itemPedido : i.listar(pedido.getIdPedido())) {
+
+					this.comprasCliente.add(itemPedido);
+					System.out.println(this.comprasCliente.get(0).getCalcado().getDescricao());
+				}
+			}
+
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+
 	}
 }

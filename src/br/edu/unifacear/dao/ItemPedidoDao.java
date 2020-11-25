@@ -53,7 +53,7 @@ public class ItemPedidoDao {
 		Query consulta = null;
 
 		em.getTransaction().begin();
-
+        
 		consulta = em.createQuery("SELECT p FROM ItemPedido p WHERE p.pedido.idPedido = " + id);
 
 		em.getTransaction().commit();
@@ -63,5 +63,5 @@ public class ItemPedidoDao {
 		return lista;
 
 	}
-
-}
+	
+}	
