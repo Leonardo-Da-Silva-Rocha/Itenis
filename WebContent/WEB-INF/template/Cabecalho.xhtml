@@ -34,7 +34,7 @@
 			<h:form>
 				<div  class="cor-nav-item testando">
 					<h:outputLabel style="font-size: 40px;color: #00FF7F;margin-left: 15px;font-family: 'Permanent Marker', cursive;">Itênis</h:outputLabel>
-					<h:commandLink styleClass="cor-nav-item" style="margin-right:40px;margin-left:80px;text-decoration:none">Conta</h:commandLink>
+					<a class="cor-nav-item material-icons" href="LoginCliente.xhtml" data-toggle="tooltip" data-placement="top" title="Acessar minha conta" style="margin-right:40px;margin-left:80px;text-decoration:none;">perm_identity</a>
 					<h:commandLink styleClass="cor-nav-item" action="#{imagemBean.pesquisarMasculino}" style="margin-right:40px;text-decoration:none;">Masculino</h:commandLink>
 					<h:commandLink styleClass="cor-nav-item" action="#{imagemBean.pesquisarFeminino}" style="margin-right:40px;text-decoration:none">Feminino</h:commandLink>
 					<h:commandLink styleClass="cor-nav-item" action="#{imagemBean.pesquisarInfantil}" style="margin-right:40px;text-decoration:none">Infantil</h:commandLink>
@@ -55,7 +55,11 @@
     		</h:form>
     	
 		</ul>
-		<h:outputLabel value="#{clienteBean.cliente.nome}"></h:outputLabel>
+		
+		<h:form class="form-inline" style="margin-top:10px; margin-left:10px;">
+		
+     		<h:commandLink class="btn my-2 my-sm-0" style="margin-right:15px" type="submit" value="#{clienteBean.cliente.nome}"></h:commandLink>
+    	</h:form>
 				
 	<div class="modal" id="modal-carrinho">
 		<div class="modal-dialog">
