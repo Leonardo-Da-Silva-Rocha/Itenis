@@ -434,11 +434,23 @@
 					<h5 class="modal-title">Cadastrar novo fornecedor</h5>
 				</div>
 				<div class="modal-body">
-					<label for="nome">Novo fornecedor</label>
 					<h:form>
+						<label for="nome">Novo fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
-
+						
+						<label for="nome">Código do fornecedor</label>
+						<h:inputText value="#{fornecedorBean.fornecedor.codigo}"
+							class="form-control" style="margin-bottom:10px" required="true" />	
+						
+						<label for="nome">Endereço</label>
+						<h:inputText value="#{fornecedorBean.fornecedor.endereco}"
+							class="form-control" style="margin-bottom:10px" required="true" />	
+							
+						<label for="nome">Telefone</label>	
+						<h:inputText value="#{fornecedorBean.fornecedor.telefone}"
+							class="form-control" style="margin-bottom:10px" required="true" />	
+						
 						<p:dataList value="#{fornecedorBean.fornecedores}"
 							var="fornecedor" >
 							<f:facet name="header">

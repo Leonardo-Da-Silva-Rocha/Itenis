@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Cadastrar novo vendedor</title>
-	<link rel="StyleSheet" type="text/css" href="css/style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastrar Administrador</title>
+<link rel="StyleSheet" type="text/css" href="css/style.css" />
 </h:head>
 <h:body id="cor-body">
 	<b:navBar fluid="true" styleClass="cor-navBar" position="inline">
@@ -21,22 +21,22 @@
 		<h:form>
 			<h3>Dados pessoais</h3>
 			<b:row>
-				<b:inputText value="#{vendedorBean.vendedor.nome}" span="6" placeholder="Seu nome" label="Nome" required="true"></b:inputText>
-				<b:inputText value="#{vendedorBean.vendedor.cpf}" span="6" placeholder="CPF" label="CPF" required="true"></b:inputText>
+				<b:inputText value="#{admBean.administrador.nome}" span="6" placeholder="Seu nome" label="Nome" required="true"></b:inputText>
+				<b:inputText value="#{admBean.administrador.cpf}" span="6" placeholder="CPF" label="CPF" required="true"></b:inputText>
 			</b:row>
 			<b:row>
-				<b:inputText value="#{vendedorBean.vendedor.email}" span="6"
+				<b:inputText value="#{admBean.administrador.email}" span="6"
 					placeholder="E-mail" label="E-mail" required="true"></b:inputText>
-				<b:inputText value="#{vendedorBean.vendedor.telefone}" span="6"
+				<b:inputText value="#{admBean.administrador.telefone}" span="6"
 					placeholder="Telefone" label="Telefone" required="true"></b:inputText>	
 					
 			</b:row>
 
 			<h3>Cria uma senha</h3>
 			<b:row>
-				<b:inputSecret value="#{vendedorBean.vendedor.senha}" span="6"
+				<b:inputSecret value="#{admBean.administrador.senha}" span="6"
 					placeholder="Senha" label="Senha" required="true"></b:inputSecret>
-				<b:inputSecret value="#{vendedorBean.vendedor.confirmarSenha}"
+				<b:inputSecret value="#{admBean.administrador.confirmarSenha}"
 					span="6" placeholder="Confirme sua senha"
 					label="Confirme sua senha" required="true"></b:inputSecret>
 			</b:row>
@@ -50,10 +50,10 @@
 			</b:row>
 		</h:form>
 	</b:container>
-<div id="footer">
-				<ui:insert name="footer">
-					<ui:include src="/WEB-INF/template/Rodape.xhtml" />
-				</ui:insert>
-			</div>	
+	<div id="footer">
+		<ui:insert name="footer">
+			<ui:include src="/WEB-INF/template/Rodape.xhtml" />
+		</ui:insert>
+	</div>
 </h:body>
 </html>
