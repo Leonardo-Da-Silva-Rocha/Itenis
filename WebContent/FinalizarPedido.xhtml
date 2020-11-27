@@ -81,14 +81,18 @@
 			</h:panelGrid>
 
 			<h:panelGrid class="d-flex justify-content-center" columns="2" style="margin-bottom:10px" cellpadding="5">
-				  <p:commandButton value="Tipo de entrega" type="button" onclick="PF('dlg3').show();" /> 
+				  <p:commandButton value="Escolher forma de envio" type="button" onclick="PF('dlg3').show();" /> 
 			</h:panelGrid>
-			
-			<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
-    			<p:selectOneMenu id="tipo-entrega" var="p" style="width:125px" dir="rtl">
-              		 <f:selectItem itemLabel="" itemValue="" />
-       			</p:selectOneMenu>
-       			<p:commandButton value="Salvar"></p:commandButton>
+
+			<p:dialog style="max-width:300px; height:500px; text-align:center;" header="Formas de envio" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+				<p:dataTable var="t" value="#{tipoEntregaBean.tipos}">
+					<p:column>
+						<h:commandLink value="#{t.descricao}" style="text-decoration:none">
+							<f:setPropertyActionListener value="#{t}" target="#{clienteBean.pedido.tipo}" />
+						</h:commandLink>
+					</p:column>
+				</p:dataTable>
+
 			</p:dialog>
 
 			<p:panelGrid columns="4" layout="grid"

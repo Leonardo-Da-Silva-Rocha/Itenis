@@ -97,7 +97,9 @@ public class TipoEntregaController {
 
 		for (TipoEntrega lista : new TipoEntregaDao().listar("todos", new TipoEntrega())) {
 			this.entregas.add("ID = " + lista.getId() + " Descrição: " + lista.getDescricao());
+			this.tipos.add(lista);
 		}
+		
 	}
 
 	
