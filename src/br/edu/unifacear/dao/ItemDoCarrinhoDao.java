@@ -28,7 +28,7 @@ public class ItemDoCarrinhoDao {
 			 
 		}
 		else if(pesquisa.equals("meusItens")) {
-			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i WHERE i.carrinho.idCarrinho = " + parametro.getCarrinho().getIdCarrinho());
+			 consulta = em.createQuery("SELECT i FROM ItemDoCarrinho i INNER JOIN Carrinho c ON i.carrinho.idCarrinho = c.idCarrinho WHERE c.idCarrinho = " + parametro.getCarrinho().getIdCarrinho());
 		}
 		
 		else if(pesquisa.equals("itens")) {

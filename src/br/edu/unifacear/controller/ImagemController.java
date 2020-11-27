@@ -3,12 +3,15 @@ package br.edu.unifacear.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import br.edu.unifacear.classes.Calcado;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.facade.CalcadoFacade;
+import net.bytebuddy.asm.Advice.This;
 
 @ManagedBean(name = "imagemBean")
 @RequestScoped
@@ -215,6 +218,38 @@ public class ImagemController {
 
 		this.calcado = calcados;
 
+	}
+
+	public void alterar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+
+			CalcadoFacade facade = new CalcadoFacade();
+
+			facade.alterar(this.CalcadoSelecionado);
+
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado alterado com sucesso", ""));
+
+		} catch (Exception e) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao alterar", "Verifique confira os campos"));
+		}
+	}
+
+	public void excluir() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+
+			CalcadoFacade facade = new CalcadoFacade();
+			this.calcado.remove(this.CalcadoSelecionado);
+			facade.excluir(this.CalcadoSelecionado);
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado alterado com sucesso", ""));
+
+		} catch (Exception e) {
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao alterar", "Verifique confira os campos"));
+		}
 	}
 
 }

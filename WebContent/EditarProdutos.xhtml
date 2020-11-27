@@ -21,42 +21,51 @@
 			<ui:include src="/WEB-INF/template/Cabecalho.xhtml" />
 		</ui:insert>
 	</div>
-	<div style="margin:15px">
-		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">EDITAR PRODUTO</h3>
-		
-		<p:dataTable var="produto" value="#{imagemBean.calcado}">
-			<p:column headerText="Imagem" style="text-align:center">
-				  <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
-			</p:column>
-		
-			<p:column headerText="Descrição" style="text-align:center">
-				<h:inputText value="#{produto.descricao}"></h:inputText>
-			</p:column>
+	<h:form>
+		<div style="margin: 15px">
+			<h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px">EDITAR
+				PRODUTO</h3>
 
-			<p:column headerText="Quantidade" style="text-align:center">
-				<h:inputText value="#{produto.quantidade}"></h:inputText>
-			</p:column>
+			<p:dataTable var="produto" value="#{imagemBean.calcado}">
+				<p:column headerText="Imagem" style="text-align:center">
+					<h:graphicImage library="imagens" name="#{produto.imagem}"
+						style="width:150px; heigth:50px;"></h:graphicImage>
+				</p:column>
 
-			<p:column headerText="Valor Unitário" style="text-align:center">
-				<h:inputText value="#{produto.valor}"></h:inputText>
-			</p:column>
+				<p:column headerText="Descrição" style="text-align:center">
+					<h:inputText value="#{produto.descricao}"></h:inputText>
+				</p:column>
 
-			<p:column headerText="Numeração" style="text-align:center">
-				<h:inputText value="#{produto.numero}"></h:inputText>
-			</p:column>
-			<p:column headerText="Editar / Excluir" style="text-align:center">
-			<h:form>
-				<h:commandLink  value="Salvar" style="color:#0000FF;" data-toggle="tooltip" data-placement="top" title="Salvar alterações"> </h:commandLink>
-       
-			</h:form>
-				
-			</p:column>
-		</p:dataTable>
-	</div>
+				<p:column headerText="Quantidade" style="text-align:center">
+					<h:inputText value="#{produto.quantidade}"></h:inputText>
+				</p:column>
 
+				<p:column headerText="Valor Unitário" style="text-align:center">
+					<h:inputText value="#{produto.valor}"></h:inputText>
+				</p:column>
 
+				<p:column headerText="Numeração" style="text-align:center">
+					<h:inputText value="#{produto.numero}"></h:inputText>
+				</p:column>
+				<p:column headerText="Editar / Excluir" style="text-align:center">
 
-
+					<h:commandLink action="#{imagemBean.alterar}" value="Salvar"
+						style="color:#0000FF;" data-toggle="tooltip" data-placement="top"
+						title="Salvar alterações">
+						<f:setPropertyActionListener value="#{produto}"
+							target="#{imagemBean.calcadoSelecionado}" />
+					</h:commandLink>
+					
+					<h:commandLink action="#{imagemBean.excluir}" value=" / Excluir"
+						style="color:#0000FF;" data-toggle="tooltip" data-placement="top"
+						title="Salvar alterações">
+						<f:setPropertyActionListener value="#{produto}"
+							target="#{imagemBean.calcadoSelecionado}" />
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+		</div>
+	</h:form>
 	<div id="footer">
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/Rodape.xhtml" />

@@ -98,6 +98,7 @@ public class CalcadoController {
 
 	}
 
+
 	public void importa() throws Exception {
 
 		try {
@@ -124,12 +125,10 @@ public class CalcadoController {
 			while ((read = in.read(bytes)) != -1) {
 				out.write(bytes, 0, read);
 			}
-			
-			
+
 			in.close();
 			out.flush();
 			out.close();
-			
 
 			System.out.println("Novo arquivo criado '" + fileName + "'!");
 		} catch (IOException e) {
@@ -162,7 +161,8 @@ public class CalcadoController {
 
 	public void gerarTxt() throws IOException {
 
-		Path caminho = Paths.get("C://Users//Leonardo//eclipse-workspace//Integrador_WEB//WebContent//resources//imagens//nomeImagem.txt");
+		Path caminho = Paths.get(
+				"C://Users//Leonardo//eclipse-workspace//Integrador_WEB//WebContent//resources//imagens//nomeImagem.txt");
 		String texto = this.nomeArquivo;
 
 		byte[] textoEmByte = texto.getBytes();
@@ -179,7 +179,8 @@ public class CalcadoController {
 
 	public void lerTxt() {
 
-		Path caminho = Paths.get("C://Users//Leonardo//eclipse-workspace//Integrador_WEB//WebContent//resources//imagens//nomeImagem.txt");
+		Path caminho = Paths.get(
+				"C://Users//Leonardo//eclipse-workspace//Integrador_WEB//WebContent//resources//imagens//nomeImagem.txt");
 		try {
 
 			byte[] texto = Files.readAllBytes(caminho);

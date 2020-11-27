@@ -9,56 +9,39 @@ import javax.faces.context.FacesContext;
 import br.edu.unifacear.classes.Vendedor;
 import br.edu.unifacear.facade.VendedorFacade;
 
-
-@ManagedBean(name="vendedorBean")
+@ManagedBean(name = "vendedorBean")
 @SessionScoped
 public class VendedorController {
-	
+
 	private Vendedor vendedor;
-	
-	
+
 	public Vendedor getVendedor() {
 		return vendedor;
 	}
-
-
-
 
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
 
-
 	public VendedorController() {
 		this.vendedor = new Vendedor();
-		
+
 	}
-	
-	
-	
+
 	public void salvar() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+
 		try {
-			
-			
+
 			VendedorFacade facade = new VendedorFacade();
 			facade.inserirVendedor(vendedor);
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Vendedor Salvo com sucesso",""));
-			
-		}catch(Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					e.getMessage(),""));
-		}
-		
-		
-		
-		
-	}
-	
-	
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vendedor Salvo com sucesso", ""));
 
-	
+		} catch (Exception e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
+
+	}
+
 }

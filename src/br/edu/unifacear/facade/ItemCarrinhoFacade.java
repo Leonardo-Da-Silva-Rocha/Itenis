@@ -1,10 +1,12 @@
 package br.edu.unifacear.facade;
 
+
+
 import java.util.List;
 
 import br.edu.unifacear.bo.ItemDoCarrinhoBo;
 import br.edu.unifacear.classes.Calcado;
-import br.edu.unifacear.classes.Carrinho;
+
 import br.edu.unifacear.classes.ItemDoCarrinho;
 
 public class ItemCarrinhoFacade {

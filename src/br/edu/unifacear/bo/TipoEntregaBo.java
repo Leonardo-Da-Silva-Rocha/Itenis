@@ -46,5 +46,7 @@ public class TipoEntregaBo {
 			throw new Exception(e.getMessage());
 		}
 	}
+
+	
 	
 }

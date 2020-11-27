@@ -28,6 +28,9 @@ public class ClienteDao {
 			 consulta = em.createQuery("SELECT c FROM Cliente c");
 			 
 		}
+		else if(pesquisa.equals("cpf")) {
+			 consulta = em.createQuery("SELECT c FROM Cliente c WHERE c.cpf = " + parametro.getCpf());
+		}
 		
 		
 		

@@ -9,94 +9,71 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Comissao implements EntityBase{
-	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+public class Comissao implements EntityBase {
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private int idComissao;
-	
+
 	private Double dinheiro;
 	private Double porcentagem;
-	private Date dataPagamento;
-	
+	private String dataPagamento;
+
 	@OneToOne
 	private Vendedor vendedor;
-
 
 	public int getIdComissao() {
 		return idComissao;
 	}
 
-
-
 	public void setIdComissao(int idComissao) {
 		this.idComissao = idComissao;
 	}
-
-
 
 	public Double getDinheiro() {
 		return dinheiro;
 	}
 
-
-
 	public void setDinheiro(Double dinheiro) {
 		this.dinheiro = dinheiro;
 	}
-
-
 
 	public Double getPorcentagem() {
 		return porcentagem;
 	}
 
-
-
 	public void setPorcentagem(Double porcentagem) {
 		this.porcentagem = porcentagem;
 	}
 
-
-
-	public Date getDataPagamento() {
+	public String getDataPagamento() {
 		return dataPagamento;
 	}
 
-
-
-	public void setDataPagamento(Date dataPagamento) {
+	public void setDataPagamento(String dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
-
-
 
 	public Vendedor getVendedor() {
 		return vendedor;
 	}
 
-
-
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
 
-	
 	public Comissao() {
-		
+
 	}
 
+	public Comissao(int idComissao, Double dinheiro, Double porcentagem, String dataPagamento, Vendedor vendedor) {
 
-	public Comissao(int idComissao, Double dinheiro, Double porcentagem, Date dataPagamento, Vendedor vendedor) {
-		
 		this.idComissao = idComissao;
 		this.dinheiro = dinheiro;
 		this.porcentagem = porcentagem;
 		this.dataPagamento = dataPagamento;
 		this.vendedor = vendedor;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -104,12 +81,10 @@ public class Comissao implements EntityBase{
 				+ ", dataPagamento=" + dataPagamento + ", vendedor=" + vendedor + "]";
 	}
 
-
-
 	@Override
 	public int getId() {
 		// TODO Auto-generated method stub
-		return this.getId();
+		return this.idComissao;
 	}
-	
+
 }

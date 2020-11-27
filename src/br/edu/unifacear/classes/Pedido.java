@@ -39,6 +39,8 @@ public class Pedido implements EntityBase {
 
 	private String formaPagamento;
 
+	
+	
 	public String getFormaPagamento() {
 		return formaPagamento;
 	}
