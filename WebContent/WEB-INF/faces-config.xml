@@ -17,7 +17,6 @@
       <from-outcome>vend</from-outcome>
       <to-view-id>/TelaPrincipalVendedor.xhtml</to-view-id>
     </navigation-case>
- 
   </navigation-rule>
   
   <navigation-rule>
@@ -31,21 +30,23 @@
       <from-outcome>login</from-outcome>
       <to-view-id>/LoginCliente.xhtml</to-view-id>
     </navigation-case>
-    
   </navigation-rule>
   
   <navigation-rule>
-  
     <from-view-id>/TelaPrincipalVendedor.xhtml</from-view-id>
     <navigation-case>
       <from-outcome>cadastro</from-outcome>
       <to-view-id>/CadastrarVendendor.xhtml</to-view-id>
     </navigation-case>
- 	
- 	   
-    
   </navigation-rule>
   
+    <navigation-rule>
+    <from-view-id>/FinalizarPedido.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>finalizar</from-outcome>
+      <to-view-id>/MinhasCompras.xhtml</to-view-id>
+    </navigation-case>
+  </navigation-rule>
   
 
 

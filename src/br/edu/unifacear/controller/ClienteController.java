@@ -518,7 +518,7 @@ public class ClienteController {
 		}
 	}
 
-	public void finalizar() {
+	public String finalizar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		PedidoFacade facade = new PedidoFacade();
 		try {
@@ -538,11 +538,14 @@ public class ClienteController {
 
 			facade.salvar(pedido);
 			deletarItemDoCarrinho();
-
+			
+			return "finalizar";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "FinalizarPedido.xhtml";
 		}
-
+		
+		
 	}
 
 	public void dataEntrega() {

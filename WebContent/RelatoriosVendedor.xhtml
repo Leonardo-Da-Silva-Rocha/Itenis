@@ -185,6 +185,11 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="id-modal-excluir-entregas" href="#">Excluir</a>
 			</div></li>
+		<h:form>
+			<li class="nav-item testando"><h:commandLink
+					action="#{clienteBean.telaVendedor}" class="nav-link cor-nav-item">Cadastrar Vendedor</h:commandLink>
+			</li>
+		</h:form>
 	</ol>
 
 
@@ -657,41 +662,36 @@
 	</div>
 	<!-- FIM MODAL EXCLUIR TIPOS DE ENTREGA -->
 	<div style="margin:15px">
-		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">Produtos Vendidos</h3>
+		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">Relatório</h3>
 		
 		<h:form>
-		<p:dataTable var="produto" value="#{clienteBean.comissao}" frame="box"
-                rules="all" widgetVar="VeiculoTable" cellpadding="3" paginator="true"
-                paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
-                {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                rowsPerPageTemplate="15,30,45">
-                
-			<p:column headerText="Imagem" style="text-align:center">
-				  
-			</p:column>
 		
-			<p:column headerText="Descrição" style="text-align:center" filterBy="#{produto.descricao}" filterMatchMode="contains">
-				<h:outputText value="#{produto.dinheiro}"></h:outputText>
+		<p:dataTable var="produto" value="#{clienteBean.comissao}">
+                
+			<p:column headerText="Data da venda" style="text-align:center" filterBy="#{produto.dataPagamento}" filterMatchMode="contains">
+				<h:outputLabel value="#{produto.dataPagamento}"></h:outputLabel>
 			</p:column>
-
-			<p:column headerText="Quantidade" style="text-align:center" >
-				<h:outputLabel value="#{produto.porcentagem}"></h:outputLabel>
-			</p:column>
-
-			<p:column headerText="Valor Unitário" style="text-align:center" filterBy="#{produto.valor}" filterMatchMode="contains">
-				<h:outputLabel value="#{clienteBean.valorTotalComissao}"></h:outputLabel>
-			</p:column>
-
-			<p:column headerText="Numeração" style="text-align:center">
+			
+			<p:column headerText="Valor total da venda" style="text-align:center">
 				<h:outputLabel value="#{produto.dinheiro}"></h:outputLabel>
 			</p:column>
-			<p:column headerText="Comissão" style="text-align:center">
-			<h:form>
-				<h:outputLabel value="COMISSÃO POR CADA ITEM VENDIDO"></h:outputLabel>
-			</h:form>
-				
+
+			<p:column headerText="Comissão por venda"
+				style="text-align:center">
+				<h:form>
+					<h:outputLabel value="#{produto.porcentagem}"></h:outputLabel>
+				</h:form>
 			</p:column>
-		</p:dataTable>
+				
+			<p:column headerText="Total de comissões"
+				style="text-align:center">
+				<h:form>
+					<h:outputLabel value="#{clienteBean.valorTotalComissao}"></h:outputLabel>
+				</h:form>
+			</p:column>
+				
+
+			</p:dataTable>
 		</h:form>
 	</div>
 	

@@ -185,13 +185,12 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="id-modal-excluir-entregas" href="#">Excluir</a>
 			</div></li>
-			
-			<h:form>
-			<li class="nav-item testando"><h:commandLink action="#{clienteBean.telaVendedor}"
-			class="nav-link cor-nav-item"
-			>Cadastrar Vendedor</h:commandLink>
+
+		<h:form>
+			<li class="nav-item testando"><h:commandLink
+					action="#{clienteBean.telaVendedor}" class="nav-link cor-nav-item">Cadastrar Vendedor</h:commandLink>
 			</li>
-			</h:form>
+		</h:form>
 	</ol>
 	
 	
@@ -683,7 +682,7 @@
 		 <h:form class="form-inline" style="margin-bottom:10px">
      		<a class="btn my-2 my-sm-0" style="background: #00FF7F; margin-right:15px" type="submit" href="CadastroNovosProdutos.xhtml">Cadastrar novo produto</a>
      		<h:commandLink action="#{clienteBean.vendedorCompra}" class="btn my-2 my-sm-0" style="background: #00FF7F; margin-right:15px" data-toggle="tooltip" data-placement="top" title="Primeiramente digite o CPF do cliente">Efetuar pedido para clientes</h:commandLink>
-     		<h:inputText class="btn my-2 my-sm-0" value="#{clienteBean.cliente.cpf}">
+     		<h:inputText class="btn my-2 my-sm-0" style="border: 0.5px solid black" value="#{clienteBean.cliente.cpf}">
      			
      		</h:inputText>
     	</h:form>
