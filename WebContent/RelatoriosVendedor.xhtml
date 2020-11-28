@@ -660,30 +660,30 @@
 		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">Produtos Vendidos</h3>
 		
 		<h:form>
-		<p:dataTable var="produto" value="#{imagemBean.calcado}" frame="box"
+		<p:dataTable var="produto" value="#{clienteBean.comissao}" frame="box"
                 rules="all" widgetVar="VeiculoTable" cellpadding="3" paginator="true"
                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
                 {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                 rowsPerPageTemplate="15,30,45">
                 
 			<p:column headerText="Imagem" style="text-align:center">
-				  <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
+				  
 			</p:column>
 		
 			<p:column headerText="Descrição" style="text-align:center" filterBy="#{produto.descricao}" filterMatchMode="contains">
-				<h:outputText value="#{produto.descricao}"></h:outputText>
+				<h:outputText value="#{produto.dinheiro}"></h:outputText>
 			</p:column>
 
 			<p:column headerText="Quantidade" style="text-align:center" >
-				<h:outputLabel value="#{produto.quantidade}"></h:outputLabel>
+				<h:outputLabel value="#{produto.porcentagem}"></h:outputLabel>
 			</p:column>
 
 			<p:column headerText="Valor Unitário" style="text-align:center" filterBy="#{produto.valor}" filterMatchMode="contains">
-				<h:outputLabel value="#{produto.valor}"></h:outputLabel>
+				<h:outputLabel value="#{clienteBean.valorTotalComissao}"></h:outputLabel>
 			</p:column>
 
 			<p:column headerText="Numeração" style="text-align:center">
-				<h:outputLabel value="#{produto.numero}"></h:outputLabel>
+				<h:outputLabel value="#{produto.dinheiro}"></h:outputLabel>
 			</p:column>
 			<p:column headerText="Comissão" style="text-align:center">
 			<h:form>

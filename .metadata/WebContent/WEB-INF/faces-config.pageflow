@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16052101898970" configfile="/Integrador_WEB/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="LoginCliente.xhtml" id="pf160521066249810" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf160521066249811" path="/LoginCliente.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="TelaInicial.xhtml" id="pf160521066249812" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf160521066249811" path="/TelaInicial.xhtml"/>
-  <links id="pf160521066249811" target="pf160521066249812" source="pf160521066249810" outcome="logado"/>
+  <nodes xsi:type="pageflow:PFPage" name="LoginCliente.xhtml" x="338" y="178" id="pf160521066249810" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf16065184344590 pf16065184344591" inlinks="pf16065184344592" path="/LoginCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="TelaInicial.xhtml" x="122" y="370" id="pf160521066249812" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf16065184344593 pf16065184344592" path="/TelaInicial.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="TelaInicial.xhtml?faces-redirect=true" x="554" y="178" id="pf16065184344594" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf16065184344590" path="/TelaInicial.xhtml?faces-redirect=true"/>
+  <nodes xsi:type="pageflow:PFPage" name="TelaPrincipalVendedor.xhtml" x="554" y="562" id="pf16065184344595" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16065184344596" inlinks="pf16065184344591" path="/TelaPrincipalVendedor.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="CarrinhoCompras.xhtml" x="338" y="562" id="pf16065184344597" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf16065184344593" path="/CarrinhoCompras.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="CadastrarVendedor.xhtml" id="pf16065184344598" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf16065184344596" path="/CadastrarVendendor.xhtml"/>
+  <links id="pf16065184344590" target="pf16065184344594" source="pf160521066249810" outcome="cli"/>
+  <links id="pf16065184344591" target="pf16065184344595" source="pf160521066249810" outcome="vend"/>
+  <links id="pf16065184344593" target="pf16065184344597" source="pf160521066249812" outcome="carrinho"/>
+  <links id="pf16065184344592" target="pf160521066249810" source="pf160521066249812" outcome="login"/>
+  <links id="pf16065184344596" target="pf16065184344598" source="pf16065184344595" outcome="cadastro"/>
 </pageflow:Pageflow>

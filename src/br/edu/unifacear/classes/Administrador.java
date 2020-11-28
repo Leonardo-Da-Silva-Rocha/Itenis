@@ -11,11 +11,39 @@ public class Administrador implements EntityBase {
 	@Id
 	private int idAdministrador;
 
+	private String cpf;
+	private String email;
 	private String nome;
 	private String senha;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "administrador")
 	private List<Vendedor> vendedor;
+
+	private String telefone;
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public int getIdAdministrador() {
 		return idAdministrador;

@@ -2,10 +2,10 @@ package br.edu.unifacear.controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.edu.unifacear.classes.Administrador;
 import br.edu.unifacear.classes.Vendedor;
 import br.edu.unifacear.facade.VendedorFacade;
 
@@ -14,6 +14,16 @@ import br.edu.unifacear.facade.VendedorFacade;
 public class VendedorController {
 
 	private Vendedor vendedor;
+	private Administrador adm;
+	
+	
+	public Administrador getAdm() {
+		return adm;
+	}
+
+	public void setAdm(Administrador adm) {
+		this.adm = adm;
+	}
 
 	public Vendedor getVendedor() {
 		return vendedor;
@@ -24,6 +34,7 @@ public class VendedorController {
 	}
 
 	public VendedorController() {
+		this.adm = new Administrador();
 		this.vendedor = new Vendedor();
 
 	}
@@ -35,6 +46,8 @@ public class VendedorController {
 		try {
 
 			VendedorFacade facade = new VendedorFacade();
+			this.adm.setIdAdministrador(1);
+			this.adm.setIdAdministrador(1);
 			facade.inserirVendedor(vendedor);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vendedor Salvo com sucesso", ""));
 

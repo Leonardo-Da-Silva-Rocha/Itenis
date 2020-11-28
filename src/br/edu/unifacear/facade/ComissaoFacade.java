@@ -1,5 +1,7 @@
 package br.edu.unifacear.facade;
 
+import java.util.List;
+
 import br.edu.unifacear.bo.ComissaoBo;
 import br.edu.unifacear.classes.Comissao;
 
@@ -22,6 +24,12 @@ public class ComissaoFacade {
 	public void salvar(Comissao comissao) {
 		this.comissaoBo = new ComissaoBo();
 		this.comissaoBo.Salvar(comissao);
+	}
+
+	public List<Comissao> listar(int parametro) throws Exception {
+		this.comissaoBo = new ComissaoBo();
+		return this.comissaoBo.listar(parametro);
+		
 	}
 
 }

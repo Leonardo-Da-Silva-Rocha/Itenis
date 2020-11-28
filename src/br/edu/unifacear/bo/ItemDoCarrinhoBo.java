@@ -88,4 +88,14 @@ public class ItemDoCarrinhoBo {
 			throw new Exception("Errro ao remover este item");
 		}
 	}
+	
+	public void readicionar(ItemDoCarrinho item) throws Exception {
+		validarQuantidade(item, item.getCalcado().getQuantidade());
+		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
+		try {
+			new GenericDao().saveOrUpdate(item);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

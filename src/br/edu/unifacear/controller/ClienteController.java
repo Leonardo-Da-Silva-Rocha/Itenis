@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.edu.unifacear.classes.Administrador;
 import br.edu.unifacear.classes.Calcado;
 import br.edu.unifacear.classes.Carrinho;
 import br.edu.unifacear.classes.Cliente;
@@ -18,6 +19,7 @@ import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.classes.ItemPedido;
 import br.edu.unifacear.classes.Pedido;
 import br.edu.unifacear.classes.Vendedor;
+import br.edu.unifacear.facade.AdministradorFacade;
 import br.edu.unifacear.facade.CadastrarClienteFacade;
 import br.edu.unifacear.facade.CalcadoFacade;
 import br.edu.unifacear.facade.ClienteFacade;
@@ -37,19 +39,47 @@ public class ClienteController {
 	private String emailUsuario;
 	private String senhaUsuario;
 	private Double total;
+	private Double valorTotalComissao;
 	private ItemPedido itemPedido;
 	private int quantidade;
 	private int idVendedor;
+	private int idAdm;
 	private ItemDoCarrinho item;
+	private ItemDoCarrinho removerItemSelecionado;
 	private Pedido pedido;
 	private Cliente cliente;
 	private String pesquisa;
 	private Calcado calcadoSelecionado;
+	private List<Comissao> comissao;
 	private List<Pedido> pedidos;
 	private List<ItemPedido> itensDoPedido;
 	private List<ItemDoCarrinho> itens;
 	private String formaPagamento;
 	private List<ItemPedido> comprasCliente;
+
+	public Double getValorTotalComissao() {
+		return valorTotalComissao;
+	}
+
+	public void setValorTotalComissao(Double valorTotalComissao) {
+		this.valorTotalComissao = valorTotalComissao;
+	}
+
+	public List<Comissao> getComissao() {
+		return comissao;
+	}
+
+	public void setComissao(List<Comissao> comissao) {
+		this.comissao = comissao;
+	}
+
+	public ItemDoCarrinho getRemoverItemSelecionado() {
+		return removerItemSelecionado;
+	}
+
+	public void setRemoverItemSelecionado(ItemDoCarrinho removerItemSelecionado) {
+		this.removerItemSelecionado = removerItemSelecionado;
+	}
 
 	public List<ItemPedido> getComprasCliente() {
 		return comprasCliente;
@@ -57,6 +87,14 @@ public class ClienteController {
 
 	public void setComprasCliente(List<ItemPedido> comprasCliente) {
 		this.comprasCliente = comprasCliente;
+	}
+
+	public int getIdAdm() {
+		return idAdm;
+	}
+
+	public void setIdAdm(int idAdm) {
+		this.idAdm = idAdm;
 	}
 
 	public String getFormaPagamento() {
@@ -189,12 +227,15 @@ public class ClienteController {
 	}
 
 	public ClienteController() {
+		this.removerItemSelecionado = new ItemDoCarrinho();
 		this.comprasCliente = new ArrayList<>();
 		this.pedidos = new ArrayList<>();
 		this.itemPedido = new ItemPedido();
+		this.valorTotalComissao = 0.0;
 		this.itensDoPedido = new ArrayList<>();
 		this.pedido = new Pedido();
 		this.itens = new ArrayList<>();
+		this.comissao = new ArrayList<>();
 		this.calcadoSelecionado = new Calcado();
 		this.item = new ItemDoCarrinho();
 		this.cliente = new Cliente();
@@ -238,6 +279,7 @@ public class ClienteController {
 			this.itens.add(this.item);
 			this.cliente.getCarrinho().setItem(this.itens);
 			atualizar();
+			valorTotal();
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -273,8 +315,8 @@ public class ClienteController {
 						this.cliente.setCarrinho(facade.carrinho(cliente).get(0));
 						this.total = 0.0;
 
-						valorTotal();
 						comprasCliente();
+						valorTotal();
 
 						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "cli", ""));
 
@@ -299,6 +341,9 @@ public class ClienteController {
 						VendedorController c = new VendedorController();
 						c.setVendedor(vendedor);
 						this.idVendedor = c.getVendedor().getIdVendedor();
+						this.comissao = new ComissaoFacade().listar(this.idVendedor);
+						totalComissao();
+
 						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "vend", ""));
 
 						return "vend";
@@ -310,6 +355,24 @@ public class ClienteController {
 
 				}
 
+			}
+
+			for (Administrador ad : new AdministradorFacade().listar(new Administrador(), "todos")) {
+
+				if (ad.getEmail().equals(this.emailUsuario)) {
+
+					if (ad.getSenha().toUpperCase().equals(this.senhaUsuario.toUpperCase())) {
+						this.idVendedor = 0;
+						System.out.println("ola");
+						this.login = 1;
+						this.idAdm = ad.getIdAdministrador();
+						return "vend";
+
+					} else {
+						context.addMessage(null,
+								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido", ""));
+					}
+				}
 			}
 
 			if (login == 0) {
@@ -371,10 +434,11 @@ public class ClienteController {
 		try {
 
 			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
-			this.cliente.getCarrinho().getItem().remove(this.item);
-			facade.remover(this.item);
 
-			atualizarEstoque(this.item);
+			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
+			facade.remover(this.removerItemSelecionado);
+
+			atualizarEstoque(this.removerItemSelecionado);
 			valorTotal();
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Item removido com sucesso!", ""));
@@ -465,6 +529,8 @@ public class ClienteController {
 			if (this.idVendedor != 0) {
 				this.pedido.setVendedor(vendedorPedido());
 				comissaoVendedor();
+			} else if (this.idAdm != 0) {
+				this.pedido.setDataDeEntrega("");
 			} else {
 
 				dataEntrega();
@@ -510,8 +576,10 @@ public class ClienteController {
 	}
 
 	public String vendedorCompra() {
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		ClienteFacade facade = new ClienteFacade();
+
 		try {
 
 			for (Cliente cli : new ClienteFacade().listar("cpf", this.cliente)) {
@@ -533,6 +601,27 @@ public class ClienteController {
 			return "TelaPrincipalVendedor.xhtml?faces-redirect=true";
 		}
 
+	}
+
+	public String telaVendedor() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		if (this.idAdm != 0) {
+
+			return "cadastro";
+		} else {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Contade um administrador para cadastrar um novo vendedor", ""));
+			return "TelaPrincipalVendedor.xhtml";
+		}
+
+	}
+
+	public void totalComissao() {
+		this.valorTotalComissao = 0.0;
+		for (Comissao comissao2 : this.comissao) {
+			this.valorTotalComissao = this.valorTotalComissao + comissao2.getPorcentagem();
+		}
 	}
 
 	public Vendedor vendedorPedido() {

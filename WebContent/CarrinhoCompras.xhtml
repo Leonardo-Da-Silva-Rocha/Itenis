@@ -93,7 +93,7 @@
                 </h:commandLink>
                 <h:commandLink  action="#{clienteBean.removerItem}"  styleClass="material-icons" style="color:#FF0000" data-toggle="tooltip" data-placement="top" title="Excluir item" >
                 	
-                	<f:setPropertyActionListener value="#{car}" target="#{clienteBean.item}" />
+                	<f:setPropertyActionListener value="#{car}" target="#{clienteBean.removerItemSelecionado}" />
                 	
                 delete_forever</h:commandLink>
               

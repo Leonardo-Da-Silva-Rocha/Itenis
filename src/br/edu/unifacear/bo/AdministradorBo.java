@@ -24,4 +24,12 @@ public class AdministradorBo {
 		
 	}
 	
+	public List<Administrador> listar(Administrador adm, String pesquisa) throws Exception{
+		try {
+			return new AdministradorDao().listar(adm, pesquisa);
+		}catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
 }

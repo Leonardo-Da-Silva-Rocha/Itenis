@@ -41,4 +41,9 @@ public class ItemCarrinhoFacade {
 		this.item = new ItemDoCarrinhoBo();
 		return this.item.listar(pesquisa, item);
 	}
+	
+	public void excluirItemCarrinho(ItemDoCarrinho item) throws Exception {
+		this.item = new ItemDoCarrinhoBo();
+		this.item.readicionar(item);
+	}
 }	
