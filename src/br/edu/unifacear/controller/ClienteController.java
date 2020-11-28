@@ -319,7 +319,7 @@ public class ClienteController {
 						comprasCliente();
 						valorTotal();
 
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
+						
 
 						return "TelaInicial.xhtml?faces-redirect=true";
 
@@ -345,7 +345,7 @@ public class ClienteController {
 						this.comissao = new ComissaoFacade().listar(this.idVendedor);
 						totalComissao();
 
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
+						
 
 						return "vend";
 
@@ -367,7 +367,7 @@ public class ClienteController {
 						System.out.println("ola");
 						this.login = 1;
 						this.idAdm = ad.getIdAdministrador();
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
+						
 						return "vend";
 
 					} else {
@@ -392,7 +392,7 @@ public class ClienteController {
 
 			return "erro";
 		}
-
+		
 	}
 
 	public void valorTotal() {
