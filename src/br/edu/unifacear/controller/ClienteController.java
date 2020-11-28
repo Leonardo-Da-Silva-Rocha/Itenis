@@ -245,7 +245,7 @@ public class ClienteController {
 		this.login = 0;
 	}
 
-	public void salvar() throws Exception {
+	public String salvar() throws Exception {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -256,10 +256,12 @@ public class ClienteController {
 			
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso", ""));
+			return "Login.xhtml?faces-redirect=true";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar ",
 					"verifique se o email ja esta em uso em nosso site e se as senhas são iguais"));
+			return"erro";
 		}
 
 	}

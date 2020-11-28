@@ -39,7 +39,7 @@ public class VendedorController {
 
 	}
 
-	public void salvar() {
+	public String salvar() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -50,9 +50,12 @@ public class VendedorController {
 			this.vendedor.setAdministrador(adm);
 			facade.inserirVendedor(vendedor);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vendedor Salvo com sucesso", ""));
+			return "TelaPrincipalVendedor.xhtml?faces-redirect=true";
+			
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "erro";
 		}
 
 	}
