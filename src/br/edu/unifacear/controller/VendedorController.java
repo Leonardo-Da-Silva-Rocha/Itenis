@@ -47,7 +47,7 @@ public class VendedorController {
 
 			VendedorFacade facade = new VendedorFacade();
 			this.adm.setIdAdministrador(1);
-			this.adm.setIdAdministrador(1);
+			this.vendedor.setAdministrador(adm);
 			facade.inserirVendedor(vendedor);
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vendedor Salvo com sucesso", ""));
 

@@ -253,9 +253,9 @@ public class ClienteController {
 
 			CadastrarClienteFacade facade = new CadastrarClienteFacade();
 			facade.salvar(this.cliente.getEndereco(), this.cliente, new Carrinho());
-
+			
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cadastrado com sucesso no site", ""));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso", ""));
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar ",
@@ -280,6 +280,7 @@ public class ClienteController {
 			this.cliente.getCarrinho().getItem().add(this.item);
 			atualizar();
 			valorTotal();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto adicionado ao carrinho", ""));
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -318,7 +319,7 @@ public class ClienteController {
 						comprasCliente();
 						valorTotal();
 
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "cli", ""));
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
 
 						return "TelaInicial.xhtml?faces-redirect=true";
 
@@ -344,7 +345,7 @@ public class ClienteController {
 						this.comissao = new ComissaoFacade().listar(this.idVendedor);
 						totalComissao();
 
-						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "vend", ""));
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
 
 						return "vend";
 
@@ -366,6 +367,7 @@ public class ClienteController {
 						System.out.println("ola");
 						this.login = 1;
 						this.idAdm = ad.getIdAdministrador();
+						context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", ""));
 						return "vend";
 
 					} else {
@@ -441,7 +443,7 @@ public class ClienteController {
 			atualizarEstoque(this.removerItemSelecionado);
 			valorTotal();
 
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Item removido com sucesso!", ""));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item removido com sucesso!", ""));
 
 		} catch (Exception e) {
 
@@ -539,6 +541,8 @@ public class ClienteController {
 			facade.salvar(pedido);
 			deletarItemDoCarrinho();
 			comprasCliente();
+			
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pedido realizado com sucesso", ""));
 			
 			return "finalizar";
 		} catch (Exception e) {

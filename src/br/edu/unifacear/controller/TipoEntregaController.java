@@ -61,11 +61,12 @@ public class TipoEntregaController {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.inserirTipoEntrega(tipo);
 			carregar();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo de entrega salvo", ""));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Tipo Salvo", ""));
+		
 	}
 
 	public void alterar() {
@@ -75,11 +76,12 @@ public class TipoEntregaController {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.alterar(tipo);
 			carregar();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Entrega Alterada", ""));
 		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, e.getMessage(), ""));
 		}
 
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Entrega Alterada", ""));
+		
 	}
 
 	public void remover() {
@@ -89,11 +91,12 @@ public class TipoEntregaController {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.remover(tipo);
 			carregar();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tipo de entrega removida", ""));
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
 
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Entrega removida", ""));
+		
 	}
 
 	public void carregar() {
