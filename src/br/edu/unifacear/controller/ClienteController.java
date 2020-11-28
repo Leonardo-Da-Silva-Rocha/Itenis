@@ -296,10 +296,10 @@ public class ClienteController {
 	}
 
 	public String loginDinamico() {
-
+		
 		FacesContext context = FacesContext.getCurrentInstance();
-
-		try {
+		String retorno = "";
+		try {	
 
 			ClienteFacade facade = new ClienteFacade();
 			VendedorFacade vend = new VendedorFacade();
@@ -346,7 +346,7 @@ public class ClienteController {
 						totalComissao();
 
 						
-
+						retorno = "vend";
 						return "vend";
 
 					} else {
@@ -364,10 +364,10 @@ public class ClienteController {
 
 					if (ad.getSenha().toUpperCase().equals(this.senhaUsuario.toUpperCase())) {
 						this.idVendedor = 0;
-						System.out.println("ola");
+						
 						this.login = 1;
 						this.idAdm = ad.getIdAdministrador();
-						
+						retorno = "vend";
 						return "vend";
 
 					} else {
@@ -384,7 +384,7 @@ public class ClienteController {
 
 			this.login = 0;
 
-			return "erro";
+			return retorno;
 
 		} catch (Exception e) {
 
