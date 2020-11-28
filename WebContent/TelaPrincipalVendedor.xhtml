@@ -187,9 +187,24 @@
 			</div></li>
 
 		<h:form>
-			<li class="nav-item testando"><h:commandLink
-					action="#{clienteBean.telaVendedor}" class="nav-link cor-nav-item">Cadastrar Vendedor</h:commandLink>
-			</li>
+		
+		<li class="nav-item dropdown testando"><a
+			class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
+			role="button" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="false">Cadastrar usuários</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			
+				<h:commandLink action="#{clienteBean.telaVendedor}" class="dropdown-item">Cadastrar Vendedor</h:commandLink>
+			
+			
+				<a class="dropdown-item" href="CadastroCliente.xhtml">Cadastrar Cliente</a> 
+				
+				
+			</div></li>
+		
+		
+		
+			
 		</h:form>
 	</ol>
 	
@@ -688,11 +703,7 @@
     	</h:form>
 		
 		<h:form>
-		<p:dataTable var="produto" value="#{imagemBean.calcado}" frame="box"
-                rules="all" widgetVar="VeiculoTable" cellpadding="3" paginator="true"
-                paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} 
-                {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                rowsPerPageTemplate="15,30,45">
+		<p:dataTable var="produto" value="#{imagemBean.calcado}">
                 
 			<p:column headerText="Imagem" style="text-align:center">
 				  <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
