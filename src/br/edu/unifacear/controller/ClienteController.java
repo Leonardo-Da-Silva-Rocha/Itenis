@@ -277,7 +277,7 @@ public class ClienteController {
 			this.item.setQuantidade(1);
 			itemFacade.adicionarProduto(item, this.calcadoSelecionado);
 			this.itens.add(this.item);
-			this.cliente.getCarrinho().setItem(this.itens);
+			this.cliente.getCarrinho().getItem().add(this.item);
 			atualizar();
 			valorTotal();
 
@@ -330,7 +330,7 @@ public class ClienteController {
 				}
 
 			}
-
+		
 			for (Vendedor vendedor : vend.listar("todos")) {
 
 				if (vendedor.getEmail().equals(this.emailUsuario)) {
@@ -538,6 +538,7 @@ public class ClienteController {
 
 			facade.salvar(pedido);
 			deletarItemDoCarrinho();
+			comprasCliente();
 			
 			return "finalizar";
 		} catch (Exception e) {
@@ -560,15 +561,17 @@ public class ClienteController {
 		FacesContext context = FacesContext.getCurrentInstance();
 		PedidoFacade facade = new PedidoFacade();
 		ItemPedidoFacade i = new ItemPedidoFacade();
+		this.comprasCliente = new ArrayList<>();
 		try {
 
 			this.pedidos = facade.listar("meuPedido", this.cliente.getIdCliente());
 
 			for (Pedido pedido : this.pedidos) {
+				
 				for (ItemPedido itemPedido : i.listar(pedido.getIdPedido())) {
 
 					this.comprasCliente.add(itemPedido);
-					System.out.println(this.comprasCliente.get(0).getCalcado().getDescricao());
+					
 				}
 			}
 

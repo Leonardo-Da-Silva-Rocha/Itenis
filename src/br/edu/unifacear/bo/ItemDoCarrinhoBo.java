@@ -69,7 +69,7 @@ public class ItemDoCarrinhoBo {
 			
 			if(i.getCalcado().getDescricao().equals(item.getCalcado().getDescricao())) {
 				
-				if(i.getCalcado().getNumero() == item.getCalcado().getNumero()) {
+				if(item.getCarrinho().getIdCarrinho() == i.getCarrinho().getIdCarrinho()) {
 					
 					throw new Exception("Este Calçado já esta em seu carrinho");
 				}

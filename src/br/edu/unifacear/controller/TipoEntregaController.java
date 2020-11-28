@@ -60,6 +60,7 @@ public class TipoEntregaController {
 		try {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.inserirTipoEntrega(tipo);
+			carregar();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -73,6 +74,7 @@ public class TipoEntregaController {
 		try {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.alterar(tipo);
+			carregar();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -86,6 +88,7 @@ public class TipoEntregaController {
 		try {
 			TipoEntregaFacade facade = new TipoEntregaFacade();
 			facade.remover(tipo);
+			carregar();
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 		}
@@ -94,7 +97,7 @@ public class TipoEntregaController {
 	}
 
 	public void carregar() {
-
+		this.entregas = new ArrayList<>();
 		for (TipoEntrega lista : new TipoEntregaDao().listar("todos", new TipoEntrega())) {
 			this.entregas.add("ID = " + lista.getId() + " Descrição: " + lista.getDescricao());
 			this.tipos.add(lista);
