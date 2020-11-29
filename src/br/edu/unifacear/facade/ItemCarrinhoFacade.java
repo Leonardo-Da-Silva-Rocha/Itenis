@@ -6,7 +6,7 @@ import java.util.List;
 
 import br.edu.unifacear.bo.ItemDoCarrinhoBo;
 import br.edu.unifacear.classes.Calcado;
-
+import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 
 public class ItemCarrinhoFacade {
@@ -20,9 +20,9 @@ public class ItemCarrinhoFacade {
 	}
 	
 	
-	public void adicionarProduto(ItemDoCarrinho item, Calcado calcado) throws Exception {
+	public void adicionarProduto(ItemDoCarrinho item, Calcado calcado , Cliente cli) throws Exception {
 		this.item = new ItemDoCarrinhoBo();
-		this.item.salvar(item, calcado.getQuantidade());
+		this.item.salvar(item, calcado.getQuantidade(), cli);
 		
 	}
 	

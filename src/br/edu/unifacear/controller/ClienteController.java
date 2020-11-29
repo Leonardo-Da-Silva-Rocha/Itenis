@@ -277,7 +277,7 @@ public class ClienteController {
 			this.item.setCalcado(this.calcadoSelecionado);
 			this.item.setCarrinho(this.cliente.getCarrinho());
 			this.item.setQuantidade(1);
-			itemFacade.adicionarProduto(item, this.calcadoSelecionado);
+			itemFacade.adicionarProduto(item, this.calcadoSelecionado, this.cliente);
 			this.itens.add(this.item);
 			this.cliente.getCarrinho().getItem().add(this.item);
 			atualizar();
@@ -642,6 +642,14 @@ public class ClienteController {
 		return ven;
 	}
 
+	
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		
+		
+		return "Login.xhtml?faces-redirect=true";
+	}
+	
 	public void deletarItemDoCarrinho() {
 
 		ClienteFacade facade = new ClienteFacade();

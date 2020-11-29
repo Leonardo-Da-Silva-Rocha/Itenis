@@ -2,16 +2,17 @@ package br.edu.unifacear.bo;
 
 import java.util.List;
 
+import br.edu.unifacear.classes.Cliente;
 import br.edu.unifacear.classes.ItemDoCarrinho;
 import br.edu.unifacear.dao.GenericDao;
 import br.edu.unifacear.dao.ItemDoCarrinhoDao;
 
 public class ItemDoCarrinhoBo {
 	
-	public void salvar(ItemDoCarrinho item, int quantidadeCalcado) throws Exception {
+	public void salvar(ItemDoCarrinho item, int quantidadeCalcado, Cliente cli) throws Exception {
 		
 		validarQuantidade(item, item.getCalcado().getQuantidade());
-		valida(item);
+		valida(item, cli);
 		
 		item.setValor(item.getQuantidade() * item.getCalcado().getValor());
 		
@@ -63,17 +64,14 @@ public class ItemDoCarrinhoBo {
 	}
 	
 	
-	public void valida(ItemDoCarrinho item) throws Exception {
+	public void valida(ItemDoCarrinho item, Cliente cli) throws Exception {
 		
 		for (ItemDoCarrinho i :new ItemDoCarrinhoDao().listar("validarQuantidade", item)) {
 			
-			if(i.getCalcado().getDescricao().equals(item.getCalcado().getDescricao())) {
-				
-				if(item.getCarrinho().getIdCarrinho() == i.getCarrinho().getIdCarrinho()) {
-					
-					throw new Exception("Este Calçado já esta em seu carrinho");
+			for (ItemDoCarrinho itemC : cli.getCarrinho().getItem()) {
+				if(i.getIdItemDoCarrinho() == itemC.getIdItemDoCarrinho()) {
+					throw new Exception("Erro este item ja esta em seu carrinho");
 				}
-				
 			}
 			
 		}
