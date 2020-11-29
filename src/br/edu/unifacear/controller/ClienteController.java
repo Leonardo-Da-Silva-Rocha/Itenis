@@ -420,6 +420,7 @@ public class ClienteController {
 			facade.alterar(this.item);
 
 			valorTotal();
+			this.item = new ItemDoCarrinho();
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Item alterardo com sucesso!", ""));
 
@@ -441,9 +442,10 @@ public class ClienteController {
 
 			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
 			facade.remover(this.removerItemSelecionado);
-
+			
 			atualizarEstoque(this.removerItemSelecionado);
 			valorTotal();
+			
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item removido com sucesso!", ""));
 
@@ -452,7 +454,7 @@ public class ClienteController {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 
 		}
-
+		this.removerItemSelecionado = new ItemDoCarrinho();
 	}
 
 	public void atualizarEstoque(ItemDoCarrinho item) throws Exception {
@@ -645,7 +647,6 @@ public class ClienteController {
 	
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		
 		
 		return "Login.xhtml?faces-redirect=true";
 	}

@@ -73,7 +73,7 @@ public class CalcadoController {
 		this.calcado = calcado;
 	}
 
-	public void salvar() throws Exception {
+	public String salvar() throws Exception {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -90,10 +90,12 @@ public class CalcadoController {
 
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado cadastrado com sucesso", ""));
-
+			return "TelaPrincipalVendedor.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar",
 					"Verifique se selecionou uma imagem e confira os campos"));
+			return "erro";
+			
 		}
 
 	}
