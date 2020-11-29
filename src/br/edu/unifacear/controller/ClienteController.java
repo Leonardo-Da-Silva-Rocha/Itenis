@@ -597,7 +597,8 @@ public class ClienteController {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		ClienteFacade facade = new ClienteFacade();
-
+		
+		
 		try {
 
 			for (Cliente cli : new ClienteFacade().listar("cpf", this.cliente)) {
@@ -612,8 +613,8 @@ public class ClienteController {
 				comprasCliente();
 
 			}
-
-			return "TelaInicial.xhtml?faces-redirect=true";
+			System.out.println(cliente.getIdCliente());
+			return "comprar";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			return "TelaPrincipalVendedor.xhtml?faces-redirect=true";
