@@ -96,8 +96,7 @@ public class MarcaController {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		try {
-			// pessoaBo = new PessoaBo();
-			// pessoaBo.salvar(this.pessoa);
+			
 			MarcaFacade facade = new MarcaFacade();
 			facade.remover(marca);
 			carregarComboBox();

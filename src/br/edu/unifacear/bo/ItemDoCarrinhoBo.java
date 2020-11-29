@@ -85,9 +85,14 @@ public class ItemDoCarrinhoBo {
 	
 
 	public void remover(ItemDoCarrinho item) throws Exception {
+		
 		try {
+			item.setCalcado(null);
+			item.setCarrinho(null);
+			
 
-			new GenericDao().remove(item.getClass(), item.getIdItemDoCarrinho());
+			new GenericDao().saveOrUpdate(item);
+			
 
 		} catch (Exception e) {
 			throw new Exception("Errro ao remover este item");
@@ -103,4 +108,25 @@ public class ItemDoCarrinhoBo {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void removerItens(List<ItemDoCarrinho> itens) throws Exception {
+		
+		for (ItemDoCarrinho item : itens) {
+			
+			
+			try {
+				item.setCalcado(null);
+				item.setCarrinho(null);
+				new GenericDao().saveOrUpdate(item);
+				
+				
+			}catch(Exception e) {
+				throw new Exception("Falha ao apagar");
+			}
+			
+			
+		}
+		
+	}
+	
 }

@@ -46,4 +46,9 @@ public class ItemCarrinhoFacade {
 		this.item = new ItemDoCarrinhoBo();
 		this.item.readicionar(item);
 	}
+	
+	public void zerarCarinho(List<ItemDoCarrinho> item) throws Exception {
+		this.item = new ItemDoCarrinhoBo();
+		this.item.removerItens(item);
+	}
 }	

@@ -253,15 +253,14 @@ public class ClienteController {
 
 			CadastrarClienteFacade facade = new CadastrarClienteFacade();
 			facade.salvar(this.cliente.getEndereco(), this.cliente, new Carrinho());
-			
-			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso", ""));
+
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso", ""));
 			return "Login.xhtml?faces-redirect=true";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar ",
 					"verifique se o email ja esta em uso em nosso site e se as senhas são iguais"));
-			return"erro";
+			return "erro";
 		}
 
 	}
@@ -282,7 +281,8 @@ public class ClienteController {
 			this.cliente.getCarrinho().getItem().add(this.item);
 			atualizar();
 			valorTotal();
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto adicionado ao carrinho", ""));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Produto adicionado ao carrinho", ""));
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -298,10 +298,10 @@ public class ClienteController {
 	}
 
 	public String loginDinamico() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		String retorno = "";
-		try {	
+		try {
 
 			ClienteFacade facade = new ClienteFacade();
 			VendedorFacade vend = new VendedorFacade();
@@ -321,8 +321,6 @@ public class ClienteController {
 						comprasCliente();
 						valorTotal();
 
-						
-
 						return "TelaInicial.xhtml?faces-redirect=true";
 
 					} else {
@@ -333,7 +331,7 @@ public class ClienteController {
 				}
 
 			}
-		
+
 			for (Vendedor vendedor : vend.listar("todos")) {
 
 				if (vendedor.getEmail().equals(this.emailUsuario)) {
@@ -347,8 +345,7 @@ public class ClienteController {
 						this.comissao = new ComissaoFacade().listar(this.idVendedor);
 						this.emailUsuario = vendedor.getNome();
 						totalComissao();
-						
-						
+
 						retorno = "vend";
 						return "vend";
 
@@ -367,7 +364,7 @@ public class ClienteController {
 
 					if (ad.getSenha().toUpperCase().equals(this.senhaUsuario.toUpperCase())) {
 						this.idVendedor = 0;
-						
+
 						this.login = 1;
 						this.idAdm = ad.getIdAdministrador();
 						this.emailUsuario = ad.getNome();
@@ -392,11 +389,12 @@ public class ClienteController {
 
 		} catch (Exception e) {
 
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido 4", ""));
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido 4", ""));
 
 			return "erro";
 		}
-		
+
 	}
 
 	public void valorTotal() {
@@ -441,15 +439,12 @@ public class ClienteController {
 		try {
 
 			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
-
-			
-			facade.remover(this.removerItemSelecionado);
-			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
-			
 			atualizarEstoque(this.removerItemSelecionado);
-			valorTotal();
+			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
+			facade.remover(this.removerItemSelecionado);
+
+			this.total = this.total - this.removerItemSelecionado.getQuantidade();
 			this.removerItemSelecionado = new ItemDoCarrinho();
-			
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item removido com sucesso!", ""));
 
@@ -528,18 +523,28 @@ public class ClienteController {
 		}
 	}
 
-	public String finalizar() {
+	public String dataVendaVendedor() {
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+		String formato = formatter.format(localDate);
+		return formato;
+	}
+
+	public void finalizar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		PedidoFacade facade = new PedidoFacade();
+
 		try {
 
 			this.pedido.setFormaPagamento(this.formaPagamento);
 			this.pedido.setStatus(true);
 			this.pedido.setEndereco(this.cliente.getEndereco());
 			if (this.idVendedor != 0) {
+				this.pedido.setDataDeEntrega(dataVendaVendedor());
 				this.pedido.setVendedor(vendedorPedido());
 				comissaoVendedor();
 			} else if (this.idAdm != 0) {
+				this.pedido.setDataDeEntrega(dataVendaVendedor());
 				this.pedido.setDataDeEntrega("");
 			} else {
 
@@ -547,18 +552,17 @@ public class ClienteController {
 			}
 
 			facade.salvar(pedido);
-			deletarItemDoCarrinho();
 			comprasCliente();
-			
+			limpar();
+			this.total = 0.0;
+			logout();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pedido realizado com sucesso", ""));
-			
-			return "finalizar";
+
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-			return "FinalizarPedido.xhtml";
+
 		}
-		
-		
+
 	}
 
 	public void dataEntrega() {
@@ -574,16 +578,17 @@ public class ClienteController {
 		PedidoFacade facade = new PedidoFacade();
 		ItemPedidoFacade i = new ItemPedidoFacade();
 		this.comprasCliente = new ArrayList<>();
+		
 		try {
 
 			this.pedidos = facade.listar("meuPedido", this.cliente.getIdCliente());
 
 			for (Pedido pedido : this.pedidos) {
-				
+
 				for (ItemPedido itemPedido : i.listar(pedido.getIdPedido())) {
 
 					this.comprasCliente.add(itemPedido);
-					
+
 				}
 			}
 
@@ -593,12 +598,25 @@ public class ClienteController {
 
 	}
 
+	public void limpar() {
+		ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
+		try {
+
+			facade.zerarCarinho(this.cliente.getCarrinho().getItem());
+
+			this.cliente.getCarrinho().setItem(new ArrayList<>());
+
+		} catch (Exception e) {
+
+			System.out.println("erro");
+		}
+	}
+
 	public String vendedorCompra() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		ClienteFacade facade = new ClienteFacade();
-		
-		
+
 		try {
 
 			for (Cliente cli : new ClienteFacade().listar("cpf", this.cliente)) {
@@ -613,7 +631,7 @@ public class ClienteController {
 				comprasCliente();
 
 			}
-			System.out.println(cliente.getIdCliente());
+
 			return "comprar";
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
@@ -649,31 +667,10 @@ public class ClienteController {
 		return ven;
 	}
 
-	
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		
+
 		return "Login.xhtml?faces-redirect=true";
-	}
-	
-	public void deletarItemDoCarrinho() {
-
-		ClienteFacade facade = new ClienteFacade();
-
-		ItemCarrinhoFacade item = new ItemCarrinhoFacade();
-
-		try {
-
-			this.itens.removeAll(this.cliente.getCarrinho().getItem());
-
-			for (ItemDoCarrinho cli : this.cliente.getCarrinho().getItem()) {
-				item.remover(cli);
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public void comissaoVendedor() {
