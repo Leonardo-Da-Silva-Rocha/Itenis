@@ -345,15 +345,16 @@ public class ClienteController {
 						c.setVendedor(vendedor);
 						this.idVendedor = c.getVendedor().getIdVendedor();
 						this.comissao = new ComissaoFacade().listar(this.idVendedor);
+						this.emailUsuario = vendedor.getNome();
 						totalComissao();
-
+						
 						
 						retorno = "vend";
 						return "vend";
 
 					} else {
 						context.addMessage(null,
-								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido", ""));
+								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido 1", ""));
 					}
 
 				}
@@ -369,19 +370,20 @@ public class ClienteController {
 						
 						this.login = 1;
 						this.idAdm = ad.getIdAdministrador();
+						this.emailUsuario = ad.getNome();
 						retorno = "vend";
 						return "vend";
 
 					} else {
 						context.addMessage(null,
-								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido", ""));
+								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido 2", ""));
 					}
 				}
 			}
 
 			if (login == 0) {
 				context.addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Realize um cadastro no site", ""));
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Realize um cadastro no site 3", ""));
 			}
 
 			this.login = 0;
@@ -390,7 +392,7 @@ public class ClienteController {
 
 		} catch (Exception e) {
 
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido", ""));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro Email ou senha invalido 4", ""));
 
 			return "erro";
 		}
@@ -440,11 +442,13 @@ public class ClienteController {
 
 			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
 
-			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
+			
 			facade.remover(this.removerItemSelecionado);
+			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
 			
 			atualizarEstoque(this.removerItemSelecionado);
 			valorTotal();
+			this.removerItemSelecionado = new ItemDoCarrinho();
 			
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item removido com sucesso!", ""));
