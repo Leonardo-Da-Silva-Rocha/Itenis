@@ -225,10 +225,10 @@ public class ImagemController {
 		try {
 
 			CalcadoFacade facade = new CalcadoFacade();
-
+			
 			facade.alterar(this.CalcadoSelecionado);
-
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado alterado com sucesso", ""));
+			this.CalcadoSelecionado = new Calcado();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Calçado alterado com sucesso", ""));
 
 		} catch (Exception e) {
 			context.addMessage(null,
@@ -243,8 +243,8 @@ public class ImagemController {
 			CalcadoFacade facade = new CalcadoFacade();
 			this.calcado.remove(this.CalcadoSelecionado);
 			facade.excluir(this.CalcadoSelecionado);
-
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado alterado com sucesso", ""));
+			this.CalcadoSelecionado = new Calcado();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Calçado excluido com sucesso", ""));
 
 		} catch (Exception e) {
 			context.addMessage(null,

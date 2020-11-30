@@ -426,7 +426,7 @@ public class ClienteController {
 			valorTotal();
 			this.item = new ItemDoCarrinho();
 
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Item alterardo com sucesso!", ""));
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item alterardo com sucesso!", ""));
 
 		} catch (Exception e) {
 
@@ -443,11 +443,12 @@ public class ClienteController {
 		try {
 
 			ItemCarrinhoFacade facade = new ItemCarrinhoFacade();
-			atualizarEstoque(this.removerItemSelecionado);
+			this.total = this.total - this.removerItemSelecionado.getValor();
+			
 			this.cliente.getCarrinho().getItem().remove(this.removerItemSelecionado);
 			facade.remover(this.removerItemSelecionado);
 
-			this.total = this.total - this.removerItemSelecionado.getQuantidade();
+			
 			this.removerItemSelecionado = new ItemDoCarrinho();
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Item removido com sucesso!", ""));

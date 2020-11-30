@@ -53,18 +53,7 @@
     <p:dataView var="car" value="#{clienteBean.cliente.carrinho.item}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars">
  
-        <p:dataViewGridItem>
-            <p:panel header="#{car.id}" style="text-align:center">
-                <h:panelGrid columns="1" style="width:100%">
-                    <p:graphicImage value="#{car.calcado.imagem}"/> 
- 
-                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-          
-                        <f:setPropertyActionListener value="#{car}" target="#{clienteBean.calcadoSelecionado}" />
-                    </p:commandLink>
-                </h:panelGrid>
-            </p:panel>
-        </p:dataViewGridItem>
+
  
         <p:dataViewListItem>
             <h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">

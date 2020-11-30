@@ -42,14 +42,15 @@ public class VendedorController {
 	public String salvar() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
-
+		
 		try {
 
 			VendedorFacade facade = new VendedorFacade();
 			this.adm.setIdAdministrador(1);
 			this.vendedor.setAdministrador(adm);
 			facade.inserirVendedor(vendedor);
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vendedor Salvo com sucesso", ""));
+			this.vendedor = new Vendedor();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Vendedor Salvo com sucesso", ""));
 			return "TelaPrincipalVendedor.xhtml?faces-redirect=true";
 			
 
