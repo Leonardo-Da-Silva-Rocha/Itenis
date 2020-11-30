@@ -24,6 +24,7 @@ public class VendedorFacade {
 	}
 	
 	public List<Vendedor> listar(String pesquisa) throws Exception {
+		this.vendedorBo = new VendedorBo();
 		return this.vendedorBo.listar(pesquisa);
 	}
 

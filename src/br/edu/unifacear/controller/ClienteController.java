@@ -255,6 +255,7 @@ public class ClienteController {
 			facade.salvar(this.cliente.getEndereco(), this.cliente, new Carrinho());
 
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso", ""));
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 			return "Login.xhtml?faces-redirect=true";
 
 		} catch (Exception e) {
@@ -344,7 +345,10 @@ public class ClienteController {
 						this.idVendedor = c.getVendedor().getIdVendedor();
 						this.comissao = new ComissaoFacade().listar(this.idVendedor);
 						this.emailUsuario = vendedor.getNome();
-						totalComissao();
+
+						if (this.comissao.size() > 0) {
+							totalComissao();
+						}
 
 						retorno = "vend";
 						return "vend";
@@ -471,6 +475,9 @@ public class ClienteController {
 
 			CriarPedidoFacade facade = new CriarPedidoFacade();
 			this.pedido.setCliente(this.cliente);
+			if (this.idVendedor != 0) {
+				this.pedido.setVendedor(vendedorPedido());
+			}
 
 			valorPedido();
 			facade.salvarPedido(pedido);
@@ -479,8 +486,9 @@ public class ClienteController {
 			return "FinalizarPedido.xhtml?faces-redirect=true";
 
 		} catch (Exception e) {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			System.out.println("erro");
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+
 			return "TelaInicial.xhtml";
 		}
 
@@ -499,7 +507,7 @@ public class ClienteController {
 	public void CriaritemPedido() throws Exception {
 
 		CriarPedidoFacade facade = new CriarPedidoFacade();
-
+		this.itensDoPedido = new ArrayList<>();
 		for (ItemDoCarrinho i : this.cliente.getCarrinho().getItem()) {
 			this.itemPedido = new ItemPedido();
 			this.itemPedido.setCalcado(i.getCalcado());
@@ -507,9 +515,12 @@ public class ClienteController {
 			this.itemPedido.setQuantidade(i.getQuantidade());
 			this.itemPedido.setPreco(i.getValor());
 			this.itensDoPedido.add(this.itemPedido);
+			this.comprasCliente.add(this.itemPedido);
 			facade.salvarItem(this.itemPedido);
 
 		}
+
+		limpar();
 
 	}
 
@@ -530,7 +541,7 @@ public class ClienteController {
 		return formato;
 	}
 
-	public void finalizar() {
+	public String finalizar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		PedidoFacade facade = new PedidoFacade();
 
@@ -539,27 +550,34 @@ public class ClienteController {
 			this.pedido.setFormaPagamento(this.formaPagamento);
 			this.pedido.setStatus(true);
 			this.pedido.setEndereco(this.cliente.getEndereco());
+
 			if (this.idVendedor != 0) {
+
 				this.pedido.setDataDeEntrega(dataVendaVendedor());
-				this.pedido.setVendedor(vendedorPedido());
 				comissaoVendedor();
+
 			} else if (this.idAdm != 0) {
 				this.pedido.setDataDeEntrega(dataVendaVendedor());
 				this.pedido.setDataDeEntrega("");
+
 			} else {
 
 				dataEntrega();
+
 			}
 
 			facade.salvar(pedido);
-			comprasCliente();
-			limpar();
+
 			this.total = 0.0;
-			logout();
+			this.pedido.setItemPedido(new ArrayList<>());
+			this.pedido = new Pedido();
+
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pedido realizado com sucesso", ""));
+			return "finalizar";
 
 		} catch (Exception e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "erro";
 
 		}
 
@@ -578,7 +596,8 @@ public class ClienteController {
 		PedidoFacade facade = new PedidoFacade();
 		ItemPedidoFacade i = new ItemPedidoFacade();
 		this.comprasCliente = new ArrayList<>();
-		
+		this.pedidos = new ArrayList<>();
+
 		try {
 
 			this.pedidos = facade.listar("meuPedido", this.cliente.getIdCliente());
@@ -656,6 +675,8 @@ public class ClienteController {
 
 	public void totalComissao() {
 		this.valorTotalComissao = 0.0;
+		
+	
 		for (Comissao comissao2 : this.comissao) {
 			this.valorTotalComissao = this.valorTotalComissao + comissao2.getPorcentagem();
 		}
@@ -687,5 +708,6 @@ public class ClienteController {
 		co.setDinheiro(this.pedido.getPreco());
 		co.setDataPagamento(formato);
 		facade.salvar(co);
+
 	}
 }

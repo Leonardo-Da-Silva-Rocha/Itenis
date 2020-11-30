@@ -21,8 +21,8 @@ public class Vendedor implements EntityBase {
 	
 	private String telefone;
 	
-	@OneToOne(cascade=CascadeType.ALL, mappedBy = "vendedor")
-	private Comissao comissao;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "vendedor")
+	private List<Comissao> comissao;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "vendedor")
 	private List<Pedido> pedido;
@@ -134,13 +134,13 @@ public class Vendedor implements EntityBase {
 
 
 
-	public Comissao getComissao() {
+	public List<Comissao> getComissao() {
 		return comissao;
 	}
 
 
 
-	public void setComissao(Comissao comissao) {
+	public void setComissao(List<Comissao> comissao) {
 		this.comissao = comissao;
 	}
 
@@ -182,7 +182,7 @@ public class Vendedor implements EntityBase {
 
 
 	public Vendedor(int idVendedor, String nome, String senha, String confirmarSenha, String email, String cpf,
-			String telefone, Comissao comissao, List<Pedido> pedido, Administrador administrador) {
+			String telefone, List<Comissao> comissao, List<Pedido> pedido, Administrador administrador) {
 	
 		this.idVendedor = idVendedor;
 		this.nome = nome;

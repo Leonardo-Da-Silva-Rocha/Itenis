@@ -243,7 +243,7 @@ public class ImagemController {
 			CalcadoFacade facade = new CalcadoFacade();
 			this.calcado.remove(this.CalcadoSelecionado);
 			facade.excluir(this.CalcadoSelecionado);
-			
+
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Calçado alterado com sucesso", ""));
 
 		} catch (Exception e) {

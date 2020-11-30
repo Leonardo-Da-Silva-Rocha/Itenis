@@ -19,7 +19,7 @@ public class ComissaoDao {
 
 		em.getTransaction().begin();
 
-		consulta = em.createQuery("SELECT c FROM Comissao c WHERE c.vendedor.idVendedor = " + parametro);
+		consulta = em.createQuery("SELECT c FROM Comissao c WHERE c.vendedor.idVendedor =  "+parametro);
 
 		em.getTransaction().commit();
 

@@ -11,7 +11,8 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>		
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
 
 	<!-- SCRIPT PARA ABRIR A MODAL DE NOVA MARCA -->
 	<script>
@@ -101,8 +102,8 @@
 			})
 		})
 	</script>
-	
-	
+
+
 	<!-- SCRIPT PARA ABRIR A MODAL DE EDITAR TIPO DE ENTREGA -->
 	<script>
 		$(document).ready(function() {
@@ -120,13 +121,10 @@
 				$("#modal-excluir-entregas").modal('show');
 			})
 		})
-		
-		
 
 		$(function() {
 			$('[data-toggle="tooltip"]').tooltip()
 		})
-		
 	</script>
 	<link rel="StyleSheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet"
@@ -136,9 +134,11 @@
 
 	<h:message />
 	<ol class="nav cor-navBar">
-		<li class="nav-item"><a class="nav-link logo" href="TelaPrincipalVendedor.xhtml">Itênis</a></li>
+		<li class="nav-item"><a class="nav-link logo"
+			href="TelaPrincipalVendedor.xhtml">Itênis</a></li>
 
-		<li class="nav-item testando"><a class="nav-link cor-nav-item" href="RelatoriosVendedor.xhtml">Relatórios</a></li>
+		<li class="nav-item testando"><a class="nav-link cor-nav-item"
+			href="RelatoriosVendedor.xhtml">Relatórios</a></li>
 
 		<li class="nav-item dropdown testando"><a
 			class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
@@ -173,38 +173,49 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="id-modal-excluir-fornecedor" href="#">Excluir</a>
 			</div></li>
-			
-			<li class="nav-item dropdown testando"><a
+
+		<li class="nav-item dropdown testando"><a
 			class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false">Entregas</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" id="id-modal-entregas" href="#">Cadastrar tipos de entrega
-					</a> <a class="dropdown-item" id="id-modal-editar-entregas"
-					href="#">Editar tipos existentes</a>
+				<a class="dropdown-item" id="id-modal-entregas" href="#">Cadastrar
+					tipos de entrega </a> <a class="dropdown-item"
+					id="id-modal-editar-entregas" href="#">Editar tipos existentes</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="id-modal-excluir-entregas" href="#">Excluir</a>
 			</div></li>
 
 		<h:form>
-		
-		<li class="nav-item dropdown testando"><a
-			class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false">Cadastrar usuários</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<h:commandLink action="#{clienteBean.telaVendedor}" class="dropdown-item">Cadastrar Vendedor</h:commandLink>
-				<a class="dropdown-item" href="CadastroCliente.xhtml">Cadastrar Cliente</a> 
-			</div></li>
+
+			<li class="nav-item dropdown testando"><a
+				class="nav-link dropdown-toggle cor-nav-item" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">Cadastrar usuários</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<h:commandLink action="#{clienteBean.telaVendedor}"
+						class="dropdown-item">Cadastrar Vendedor</h:commandLink>
+					<a class="dropdown-item" href="CadastroCliente.xhtml">Cadastrar
+						Cliente</a>
+				</div></li>
 		</h:form>
+
+
+		<li class="nav-item testando"><a
+			class="nav-link cor-nav-item" href="EditarProdutos.xhtml" >Editar Calçados</a>
+			</li>
+
 	</ol>
-	
+
 	<h:form>
-	    <h:commandLink action="#{clienteBean.logout}" class="btn my-2 my-sm-0 material-icons" style="margin-right:15px" type="submit" data-toggle="tooltip" data-placement="top" title="Sair">fast_rewind</h:commandLink>
-		<h:commandLink class="btn my-2 my-sm-0" style="margin-right:15px"  value="#{clienteBean.emailUsuario}"></h:commandLink>
+		<h:commandLink action="#{clienteBean.logout}"
+			class="btn my-2 my-sm-0 material-icons" style="margin-right:15px"
+			type="submit" data-toggle="tooltip" data-placement="top" title="Sair">fast_rewind</h:commandLink>
+		<h:commandLink class="btn my-2 my-sm-0" style="margin-right:15px"
+			value="#{clienteBean.emailUsuario}"></h:commandLink>
 	</h:form>
-	
-	
+
+
 
 
 	<!-- MODAL CADASTRAR CATEGORIA-->
@@ -213,9 +224,8 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Cadastrar nova categoria</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<label for="nome">Nova categoria</label>
@@ -224,8 +234,7 @@
 						<h:inputText value="#{categoriaBean.categoria.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							>
+						<p:dataList value="#{categoriaBean.categorias}" var="categoria">
 							<f:facet name="header">
 					            Categorias
 					        </f:facet>
@@ -254,25 +263,26 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Editar categoria</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da categoria que deseja editar</label>
 					<h:form>
-					<h:inputText value="#{categoriaBean.categoria.idCategoria}" class="form-control"
-						style="margin-bottom:10px" required="true" />
-					<label for="nome">Nova categoria</label>
+						<h:inputText value="#{categoriaBean.categoria.idCategoria}"
+							class="form-control" style="margin-bottom:10px" required="true" />
+						<label for="nome">Nova categoria</label>
 
-					
+
 
 						<h:inputText value="#{categoriaBean.categoria.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{categoriaBean.categorias}" var="categoria"
-							>
+						<p:dataList value="#{categoriaBean.categorias}" var="categoria">
 							<f:facet name="header">
 					            Categorias
 					        </f:facet>
@@ -299,17 +309,19 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Excluir categoria</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da categoria que deseja excluir</label>
 					<h:form>
-					<h:inputText value="#{categoriaBean.categoria.idCategoria}" class="form-control"
-						style="margin-bottom:10px" required="true" />
+						<h:inputText value="#{categoriaBean.categoria.idCategoria}"
+							class="form-control" style="margin-bottom:10px" required="true" />
 
-					
+
 
 						<p:dataList value="#{categoriaBean.categorias}" var="categoria">
 							<f:facet name="header">
@@ -340,9 +352,11 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Cadastrar nova marca</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<h:form>
@@ -379,17 +393,19 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Editar marca</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da marca que deseja editar</label>
-				 <h:form>
-					<h:inputText value="#{marcaBean.marca.idMarca}" class="form-control"
-						style="margin-bottom:10px" required="true" />
-					<label for="nome">Nova marca</label>
-					
+					<h:form>
+						<h:inputText value="#{marcaBean.marca.idMarca}"
+							class="form-control" style="margin-bottom:10px" required="true" />
+						<label for="nome">Nova marca</label>
+
 
 						<h:inputText value="#{marcaBean.marca.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
@@ -421,17 +437,19 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Excluir marca</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<label for="id">Digite o ID da marca que deseja excluir</label>
 					<h:form>
-					<h:inputText value="#{marcaBean.marca.idMarca}" class="form-control"
-						style="margin-bottom:10px" required="true" />
+						<h:inputText value="#{marcaBean.marca.idMarca}"
+							class="form-control" style="margin-bottom:10px" required="true" />
 
-					
+
 
 						<p:dataList value="#{marcaBean.marcas}" var="marca">
 							<f:facet name="header">
@@ -460,30 +478,32 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Cadastrar novo fornecedor</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<h:form>
 						<label for="nome">Novo fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
-						
+
 						<label for="nome">Código do fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.codigo}"
-							class="form-control" style="margin-bottom:10px" required="true" />	
-						
+							class="form-control" style="margin-bottom:10px" required="true" />
+
 						<label for="nome">Endereço</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.endereco}"
-							class="form-control" style="margin-bottom:10px" required="true" />	
-							
-						<label for="nome">Telefone</label>	
+							class="form-control" style="margin-bottom:10px" required="true" />
+
+						<label for="nome">Telefone</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.telefone}"
-							class="form-control" style="margin-bottom:10px" required="true" />	
-						
+							class="form-control" style="margin-bottom:10px" required="true" />
+
 						<p:dataList value="#{fornecedorBean.fornecedores}"
-							var="fornecedor" >
+							var="fornecedor">
 							<f:facet name="header">
 					            Fornecedores
 					        </f:facet>
@@ -509,35 +529,37 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Editar fornecedor</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
-				
+
 				<div class="modal-body">
 					<label for="id">Digite o ID do fornecedor que deseja editar</label>
 					<h:form>
-					<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}" class="form-control"
-						style="margin-bottom:10px" required="true" />
+						<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}"
+							class="form-control" style="margin-bottom:10px" required="true" />
 
-					
-					<label for="nome">Novo fornecedor</label>
+
+						<label for="nome">Novo fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
 
-					<label for="nome">Código do fornecedor</label>
+						<label for="nome">Código do fornecedor</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.codigo}"
 							class="form-control" style="margin-bottom:10px" required="true" />
-					
-					<label for="nome">Endereço</label>
+
+						<label for="nome">Endereço</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.endereco}"
-							class="form-control" style="margin-bottom:10px" required="true" />		
-					
-					<label for="nome">Telefone</label>
+							class="form-control" style="margin-bottom:10px" required="true" />
+
+						<label for="nome">Telefone</label>
 						<h:inputText value="#{fornecedorBean.fornecedor.telefone}"
-							class="form-control" style="margin-bottom:10px" required="true" />			
-							
+							class="form-control" style="margin-bottom:10px" required="true" />
+
 						<p:dataList value="#{fornecedorBean.fornecedores}"
 							var="fornecedor">
 							<f:facet name="header">
@@ -566,18 +588,20 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Excluir fornecedor</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
-				<h:form>
-					<label for="id">Digite o ID do fornecedor que deseja
-						excluir</label>
-					<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}" class="form-control"
-						style="margin-bottom:10px" required="true" />
+					<h:form>
+						<label for="id">Digite o ID do fornecedor que deseja
+							excluir</label>
+						<h:inputText value="#{fornecedorBean.fornecedor.idFornecedor}"
+							class="form-control" style="margin-bottom:10px" required="true" />
 
-					
+
 
 						<p:dataList value="#{fornecedorBean.fornecedores}"
 							var="fornecedor">
@@ -594,23 +618,25 @@
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
 							update="@form" action="#{fornecedorBean.remover}"></p:commandButton>
-							
+
 					</h:form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- FIM MODAL EXCLUIR FORNECEDOR -->
-	
+
 	<!-- MODAL CADASTRAR NOVO TIPO DE ENTREGA -->
 	<div class="modal" id="modal-entregas">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Cadastrar novo tipo de entrega</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
 					<label for="nome">Novo tipo</label>
@@ -618,8 +644,7 @@
 						<h:inputText value="#{tipoEntregaBean.tipo.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
 
-						<p:dataList value="#{tipoEntregaBean.entregas}"
-							var="entrega" >
+						<p:dataList value="#{tipoEntregaBean.entregas}" var="entrega">
 							<f:facet name="header">
 					             Tipos de entrega
 					        </f:facet>
@@ -631,32 +656,35 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Salvar" action="#{tipoEntregaBean.salvar}"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form" ></p:commandButton>
+							update="@form"></p:commandButton>
 					</h:form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- FIM MODAL entregas -->
-	
-	
+
+
 	<!-- MODAL EDITAR MARCA -->
 	<div class="modal" id="modal-editar-entregas">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Editar tipo de entrega</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
-					<label for="id">Digite o ID do tipo de entrega que deseja editar</label>
-				 <h:form>
-					<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}" class="form-control"
-						style="margin-bottom:10px" required="true" />
-					<label for="nome">Nova tipo de entrega</label>
-					
+					<label for="id">Digite o ID do tipo de entrega que deseja
+						editar</label>
+					<h:form>
+						<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}"
+							class="form-control" style="margin-bottom:10px" required="true" />
+						<label for="nome">Nova tipo de entrega</label>
+
 
 						<h:inputText value="#{tipoEntregaBean.tipo.descricao}"
 							class="form-control" style="margin-bottom:10px" required="true" />
@@ -672,7 +700,7 @@
 							style="background:#B5B5B5; margin-top:10px; border-radius:5px; height:35px; font-weight: bold"
 							value="Cancelar"></h:button>
 						<p:growl id="growl" showDetail="true" sticky="true" />
-						<p:commandButton value="Salvar" 
+						<p:commandButton value="Salvar"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
 							update="@form" action="#{tipoEntregaBean.alterar}"></p:commandButton>
 					</h:form>
@@ -681,28 +709,29 @@
 		</div>
 	</div>
 	<!-- FIM MODAL EDITAR entrega -->
-	
-		<!-- MODAL EXCLUIR TIPOS DE ENTREGA -->
+
+	<!-- MODAL EXCLUIR TIPOS DE ENTREGA -->
 	<div class="modal" id="modal-excluir-entregas">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Excluir tipos de entrega</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          				<span aria-hidden="true">&times;</span>
-        			</button>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true"> &times;
+						</span>
+					</button>
 				</div>
 				<div class="modal-body">
-				<h:form>
-					<label for="id">Digite o ID do tipo de entrega que deseja
-						excluir</label>
-					<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}" class="form-control"
-						style="margin-bottom:10px" required="true" />
+					<h:form>
+						<label for="id">Digite o ID do tipo de entrega que deseja
+							excluir</label>
+						<h:inputText value="#{tipoEntregaBean.tipo.idTipoEntrega}"
+							class="form-control" style="margin-bottom:10px" required="true" />
 
-					
 
-						<p:dataList value="#{tipoEntregaBean.entregas}"
-							var="entrega">
+
+						<p:dataList value="#{tipoEntregaBean.entregas}" var="entrega">
 							<f:facet name="header">
 					           Tipos de entrega
 					        </f:facet>
@@ -715,59 +744,64 @@
 						<p:growl id="growl" showDetail="true" sticky="true" />
 						<p:commandButton value="Excluir"
 							style="background:#00FF7F; margin-top:10px; margin-left:10px; font-weight: bold"
-							update="@form" action="#{tipoEntregaBean.remover}" ></p:commandButton>
-							
+							update="@form" action="#{tipoEntregaBean.remover}"></p:commandButton>
+
 					</h:form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- FIM MODAL EXCLUIR TIPOS DE ENTREGA -->
-	<div style="margin:15px">
-		<h3 class="text-center" style="margin-top:15px; margin-bottom:15px">PRODUTOS CADASTRADOS</h3>
-		
-		 <h:form class="form-inline" style="margin-bottom:10px">
-     		<a class="btn my-2 my-sm-0" style="background: #00FF7F; margin-right:15px" type="submit" href="CadastroNovosProdutos.xhtml">Cadastrar novo produto</a>
-     		<h:commandLink action="#{clienteBean.vendedorCompra}" class="btn my-2 my-sm-0" style="background: #00FF7F; margin-right:15px" data-toggle="tooltip" data-placement="top" title="Primeiramente digite o CPF do cliente">Efetuar pedido para clientes</h:commandLink>
-     		<h:inputText class="btn my-2 my-sm-0" style="border: 0.5px solid black" value="#{clienteBean.cliente.email}">
-     			
-     		</h:inputText>
-    	</h:form>
-		
+	<div style="margin: 15px">
+		<h3 class="text-center" style="margin-top: 15px; margin-bottom: 15px">PRODUTOS
+			CADASTRADOS</h3>
+
+		<h:form class="form-inline" style="margin-bottom:10px">
+			<a class="btn my-2 my-sm-0"
+				style="background: #00FF7F; margin-right: 15px" type="submit"
+				href="CadastroNovosProdutos.xhtml">Cadastrar novo produto</a>
+			<h:commandLink action="#{clienteBean.vendedorCompra}"
+				class="btn my-2 my-sm-0"
+				style="background: #00FF7F; margin-right:15px" data-toggle="tooltip"
+				data-placement="top" title="Primeiramente digite o CPF do cliente">Efetuar pedido para clientes</h:commandLink>
+			<h:inputText class="btn my-2 my-sm-0"
+				style="border: 0.5px solid black"
+				value="#{clienteBean.cliente.email}">
+
+			</h:inputText>
+		</h:form>
+
 		<h:form>
-		<p:dataTable var="produto" value="#{imagemBean.calcado}">
-                
-			<p:column headerText="Imagem" style="text-align:center">
-				  <h:graphicImage library="imagens" name="#{produto.imagem}" style="width:150px; heigth:50px;"></h:graphicImage> 
-			</p:column>
-		
-			<p:column headerText="Descrição" style="text-align:center" filterBy="#{produto.descricao}" filterMatchMode="contains">
-				<h:outputText value="#{produto.descricao}"></h:outputText>
-			</p:column>
+			<p:dataTable var="produto" value="#{imagemBean.calcado}">
 
-			<p:column headerText="Quantidade" style="text-align:center" >
-				<h:outputLabel value="#{produto.quantidade}"></h:outputLabel>
-			</p:column>
+				<p:column headerText="Imagem" style="text-align:center">
+					<h:graphicImage library="imagens" name="#{produto.imagem}"
+						style="width:150px; heigth:50px;"></h:graphicImage>
+				</p:column>
 
-			<p:column headerText="Valor Unitário" style="text-align:center" filterBy="#{produto.valor}" filterMatchMode="contains">
-				<h:outputLabel value="#{produto.valor}"></h:outputLabel>
-			</p:column>
+				<p:column headerText="Descrição" style="text-align:center"
+					filterBy="#{produto.descricao}" filterMatchMode="contains">
+					<h:outputText value="#{produto.descricao}"></h:outputText>
+				</p:column>
 
-			<p:column headerText="Numeração" style="text-align:center">
-				<h:outputLabel value="#{produto.numero}"></h:outputLabel>
-			</p:column>
-			<p:column headerText="Editar / Excluir" style="text-align:center">
-			<h:form>
-				<h:commandLink styleClass="material-icons" style="color:#0000FF; width:40px;" data-toggle="tooltip" data-placement="top" title="Editar item"> edit </h:commandLink>
-                <h:commandLink styleClass="material-icons" style="color:#FF0000;" data-toggle="tooltip" data-placement="top" title="Excluir item" > delete_forever</h:commandLink>
-			</h:form>
-				
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Quantidade" style="text-align:center">
+					<h:outputLabel value="#{produto.quantidade}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="Valor Unitário" style="text-align:center"
+					filterBy="#{produto.valor}" filterMatchMode="contains">
+					<h:outputLabel value="#{produto.valor}"></h:outputLabel>
+				</p:column>
+
+				<p:column headerText="Numeração" style="text-align:center">
+					<h:outputLabel value="#{produto.numero}"></h:outputLabel>
+				</p:column>
+
+			</p:dataTable>
 		</h:form>
 	</div>
-	
-	
+
+
 	<div id="footer">
 		<ui:insert name="footer">
 			<ui:include src="/WEB-INF/template/Rodape.xhtml" />

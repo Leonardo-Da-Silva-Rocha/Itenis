@@ -32,15 +32,17 @@
 						style="width:150px; heigth:50px;"></h:graphicImage>
 				</p:column>
 
-				<p:column headerText="Descrição" style="text-align:center">
+				<p:column headerText="Descrição" style="text-align:center " filterBy="#{produto.descricao}" filterMatchMode="contains">
+					
 					<h:inputText value="#{produto.descricao}"></h:inputText>
+					
 				</p:column>
 
 				<p:column headerText="Quantidade" style="text-align:center">
 					<h:inputText value="#{produto.quantidade}"></h:inputText>
 				</p:column>
 
-				<p:column headerText="Valor Unitário" style="text-align:center">
+				<p:column headerText="Valor Unitário" style="text-align:center" filterBy="#{produto.valor}" filterMatchMode="contains">
 					<h:inputText value="#{produto.valor}"></h:inputText>
 				</p:column>
 

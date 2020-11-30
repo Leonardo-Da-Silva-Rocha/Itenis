@@ -22,9 +22,9 @@ public class VendedorDao {
 		
 		em.getTransaction().begin();
 		
-		if(pesquisa.equals("todos")) {
-			consulta = em.createQuery("SELECT v FROM Vendedor v");
-		}
+		
+		consulta = em.createQuery("SELECT v FROM Vendedor v");
+		
 		
 		em.getTransaction().commit();
 		
